@@ -78,7 +78,6 @@ function onGetLocationSuccess(position) {
 	map.fitBounds(bounds);
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	alert(mylocation+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
@@ -92,7 +91,6 @@ function getOffers(ml,pm)
 		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
 			alert('Done sortByDistance');
-
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
