@@ -8,7 +8,7 @@ var lat, lon, latlon, mylocation;
 var proxm, proxkm;
 var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
-var jsonFile="offers.json";
+var jsonFile="offers.js";
 var sortedoffer;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
@@ -119,9 +119,10 @@ function getOffers(ml,pm)
 		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
 		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
-	};alert('BeforeLoad Json');
+	};
+	alert('BeforeLoad Json');
 	// Load the JSON
-	$.getJSON(jsonFile, function(offer) {
+	$.getJSON("offers.json", function(offer) {
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
