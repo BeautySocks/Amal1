@@ -107,10 +107,12 @@ function onGetLocationSuccess(position) {
 	map.fitBounds(bounds);
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
+	alert('getOffers'+lat+' '+lon);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
 {
+	alert('getOffers');
 	function sortByDistance(a,b){
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
 		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
@@ -120,6 +122,7 @@ function getOffers(ml,pm)
 	};
 	// Load the JSON
 	$.getJSON(jsonFile, function(offer) {
+		alert('Load Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
 			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude, value.location.displayAddress, value.description);
