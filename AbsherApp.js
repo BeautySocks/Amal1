@@ -119,6 +119,8 @@ function getOffers(ml,pm)
 		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
 		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
+			alert('Done sortByDistance');
+
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
@@ -126,6 +128,7 @@ function getOffers(ml,pm)
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
+		alert('I will render now');
 			renderOffer(pm, index+1,value.name, value.Location.Latitude, value.Location.Longitude);
 		});
 		// Done with offer, update message
