@@ -1,5 +1,6 @@
 //Initialize
 $(document).ready(function() {
+	alert(123);
 	document.addEventListener("deviceready", onDeviceReady, false);
 });
 // Global variables
@@ -12,6 +13,7 @@ var sortedoffer;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
 	// iOS. BB. Android
+	alert(321);
 	document.addEventListener("offline", onOffline, false);
 	document.addEventListener("online", onOnline, false);
 }
