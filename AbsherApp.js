@@ -78,7 +78,7 @@ function onGetLocationSuccess(position) {
 	map.fitBounds(bounds);
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	alert(location+' '+proxm);
+	alert(mylocation+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
@@ -101,10 +101,7 @@ function getOffers(ml,pm)
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
 		alert('I will render now');
-		var n = value.name;
-		var llat = value.Location.Latitude;
-		var llong = value.Location.Longitude;
-			renderOffer(n, llat, llong);
+			renderOffer(value.name, value.location.latitude, value.location.longitude);
 			alert('finished rendering');
 		});
 		// Done with offer, update message
