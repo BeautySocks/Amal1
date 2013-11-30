@@ -131,6 +131,7 @@ function getOffers(ml,pm)
 		$.each(sortedoffer,function(index,value){ 
 		alert('I will render now');
 			renderOffer(value.name, value.Location.Latitude, value.Location.Longitude);
+			alert('finished rendering');
 		});
 		// Done with offer, update message
 		
