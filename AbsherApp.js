@@ -8,7 +8,7 @@ var lat, lon, latlon, mylocation;
 var proxm, proxkm;
 var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
-var jsonFile="offers.js";
+var jsonFile="/js/offers.js";
 var sortedoffer;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
@@ -122,7 +122,7 @@ function getOffers(ml,pm)
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
-	$.getJSON("/js/offers.json", function(offer) {
+	$.getJSON(jsonFile, function(offer) {
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
