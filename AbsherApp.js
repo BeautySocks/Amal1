@@ -14,6 +14,7 @@ var sortedoffer;
 function onDeviceReady() {
 	// iOS. BB. Android
 	alert('OnDeviceReady');
+	loadScript();
 	document.addEventListener("offline", onOffline, false);
 	document.addEventListener("online", onOnline, false);
 }
