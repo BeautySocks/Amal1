@@ -47,36 +47,6 @@ function initialize() {
 	// Any other stuff you want to do here?
 }
 
-/* 	Function: renderOffer
-	updates the map and list for every result within range
-	Args: offer info
-*/
-function renderOffer(name,olat,olon) {
-	alert('renderOffer');
-	var offerlatlon=new google.maps.LatLng(olat, olon);
-	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
-	// Process only if within requested distance
-	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		// Increment total stores
-		totaloffers++;
-		// Extend the map to fit 
-		bounds.extend(storelatlon);
-		map.fitBounds(bounds);
-		// Update map with markers (requires StyledMarker.js) 	
-		offermarker = new StyledMarker({
-			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
-			{color:"FFFF66",text:label.toString()}),
-			position:offerlatlon,
-			map:map});
-		// Append to the list of results
-<!--		$("#list").append('<li id="'+label+'" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');-->
-		$("#list").append('<li id="" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all"></span></li>');
-	} // End if
-	$("#list").listview('refresh');
-	$("#totaloffers").html(totaloffers);
-} // End renderStores Function
-
-
 
 function onGetLocationSuccess(position) {
 	alert('onGetLocationSuccess');
@@ -108,6 +78,7 @@ function onGetLocationSuccess(position) {
 	map.fitBounds(bounds);
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
+	alert(location+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
@@ -130,6 +101,7 @@ function getOffers(ml,pm)
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
 		alert('I will render now');
+		alert(value.name+' '+value.Location.Latitude+' '+value.Location.Longitude);
 			renderOffer(value.name, value.Location.Latitude, value.Location.Longitude);
 			alert('finished rendering');
 		});
@@ -139,6 +111,35 @@ function getOffers(ml,pm)
 	});	
 	alert('finished loading');	
 }
+
+/* 	Function: renderOffer
+	updates the map and list for every result within range
+	Args: offer info
+*/
+function renderOffer(name,olat,olon) {
+	alert('renderOffer');
+	var offerlatlon=new google.maps.LatLng(olat, olon);
+	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
+	// Process only if within requested distance
+	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+		// Increment total stores
+		totaloffers++;
+		// Extend the map to fit 
+		bounds.extend(storelatlon);
+		map.fitBounds(bounds);
+		// Update map with markers (requires StyledMarker.js) 	
+		offermarker = new StyledMarker({
+			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
+			{color:"FFFF66",text:label.toString()}),
+			position:offerlatlon,
+			map:map});
+		// Append to the list of results
+<!--		$("#list").append('<li id="'+label+'" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');-->
+		$("#list").append('<li id="" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all"></span></li>');
+	} // End if
+	$("#list").listview('refresh');
+	$("#totaloffers").html(totaloffers);
+} // End renderStores Function
 
 function onGetLocationError(error)
 {
