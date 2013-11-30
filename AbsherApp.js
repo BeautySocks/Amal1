@@ -8,7 +8,7 @@ var lat, lon, latlon, mylocation;
 var proxm, proxkm;
 var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
-var jsonFile="/js/offers.json";
+var jsonFile="offers.json";
 var sortedoffer;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
