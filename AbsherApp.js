@@ -122,7 +122,7 @@ function getOffers(ml,pm)
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
-	$.getJSON("offers.json", function(offer) {
+	$.getJSON("offers.js", function(offer) {
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
