@@ -51,7 +51,7 @@ function initialize() {
 	updates the map and list for every result within range
 	Args: offer info
 */
-function renderOffer(prox,label,name,olat,olon,desc) {
+function renderOffer(prox,label,name,olat,olon) {
 	alert('renderOffer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
