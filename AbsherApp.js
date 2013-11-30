@@ -111,6 +111,7 @@ function onGetLocationSuccess(position) {
   
 function getOffers(ml,pm)
 {
+	sortByDistance();
 	alert('getOffers');
 	function sortByDistance(a,b){
 		alert('sortByDistance');
