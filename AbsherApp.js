@@ -122,13 +122,14 @@ function getOffers(ml,pm)
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
-	$.getJSON("offers.js", function(offer) {
+	$.getJSON("offers.json", function(offer) {
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(index,value){ 
 			renderOffer(pm, index+1,value.name, value.Location.Latitude, value.Location.Longitude, value.Description);
 		});
 		// Done with offer, update message
+		alert('finished loading');
 		updateAll();
 	});		
 }
