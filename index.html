@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" >
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0,user-scalable=no">
+
+<title> Absher Initiative </title>
+
+<!--3 files needed to download from iquery-->
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
+<script type="text/javascript" src="offers.json"></script>
+<script type="text/javascript" src="js/StyledMarker.js"></script>
+
+<!-- Our own Style Sheet -->
+<link href="absherstyle.css" rel="stylesheet" type="text/css">
+
+<!--No need to download this file, it will be added-->
+<script src="phonegap.js"></script>
+
+<!--Date-->
+<link rel="stylesheet" type="text/css" href="jqm-datebox.min.css" /> 
+<!-- End Date-->
+
+<!------->
+<script type="text/javascript" src ="js/jquery-1.10.2.min.js"></script><script type="text/javascript" src ="js/jquery.mobile-1.3.2.min.js"></script>
+<!------->
+
+<!--Date //// CHECK LATER FOR ANOTHER WAY-->
+<script type="text/javascript" src="js/date/jqm-datebox.core.min.js"></script>
+<script type="text/javascript" src="js/date/jqm-datebox.mode.flipbox.min.js"></script>
+<script type="text/javascript" src="js/date/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+<!-- End Date-->
+<!-- Script for splash screen-->
+<!--<script type="text/javascript">
+$(function() {
+  setTimeout(hideSplash, 3000);
+});
+
+function hideSplash() {
+  $.mobile.changePage("#home", "fade");
+}
+</script>-->
+<!-- End of script for splash screen-->
+
+<!-- JQuery for Home Slider -->
+
+<link rel="stylesheet" href="flexslider.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="jquery.flexslider.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
+</script>
+<link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- End of Home Slider-->
+</head> 
+<!-- End of Head -->
+
+<!-- Start of Body -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+<body class="ui-body-a">
+=======
+<body class="ui-body-a" onload="onDeviceReady()">
+>>>>>>> 776f515f7770792f7bc42066c5f84c403109a1eb
+=======
+<body class="ui-body-a" onload="onDeviceReady()">
+>>>>>>> 776f515f7770792f7bc42066c5f84c403109a1eb
+
+
+<!-- Start of Page Div -->
+<div data-role="page" id="home" class="type-interior">
+
+<!-- Start of Header -->
+<div data-role="header">
+<h1>الصفحة الرئيسية</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">
+<div id="Banner">
+<div class="flexslider">
+  <ul class="slides">
+    <li>
+    <img src="css/images/img1.jpg" width="250" height="200" />
+   
+    </li>
+    <li>
+    <img src="css/images/img2.jpg" width="250" height="200" />
+    </li>
+    <li>
+    <img src="css/images/img3.jpg" width="250" height="200" />
+    </li>
+  </ul>
+</div>
+</div>
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div> 
+<!-- End of content div -->
+
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home2.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Start of Panel-->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+</div>
+<!-- End of first page -->
+
+
+<!-- Start of locals registration page-->
+<div data-role="page" id="LocalReg" >
+
+<!-- Start of Header -->
+<div data-role="header">
+<h1> تسجيل المواطنين</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">	
+<!-- Start of Form -->	
+	<form action="#home" method="post" >
+      <!--Work ID-->
+      <div data-role="fieldcontain">
+      <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
+      <input name="workID" type="text" id="workID" value=""/>
+      </div>	
+      
+      <!--PhoneNo-->
+      <div data-role="fieldcontain">
+	  <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
+	  <input name="PhoneNo" type="text" id="PhoneNo" value=""/>
+      </div>
+      
+      <!--Email-->
+      <div data-role="fieldcontain">
+      <label for="PhoneNo" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
+      <input name="PhoneNo" type="text" id="PhoneNo" value=""/>
+      </div>
+      
+      <!--PO Box-->
+      <div data-role="fieldcontain">
+      <label for="PhoneNo" dir="rtl"><strong>صندوق البريد</strong></label>
+      </div>
+      
+      <!--Emirates-->
+      <div data-role="fieldcontain">
+      <label for="select-choice-a" class="select" dir="rtl"><strong>الإمارة</strong></label>
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <option value="AD">أبوظبي</option>
+      <option value="UMQ">أم القيوين</option>
+      <option value="DXB">دبي</option>
+      <option value="SHJ">الشارقة</option>
+      <option value="FUJ">الفجيرة</option>
+      <option value="RAC">رأس الخيمة</option>
+      <option value="AJM">عجمان</option>
+      </select>
+      <input name="PhoneNo2" type="text" id="PhoneNo2" value=""/>
+      </div>
+      
+      <!--Date-->      
+      <div data-role="fieldcontain">
+	  <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
+	  <input name="mydate" id="mydate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}'>
+      </div>
+      
+      
+      <!--Upload-->      
+      <div data-role="fieldcontain">
+	  <label for="mydate" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
+	  <input id="file-1" name="file-1" value="" type="file" data-clear-btn="false">
+      </div>
+      
+      <button type="submit" data-icon="check"><strong>تسجيل</strong></button>
+   </form>
+<!-- End of Form-->
+	</div>
+<!-- End of Contents-->
+
+<!-- a footer is optional -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Local Reg Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Local Reg Panel -->
+</div>
+<!-- End of locals registration page Div -->
+
+
+<!-- Start of About Absher Page -->
+<div data-role="page" id="aboutabsher">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>عن المبادرة</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">	
+<h2 class="divRight">برنامج الخصومات و العروض المميزة للمواطنين العاملين بالقطاع الخاص</h2>
+
+<!--Start of Set for the first PDF list-->
+<div data-role="collapsible" data-collapsed="true"  data-content-theme="c">
+<!--Start of تعريف البرنامج-->
+<h3>تعريف البرنامج</h3>
+
+<div data-role="collapsible-set" data-theme="c" data-content-theme="c">
+
+<!--Start of نبذة عن البرنامج-->
+<div data-role="collapsible" data-collapsed="true">
+<h3>نبذة عن البرنامج</h3>
+<strong><p dir="rtl">بناء على التوجيهات السامية لصاحب السمو الشيخ خليفة بن زايد آل نهيان رئيس الدولة "حفظه الله" بشأن إطلاق مبادرة "أبشر" لتعزيز مشاركة الكوادر الوطنية في سوق العمل، و تنفيذاً للمحور الاستراتيجي الخاص بتشجيع المواطنين للعمل في القطاع الخاص، وجه الشيخ منصور بن زايد آل نهيان "رعاه الله" نائب رئيس مجلس الوزراء وزير شؤون الرئاسة بإعداد برنامج تشرف عليه وزارة شؤون الرئاسة، و يتم تنفيذه بالشراكة مع القطاع العام و الخاص يعنى بتقديم عروض و ميزات خاصة و حصرية للمواطنين العاملين في القطاع الخاص، و ذلك لدعم التحاق و استمرار الكوادر الوطنية في العمل لدى هذا القطاع، حيث عُهد إلى وزارة العمل بتنفيذ البرنامج بما أنها الجهة المعنية بتنظيم سوق العمل بالدولة.</p></strong>
+</div>
+<!-- End of نبذة عن البرنامج-->
+
+<!--Start of أهداف البرنامج-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>أهداف البرنامج</h3>
+<ul dir="rtl">
+<strong>
+<li>دعم جهود التوطين و زيادة مشاركة الكوادر الوطنية في القطاع الخاص من خلال توفير مزايا خاصة للمواطنين العاملين في هذا القطاع.</li>
+<li>توجيه برامج خدمة المجتمع المعتمدة لدى شركاء البرنامج لمعالجة القضايا ذات البعد الوطني مثل حل مشكلة البطالة.</li>
+<li>تحسين قدرة القطاع الخاص على استقطاب و استبقاء الكوادر الوطنية من خلال تفعيل أواصر التعاون و التنسيق ما بين جهات القطاع الخاص، و رفع قدرتها على المنافسة في مجال استقطاب الكوادر الوطنية.</li>
+</strong>
+</ul>   
+</div>
+<!--End of أهداف البرنامج-->
+
+<!--Start of نطاق تطبيق البرنامج-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>نطاق تطبيق البرنامج</h3>
+<strong><p dir="rtl">
+يستفيد من البرنامج المواطنون العاملون بالقطاع الخاص و المسجلون لدى وزارة العمل، على أن يتم تعميمه في المرحلة الثانية على جميع المواطنين العاملين في القطاعات الخاصة و المسجلين لدى الجهات المختلفة المعنية بسوق العمل وفق الخطة المعتمدة لذلك.
+</p></strong>
+</div>
+<!--End of نطاق تطبيق البرنامج-->
+
+<!--Start of إدارة البرنامج-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>إدارة البرنامج</h3>
+<strong><p dir="rtl">
+بما أن وزارة العمل هي الجهة المعنية بتنظيم سوق العمل في الدولة فقد عهدت إليها وزارة شؤون الرئاسة بتنفيذ البرنامج.
+</p></strong>	     
+</div>
+<!--End of إدارة البرنامج-->
+
+<!--Start of الشروط العامة للقبول في البرنامج-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>الشروط العامة للقبول في البرنامج</h3>
+<strong>
+<p dir="rtl"> 
+يشترط لقبول العضو في البرنامج  ما يلي:</p>
+<ul  dir="rtl">
+<li>أن يكون من مواطني دولة الإمارات العربية المتحدة.</li>      
+<li>أن تكون له بطاقة عمل صادرة من وزارة العمل.</li>
+<li>أن يكون على رأس عمله، و أمضى مدة لا تقل عن ستة أشهر مستمرة لدى منشأة واحدة تحتسب من تاريخ إصدار بطاقة العمل.</li>
+<li>أن يكون مسجلاً في الهيئة العامة للمعاشات و التأمينات الاجتماعية أو صندوق معاشات و مكافآت التقاعد لإمارة أبوظبي.</li>
+<li>أن يكون راتبه محولاً من خلال نظام حماية الأجور (WPS) لآخر 3 أشهر.</li>
+<li>أن يستوفي بيانات نموذج التسجيل واعتماده إلكترونياً.</li>
+</ul>
+</strong>	     
+</div>
+<!--End of الشروط العامة للقبول في البرنامج-->
+
+</div>
+<!--End of تعريف البرنامج-->
+
+</div>
+<!--End of Set for the first PDF list-->
+
+
+<!--Start of Set for the second PDF list-->
+<div data-role="collapsible" data-collapsed="true" data-content-theme="c">
+<!--Start of الأسئلة المتعلقة بمبادرة أبشر-->
+<h3>الأسئلة المتعلقة بمبادرة أبشر</h3>
+<div data-role="collapsible-set"  data-content-theme="c">
+
+<!--Start of ما هي بطاقة أبشر؟-->
+<div data-role="collapsible" data-collapsed="true">
+<h3>ما هي بطاقة أبشر؟</h3>
+<strong><p dir="rtl">بطاقة امتيازات و خصومات متميزة لمواطني دولة الإمارات العاملين في القطاع الخاص.</p></strong>
+</div>
+<!-- End of ما هي بطاقة أبشر؟-->
+
+<!--Start of من هم المستهدفون؟-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>من هم المستهدفون؟</h3>
+<strong>
+<p dir="rtl">مواطني دولة الإمارات العاملين بالقطاع الخاص.</p>
+</strong>  
+</div>
+<!--End of من هم المستهدفون؟-->
+
+<!--Start of ما الهدف من البطاقة؟-->
+<div data-role="collapsible"  data-content-theme="c">
+<h3>ما الهدف من البطاقة؟</h3>
+<strong><p dir="rtl">
+تقديم الدعم لمواطني دولة الإمارات العربية المتحدة العاملين بالقطاع الخاص عن طريق تقديم مزايا خاصة و عروض حصرية تلبي احتياجاتهم و تحقق تطلعاتهم، باعتبارهم حجر الزاوية و الركيزة الأساسية في تطوير و استقرار سوق العمل.</p></strong>
+</div>
+<!--End of ما الهدف من البطاقة؟-->
+
+<!--Start of كم هي مدة البطاقة؟-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>كم هي مدة البطاقة؟</h3>
+<strong><p dir="rtl">
+سنة واحدة قابلة للتجديد.</p></strong>	     
+</div>
+<!--End of كم هي مدة البطاقة؟-->
+
+<!--Start of هل يتم تجديدها تلقائياً؟-->
+<div data-role="collapsible"  data-content-theme="c">
+<h3>هل يتم تجديدها تلقائياً؟</h3>
+<strong>
+<p dir="rtl"> 
+لا، بل يقوم الموظف المواطن بالتقديم بطلب جديد عند انتهائها.</p>
+</strong>	     
+</div>
+<!--End of هل يتم تجديدها تلقائياً؟-->
+
+<!--Start of هل يمكن لأحد من أفراد العائلة استخدامها؟ -->
+<div data-role="collapsible" data-content-theme="c">
+<h3>استخدام أحد أفراد العائلة البطاقة؟</h3>
+<strong>
+<p dir="rtl"> 
+لا، هي مخصصة لحاملها فقط .</p>
+</strong>	     
+</div>
+<!--End of هل يمكن لأحد من أفراد العائلة استخدامها؟ -->
+
+<!--Start of كيف يمكن معرفة العروض المقدمة؟-->
+<div data-role="collapsible" data-content-theme="c">
+<h3>كيف يمكن معرفة العروض المقدمة؟</h3>
+<strong>
+<p dir="rtl"> 
+عن طريق زيارة بوابة وزارة العمل الإلكترونية: <a href="www.mol.gov.ae">www.mol.gov.ae</a></p>
+</strong>	     
+</div>
+<!--End of كيف يمكن معرفة العروض المقدمة؟-->
+
+<!--Start of كيف يستطيع المواطن العامل بالقطاع الخاص التسجيل في البرنامج؟-->
+<div data-role="collapsible"  data-content-theme="c">
+<h3>كيف يستطيع المواطن التسجيل؟</h3>
+<strong>
+<p dir="rtl"> 
+تعبئة النموذج عبر البوابة الإلكترونية للوزارة و اعتماده إلكترونياً و ذلك بإتباع الخطوات التالية:
+</p>
+<ul dir="rtl">
+<li>
+اختر مبادرة أبشر من الصفحة الرئيسية.
+</li>
+<li>
+اختر تسجيل المواطنين العاملين بالقطاع الخاص.
+</li>
+<li>
+قم بإدخال رقم بطاقة العمل.
+</li>
+<li>
+قم بتعبئة النموذج و إرفاق المستندات المطلوبة.
+</li>
+<li>
+قم بقراءة الشروط والأحكام والموافقة عليها.
+</li>
+<li>
+انقر على أيقونة (إرسال).
+</li>
+<li>
+في حال استيفاء الشروط سيتم التواصل مع مقدم طلب وإعلامه بذلك، و سترسل البطاقة له مع ضرورة إثبات الشخصية عند استلامها.
+</li>
+<li>
+في حال عدم استيفاء الشروط يتم وضع حالة الطلب تحت الإجراء و مخاطبة مقدم الطلب و إعلامه بعدم استيفائه للشروط. 
+</li>
+</ul>
+</strong>	     
+</div>
+<!--End of كيف يستطيع المواطن العامل بالقطاع الخاص التسجيل في البرنامج؟-->
+
+<!--Start of هل توجد هناك أي شروط لمستخدمي بطاقة أبشر؟-->
+<div data-role="collapsible" data-theme="c" data-content-theme="c">
+<h3>ما هي الشروط لمستخدمي بطاقة أبشر؟</h3>
+<strong>
+<ul dir="rtl">
+<li>
+تستخدم البطاقة بواسطة حاملها فقط.
+</li>      
+<li>
+يتم استلام البطاقة بواسطة المستفيد شخصياً و يتم إرسالها بواسطة خدمات البريد الخاص  إلى العنوان المذكور في استمارة التسجيل.
+</li>
+<li>
+يتعين على المستفيد التوقيع عند الاستلام و عرض إثبات للشخصية.
+</li>
+<li>
+ستتحمل الوزارة تكاليف إصدار البطاقة و رسوم التوصيل في حالة الإصدار و حالات التجديد.
+</li>
+<li>
+تستخدم البطاقة فقط في الأغراض و الأماكن المذكورة في الموقع الإلكتروني لوزارة العمل. 
+</li>
+<li>
+تسري العروض المقدمة على الأسعار الأصلية للمنتجات و الخدمات ولا تتزامن مع العروض الترويجية و التخفيضات.
+</li>
+<li>
+في حال التحاق حامل البطاقة بمنشأة جديدة يتعين عليه استخراج بطاقة أبشر جديدة.
+</li>
+<li>
+يجوز للوزارة إلغاء البطاقة في حال سوء استخدامها أو رهنها لدى أي جهة.
+</li>
+<li>
+يحق للوزارة تعديل الأحكام و الشروط المذكورة في الدليل في حال الحاجة و سوف يخطر المستفيد بذلك.
+</li>
+<li>
+الوزارة غير مسؤولة عن أي أضرار أو خسارة يتكبدها حامل البطاقة نتيجة شراء سلعة أو الاستفادة من خدمات أو غير ذلك.
+</li>
+<li>
+تعتبر بطاقة أبشر لاغية في حال إلغاء عقد و بطاقة العمل.
+</li>
+</ul>
+</strong>	     
+</div>
+<!--End of هل توجد هناك أي شروط لمستخدمي بطاقة أبشر؟-->
+
+<!--Start of ما آلية تسجيل الشركات التي ترغب بتقديم امتيازات و خصومات؟-->
+<div data-role="collapsible" data-theme="c" data-content-theme="c">
+<h3>ما آلية تسجيل الشركات الراغبة
+<br /> بتقديم امتيازات و خصومات؟</h3>
+<strong>
+<p dir="rtl"> 
+تعبئة النموذج عبر البوابة الإلكترونية للوزارة و اعتماده إلكترونياً و ذلك بإتباع الخطوات التالية:
+</p>
+<ul dir="rtl">
+<li>
+اختر مبادرة أبشر من الصفحة الرئيسية.
+</li>
+<li>
+اختر تسجيل الشركات الداعمة.</li>
+<li>
+قم بتعبئة النموذج و إرفاق المستندات المطلوبة.</li>
+<li>
+قم بقراءة الشروط والأحكام والموافقة عليها.</li>
+<li>
+انقر على أيقونة (إرسال).
+</li>
+<li>
+في حال استيفاء الشروط و المعايير سيتم التواصل مع الشركة و إبلاغها بالموافقة. </li>
+<li>
+في حال عدم استيفاء الشروط سيتم إخطار الشركة لتحسين العرض المقدم.</li>
+<li>
+سيتم توقيع مذكرة تفاهم بين وزارة العمل و الشركة الداعمة للبدء بتنفيذ العرض.</li>
+</ul>
+</strong>	     
+</div>
+<!--End of ما آلية تسجيل الشركات التي ترغب بتقديم امتيازات و خصومات؟-->
+
+</div>
+<!--Start of الأسئلة المتعلقة بمبادرة أبشر-->
+</div>
+<!--End of Set for the second PDF list-->
+
+<!--Start of Set for the third PDF list-->
+<div data-role="collapsible" data-collapsed="true" data-content-theme="c">
+<!--Start of العروض و التسهيلات-->
+<h3>العروض و التسهيلات</h3>
+<div data-role="collapsible-set" data-theme="c" data-content-theme="c">
+
+<!--Start of جمعية أبوظبي التعاونية-->
+<div data-role="collapsible" data-collapsed="true">
+<h3>جمعية أبوظبي التعاونية</h3>
+<p dir="rtl"><strong>
+العرض المقدم:
+</strong><br />
+قسيمة مشتربات كل قسيمة تحمل 500 درهم، في كافة فروع جمعية أبوظبي التعاونية و "كوست لس" للإلكترونيات
+</p>
+<p dir="rtl"><strong>
+مدة سريان العرض:
+</strong><br />
+خلال شهر رمضان المبارك</p>
+<p dir="rtl"><strong>
+الموقع و أرقام التواصل:
+</strong><br />
+على الراغبين في الاستفادة من هذا العرض مراجعة الشؤون الإدارية والمالية لجمعية أبوظبي التعاونية، الكائن مقرها في منطقة ميناء زايد
+<br />
+هاتف : 026730517
+</p>
+</div>
+<!-- End of جمعية أبوظبي التعاونية-->
+
+<!--Start of جمعية العين التعاونية-->
+<div data-role="collapsible" data-collapsed="true">
+<h3>جمعية العين التعاونية</h3>
+<p dir="rtl"><strong>
+العرض المقدم:
+</strong><br />
+توزيع 1600 سلة رمضانية يتم توزيع 150 سلة منها يوميا للمستفيدين من المواطنين الحاملين لبطاقة "أبشر" في إمارة أبوظبي
+</p>
+<p dir="rtl"><strong>
+مدة سريان العرض:
+</strong><br />
+خلال شهر رمضان المبارك</p>
+<p dir="rtl"><strong>
+الموقع و أرقام التواصل:
+</strong><br />
+منطقة "المرخانية" مقابل هيئة الهلال الأحمر فرع مدينة العين
+<br />
+هاتف : 037611891
+</p>
+</div>
+<!-- End of جمعية العين التعاونية-->
+
+<!--Start of جمعية الظفرة التعاونية -->
+<div data-role="collapsible" data-collapsed="true">
+<h3>جمعية الظفرة التعاونية</h3>
+<p dir="rtl"><strong>
+العرض المقدم:
+</strong><br />
+خصومات 30% على  جميع المشتريات في أفرع الجمعية على أن لا تزيد قيمة المشتريات عن 5000 درهم</p>
+<p dir="rtl"><strong>
+مدة سريان العرض:
+</strong><br />
+خلال شهر رمضان المبارك</p>
+</p>
+</div>
+<!-- End of جمعية الظفرة التعاونية -->
+</div>
+<!--End of العروض و التسهيلات-->
+</div>
+<!--End of Set for the third PDF list-->
+
+</div>
+<!-- End of Content -->
+
+<!-- About Absher Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div>  
+<!-- End Panel -->
+
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+</div>
+<!-- End of About Absher Page-->
+
+
+<!-- Start of Company registration page-->
+<div data-role="page" id="CompanyReg">
+
+<!-- Start of Header -->
+<div data-role="header">
+<h1> تسجيل الشركات الداعمة</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">	
+    
+    <!-- Start of Form -->	
+	<form action="#" method="get" >     
+   
+      <!--Company Status-->
+      <div data-role="fieldcontain">
+      <label for="select-choice-a" class="select"></label>
+      <div align="right">
+        <select name="select-choice-b" id="select-choice-b"      data-native-menu="false">
+          <option value="Registered">المنشأة مسجلة في وزارة العمل</option>
+          <option value="NotRegistered">المنشأة غير مسجلة في وزارة العمل</option>
+        </select>
+      </div>
+      </div>
+      
+      <!--Company No-->
+      <div data-role="fieldcontain">
+      <label for="CompanyNo">
+        <div align="right"><strong>رقم المنشأة</strong></div>
+      </label>
+      <input name="CompanyNo" type="text" id="CompanyNo" value=""/>
+      </div>	
+      
+      <!--Company Name in Arabic-->
+      <div data-role="fieldcontain">
+	  <label for="ArabicName">
+	    <div align="right"><strong>اسم الجهة الداعمة بالعربي</strong></div>
+	  </label>
+	  <input name="ArabicName" type="text" id="ArabicName" value=""/>
+      </div>
+      
+      <!--Company Name in English -->
+      <div data-role="fieldcontain">
+      <label for="EnglishName">
+        <div align="right"><strong>اسم الجهة الداعمة بالإنجليزي</strong></div>
+      </label>
+      <input name="EnglishName" type="text" id="EnglishName" value=""/>
+      </div>
+      
+      <!--Economic activity-->
+      <div data-role="fieldcontain">
+      <label for="EconomicActivity">
+        <div align="right"><strong>النشاط الاقتصادي</strong></div>
+      </label>
+      <input name="EconomicActivity" type="text" id="EconomicActivity"      value=""/>
+      </div>
+
+      <!--Address-->  
+      <div data-role="fieldcontain">
+      <label for="Address">
+        <div align="right"><strong><strong>العنوان</strong></strong></div>
+      </label>
+      <input name="Address" type="text" id="Address" value=""/>
+      </div>
+      
+      <!--Emirates-->
+      <div data-role="fieldcontain">
+      <label for="select-choice-a" class="select"></label>
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <option value="AD">أبوظبي</option>
+      <option value="UMQ">أم القيوين</option>
+      <option value="DXB">دبي</option>
+      <option value="SHJ">الشارقة</option>
+      <option value="FUJ">الفجيرة</option>
+      <option value="RAC">رأس الخيمة</option>
+      <option value="AJM">عجمان</option>
+      </select>
+      </div>
+      
+    <!-- Next Button -->     
+  <p><a href="#CompanyReg2" data-role="button"> التالي</a></p>	
+
+   </form>
+   <!-- End of Form-->
+	</div>
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Company Reg Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div>
+<!-- End of Company registration page-->
+
+
+<!-- Start of Company registration page 2-->
+<div data-role="page" id="CompanyReg2">
+<!-- Start of Header -->
+<div data-role="header">
+<h1> تسجيل الشركات الداعمة</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+	<div data-role="content">	
+    
+    <label for="basic" class="arabic"> 
+      <div align="right"> <h2>بيانات التواصل مع المنسقين </h2></div>
+    </label>
+    
+    <!-- Start of Form -->	
+	<form action="#" method="get" >     
+   
+      <!--Name-->
+      <div data-role="fieldcontain">
+      <label for="Name">
+        <div align="right"><strong>الاسم </strong></div>
+      </label>
+      <input dir="rtl" name="Name" type="text" id="Name" value=""/>
+      </div>	
+      
+      <!--Mobile No-->
+      <div data-role="fieldcontain">
+	  <label for="MobileNo">
+	    <div align="right"><strong>رقم الهاتف</strong></div>
+	  </label>
+	  <input name="MobileNo" type="text" id="MobileNo" value=""/>
+      </div>
+      
+      <!--Office No -->
+      <div data-role="fieldcontain">
+      <label for="OfficeNo">
+        <div align="right"><strong>رقم هاتف المكتب</strong></div>
+      </label>
+      <input name="OfficeNo" type="text" id="OfficeNo" value=""/>
+      </div>
+      
+      <!--Email-->
+      <div data-role="fieldcontain">
+      <label for="Email">
+        <div align="right"><strong>عنوان البريد الإلكتروني</strong> </div>
+      </label>
+      <input name="Email" type="text" id="Email" value=""/>
+      </div>
+      
+        <!--PO Box-->
+       
+       <div data-role="fieldcontain">
+<label for="POBox">
+  <div align="right"><strong>صندوق البريد</strong></div>
+</label>
+        <input name="POBox" type="text" id="POBox" value=""/>
+      </div>
+      
+        
+      <!--Emirates-->
+      <div data-role="fieldcontain">
+      <label for="select-choice-a" class="select"></label>
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <option value="AD">أبوظبي</option>
+      <option value="UMQ">أم القيوين</option>
+      <option value="DXB">دبي</option>
+      <option value="SHJ">الشارقة</option>
+      <option value="FUJ">الفجيرة</option>
+      <option value="RAC">رأس الخيمة</option>
+      <option value="AJM">عجمان</option>
+      </select>
+      </div>
+      
+      <!--Offer Details-->
+      <div data-role="fieldcontain">
+      <label for="OfferDetail">
+        <div align="right"><strong>تفاصيل الدعم المقدم للمشروع</strong>
+        </div>
+      </label>
+      <input dir="rtl" name="OfferDetail" type="text" id="OfferDetail" value=""/>
+      </div>
+      
+      <!--Agreement-->	
+<div data-role="fieldcontain" class="arabic">
+    <fieldset data-role="controlgroup"  data-iconpos="right">
+	   
+	   <input type="checkbox" name="checkbox-agree" id="checkbox-agree" class="arabic" />
+	   <label for="checkbox-agree">
+	     <div align="right">اقر بصحة البيانات والمستندات الثبوتية المرفقة وأكون مسؤولا مسؤولية تامة عن اي خطأ وارد فيها</div>
+	   </label>
+    </fieldset>
+</div>
+	<button type="submit" data-icon="check" >تسجيل</button>
+   </form>
+   <!-- End of Form-->
+	</div>
+<!-- End of Content -->
+
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Company Reg 2 Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div> 
+<!-- End of Company registration page2-->
+
+
+<!--Start of Login popup -->
+<div id="login" data-role="page" >
+<!-- Start of Header -->
+<div data-role="header">
+<h1>الدخول</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+
+</div>
+<!-- End of Header -->
+<!--Start of Content-->
+<div data-role="content">
+
+<form>
+<div style="padding: 10px 20px;">
+<h3><strong>الدخول</strong></h3>
+<label class="ui-hidden-accessible" for="un">اسم المستخدم:</label>
+<input dir="rtl" id="un" name="user" value="" type="text"  placeholder="اسم المستخدم">
+<label class="ui-hidden-accessible" for="pw">كلمة السر: </label>
+<input dir="rtl" id="pw" name="pass" value="" type="password" placeholder="كلمة السر">
+<button type="submit" data-icon="check" >دخول</button>
+</div>
+</form>
+</div>
+<!--End of Content-->
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- LOGIN PAGE Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div>
+<!-- End of Login page-->
+
+<!-- Start of Contact Us Page -->
+<div data-role="page" id="contactus" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>تواصل معنا</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+<!-- Start of Content -->
+<div data-role="content" align="center">
+  <p>&nbsp;</p>
+  <table width="200" border="0" cellpadding="10">
+    <tr>
+      <td><a href="https://www.facebook.com/absheruae"><img src="css/images/facebook.png" width="70" height="70"></a></td>
+      <td><a href="contactus@absher.ae"><img src="css/images/email.png" width="70" height="70"></a></td>
+    </tr>
+    <tr>
+      <td><a href="tel:971-2-2222221"><img src="css/images/contact.png" width="70" height="70"></a></td>
+      <td><a href="http://instagram.com/AbsherUAE"><img src="css/images/insta.png" width="70" height="70"></a></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.youtube.com/AbsherUAE"><img src="css/images/youtube.png" width="70" height="70"></a></td>
+      <td><a href="https://twitter.com/AbsherUAE"><img src="css/images/twitter.png" width="70" height="70"></a></td>
+    </tr>
+  </table>
+<a href="#addfeedback" data-role="button"><strong>أضف اقتراح</strong></a>
+
+
+</div>
+<!-- End of Content -->
+<!-- a footer is optional -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+<li>
+            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact2.png" width="30" height="30"></a>
+            </li>
+</ul>
+</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Contact PAGE Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div>
+<!-- End of Contact Us Page -->
+
+
+<!-- Start of Feedback Page -->
+<div data-role="page" id="addfeedback" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>أضف اقتراح</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+
+
+<!-- Start of Content -->
+<div data-role="content">
+
+<!-- Start of Form -->
+ 
+<form action="#" method="get" >
+      <!-- Customer Name -->
+      <div data-role="fieldcontain" align="right">
+      <label for="Name"><strong>الاسم</strong></label>
+      <input name="Name" dir="rtl" type="text" id="Name" value=""/>
+      </div>
+ 
+      
+      <!--Work ID -->
+      <div data-role="fieldcontain" align="right">
+      <label for="WorkID"><strong>رقم بطاقة العمل</strong></label>
+ <input name="WorkID" type="text" id="WorkID" value=""/>
+     
+      </div>
+      
+      
+      <!--Email-->
+      <div data-role="fieldcontain" align="right">
+      <label for="Email"><strong>عنوان البريد الإلكتروني</strong> </label>
+      <input name="Email" type="text" id="Email" value=""/>  
+      </div>
+      
+      
+       <!-- Feedback Type -->
+        <div data-role="fieldcontain" align="right">
+     <label for="FeedbackType"><strong>نوع الرسالة</strong> </label>
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <option value="Suggestion">اقتراح</option>
+      <option value="Complain">شكوى</option>
+      </select>
+     
+      </div>
+      
+        <!-- Feedback Message -->
+        <div data-role="fieldcontain" align="right">
+   <label for="feedbackmessage"><strong>الرسالة</strong></label>
+  <textarea name="feedbackmessage" dir="rtl" id="feedbackmessage"></textarea>
+        </div>
+        
+        <!-- Submit Feedback -->
+        <div data-role="button" align="right">
+   <label for="submitfeedback"><strong>إرسال</strong></label>
+        </div>
+   </form>
+   <!-- End of Form-->
+</div>
+    <!-- End of Contents-->
+    
+<!-- a footer is optional -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+<li>
+            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact2.png" width="30" height="30"></a>
+            </li>
+</ul>
+</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+<!-- FEEDBACK PAGE Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+</div>
+<!-- End of Feedback Page -->
+
+
+<!-- Start of Offers Page -->
+<div data-role="page" id="offers" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>العروض</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">	
+<div id="mapholder">
+
+</div>
+</div>
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of Offers Page -->
+
+<script src="AbsherApp.js"></script>
+</body>
+</html>
