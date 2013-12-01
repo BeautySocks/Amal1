@@ -85,6 +85,7 @@ function getOffers(ml,pm)
 	alert('get offers');
 	function sortByDistance(a,b){
 		alert('sort by distance');
+		alert(a.location.latitude);
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
 		alert('aofferlatlon');
 		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
