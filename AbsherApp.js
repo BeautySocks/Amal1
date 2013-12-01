@@ -10,7 +10,7 @@ var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
 var jsonFile="offers.json";
 var sortedoffer;
-//totaloffers=0;
+totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
 	// iOS. BB. Android
@@ -103,7 +103,7 @@ function getOffers(ml,pm)
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(offer,function(index,value){ 
 		alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
-			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude);
+			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude, value.description);
 		});
 		// Done with offer, update message
 		updateAll();
@@ -115,17 +115,23 @@ function getOffers(ml,pm)
 	updates the map and list for every result within range
 	Args: offer info
 */
-function renderOffer(name,olat,olon) {
+function renderOffer(prox,label,name,olat,olon,desc) {
 	alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
+	alert(offerlatlon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
 	// Process only if within requested distance
+	alert(parseFloat(distance,2));
+	alert(parseFloat(prox/1000,2));
 	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+		alert('yay we passed the if');
 		// Increment total stores
 		totaloffers++;
+		alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
+		alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
 			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
@@ -133,11 +139,13 @@ function renderOffer(name,olat,olon) {
 			position:offerlatlon,
 			map:map});
 		// Append to the list of results
-		$("#list").append('<li id="'+name+'" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+name+'</span></li>');
+		alert('Appending to list');
+		$("#list").append('<li id="'+label+'><a href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
 } // End renderStores Function
+
 
 function onGetLocationError(error)
 {
