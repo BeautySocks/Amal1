@@ -100,6 +100,7 @@ function getOffers(ml,pm)
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(sortedoffer,function(value){ 
 		alert('I will render now');
+		alert(value.name+' '+value.location.latitude+' '+value.location.longitude);
 			renderOffer(value.name, value.location.latitude, value.location.longitude);
 			alert('finished rendering');
 		});
