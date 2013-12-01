@@ -33,7 +33,7 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	
+	zoomlevel=100;
 	var myOptions={
 	zoom:zoomlevel,
 	center:latlon,
@@ -41,7 +41,7 @@ function onGetLocationSuccess(position) {
 	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
 	mapTypeId:google.maps.MapTypeId.ROADMAP,
 	};
-	
+	alert(zoomlevel);
 	google.maps.visualRefresh = true;
 	map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
 	var marker=new google.maps.Marker({
