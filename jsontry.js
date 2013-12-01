@@ -72,8 +72,9 @@ function getOffers(ml,pm)
 	// Load the JSON
 	$.getJSON(jsonFile, function(data) {
 		sortedoffer = $(data).sort(sortByDistance);
-		$.each(data,function(index,value){ 
-		alert(value.title+' '+value.lat+' '+value.lng+' '+pm);
+		
+		$.each(data.places,function(index,value){ 
+		alert('Key = '+(value.placeid)+' : value = '+value.title+' : latitude = '+value.lat);
 			renderOffer(pm, index+1,value.title, value.lat, value.lng);
 		});
 		// Done with offer, update message

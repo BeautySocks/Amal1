@@ -101,7 +101,7 @@ function getOffers(ml,pm)
 	// Load the JSON
 	$.getJSON(jsonFile, function(offer) {
 		sortedoffer = $(offer).sort(sortByDistance);
-		$.each(offer,function(index,value){ 
+		$.each(offer.offer,function(index,value){ 
 		alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
 			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude, value.description);
 		});
