@@ -82,34 +82,30 @@ function onGetLocationSuccess(position) {
   
 function getOffers(ml,pm)
 {
-	
-	alert('getOffers');
+	alert('get offers');
 	function sortByDistance(a,b){
-		alert('sortByDistance');
+		alert('sort by distance');
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
 		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
 		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
 		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
-			alert('Done sortByDistance');
 	};
-	alert('BeforeLoad Json');
+	alert('Lets try loading the jSon file!');
 	// Load the JSON
-	$.getJSON("offers.json", function (json) {
-
-    // Set the variables from the results array
-    var name = json.results[0].name;
-    alert('Address : ', name);
-    
-    var latitude = json.results[0].location.latitude;
-    alert('Latitude : ', latitude);
-    
-    var longitude = json.results[0].location.longitude;
-    alert('Longitude : ', longitude);
-
-});
-	alert('finished loading');	
+	$.getJSON(jsonFile, function(offer) {
+		alert('I was loaded');
+		alert('Let me try sorting now');
+		sortedoffer = $(offer).sort(sortByDistance());
+		$.each(sortedoffer,function(index,value){ 
+			renderOffer(pm, index+1,value.name, value.Location.Latitude, value.Location.Longitude);
+		});
+		// Done with offer, update message
+		alert('Done with offers');
+		updateAll();
+	});		
 }
+
 
 /* 	Function: renderOffer
 	updates the map and list for every result within range
