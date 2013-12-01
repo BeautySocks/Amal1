@@ -52,7 +52,7 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 1000;
+	proxm = 500;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
 	alert('asd'+mylocation+' '+proxm);
@@ -110,7 +110,7 @@ function renderOffer(prox,label,name,olat,olon) {
 			map:map});
 		// Append to the list of results
 		alert('Appending to list');
-		$("#list").append('<li id="'+label+'><a href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
