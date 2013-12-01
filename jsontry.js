@@ -52,7 +52,7 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 500;
+	proxm = 1000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
 	alert('asd'+mylocation+' '+proxm);
