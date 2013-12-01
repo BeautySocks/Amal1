@@ -84,7 +84,6 @@ function getOffers(ml,pm)
 {
 	
 	alert('getOffers');
-	sortByDistance(a,b);
 	function sortByDistance(a,b){
 		alert('sortByDistance');
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
@@ -98,12 +97,13 @@ function getOffers(ml,pm)
 	// Load the JSON
 	$.getJSON(jsonFile, function(offer) {
 		alert('Loading Json');
-		sortedoffer = $(offer).sort(sortByDistance);
-		$.each(sortedoffer,function(index,value){ 
+		//sortedoffer = $(offer).sort(sortByDistance);
+		//$.each(sortedoffer,function(index,value){ 
+		function(index,value){
 		alert('I will render now');
 			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude);
 			alert('finished rendering');
-		});
+		};
 		// Done with offer, update message
 		
 		updateAll();
