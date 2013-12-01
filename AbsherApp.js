@@ -82,7 +82,9 @@ function onGetLocationSuccess(position) {
   
 function getOffers(ml,pm)
 {
+	
 	alert('getOffers');
+	sortByDistance(a,b);
 	function sortByDistance(a,b){
 		alert('sortByDistance');
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
