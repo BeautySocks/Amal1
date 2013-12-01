@@ -102,7 +102,7 @@ function getOffers(ml,pm)
 		//alert('Let me try sorting now');
 		//sortedoffer = $(offer).sort(sortByDistance());
 		
-		alert("JSON Data: " + offer);
+		alert("JSON Data: " + offer.location.latitude);
 		// Done with offer, update message
 		alert('Done with offers');
 		updateAll();
