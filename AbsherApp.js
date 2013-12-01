@@ -101,7 +101,8 @@ function getOffers(ml,pm)
 		alert('I was loaded');
 		//alert('Let me try sorting now');
 		//sortedoffer = $(offer).sort(sortByDistance());
-		alert("JSON Data: " + offer.name);
+		
+		alert("JSON Data: " + offer);
 		// Done with offer, update message
 		alert('Done with offers');
 		updateAll();
