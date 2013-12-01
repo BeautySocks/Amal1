@@ -75,7 +75,7 @@ function onGetLocationSuccess(position) {
 	  title:"My Location!"
 	  });
 	mylocation = lat+","+lon;
-	proxm = 1000;
+	proxm = 500;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
 	// Now ready to get the stores
