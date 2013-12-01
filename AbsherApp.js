@@ -98,9 +98,9 @@ function getOffers(ml,pm)
 	$.getJSON(jsonFile, function(offer) {
 		alert('Loading Json');
 		sortedoffer = $(offer).sort(sortByDistance);
-		$.each(sortedoffer,function(index,value){ 
+		$.each(sortedoffer,function(value){ 
 		alert('I will render now');
-			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude);
+			renderOffer(value.name, value.location.latitude, value.location.longitude);
 			alert('finished rendering');
 		});
 		// Done with offer, update message
@@ -114,7 +114,7 @@ function getOffers(ml,pm)
 	updates the map and list for every result within range
 	Args: offer info
 */
-function renderOffer(prox,label,name,olat,olon) {
+function renderOffer(name,olat,olon) {
 	alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
@@ -132,7 +132,7 @@ function renderOffer(prox,label,name,olat,olon) {
 			position:offerlatlon,
 			map:map});
 		// Append to the list of results
-		$("#list").append('<li id="'+label+'" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+		$("#list").append('<li id="'+name+'" class="oneoffer"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+name+'</span></li>');
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
