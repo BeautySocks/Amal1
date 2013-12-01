@@ -102,7 +102,7 @@ function getOffers(ml,pm)
 	$.getJSON(jsonFile, function(offer) {
 		sortedoffer = $(offer).sort(sortByDistance);
 		$.each(offer.offer,function(index,value){ 
-		alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
+		//alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
 			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude, value.description);
 		});
 		// Done with offer, update message
@@ -123,7 +123,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	// Process only if within requested distance
 	alert(parseFloat(distance,2));
 	alert(parseFloat(prox/1000,2));
-	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+	//if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		alert('yay we passed the if');
 		// Increment total stores
 		totaloffers++;
@@ -144,7 +144,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
-} // End renderStores Function
+//} // End renderStores Function
 
 
 function onGetLocationError(error)

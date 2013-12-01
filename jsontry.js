@@ -3,7 +3,7 @@ var lat, lon, latlon, mylocation;
 var proxm, proxkm;
 var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
-var jsonFile="names.json";
+var jsonFile="offers.json";
 var sortedoffer;
 totaloffers=0;
 loadScript();
@@ -55,27 +55,32 @@ function onGetLocationSuccess(position) {
 	proxm = 1000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	alert('asd'+mylocation+' '+proxm);
+	//alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
 {
 	alert('get offers');
-	function sortByDistance(a,b){
-		alert('sort by distance');
-		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
-		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
-		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
-		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
-		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
-	};
+	//function sortByDistance(a,b){
+//		alert('sort by distance');
+//		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
+//		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
+//		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
+//		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
+//		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
+//	};
+alert('before loaded');
 	// Load the JSON
 	$.getJSON(jsonFile, function(data) {
-		sortedoffer = $(data).sort(sortByDistance);
-		
-		$.each(data.places,function(index,value){ 
-		alert('Key = '+(value.placeid)+' : value = '+value.title+' : latitude = '+value.lat);
-			renderOffer(pm, index+1,value.title, value.lat, value.lng);
+		alert('Im loaded');
+//		$.each(data.places,function(index,value){ 
+//		alert('Key = '+(value.placeid)+' : value = '+value.title+' : latitude = '+value.lat);
+//			renderOffer(pm, index+1,value.title, value.lat, value.lng);
+			
+		$.each(data.offer,function(index,value){ 
+		alert(value.Latitude);
+			renderOffer(pm, index+1,value.name, value.Latitude, value.Longitude);
+//		});
 		});
 		// Done with offer, update message
 		updateAll();
@@ -94,7 +99,7 @@ function renderOffer(prox,label,name,olat,olon) {
 	// Process only if within requested distance
 	alert(parseFloat(distance,2));
 	alert(parseFloat(prox/1000,2));
-	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+//	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		alert('yay we passed the if');
 		// Increment total stores
 		totaloffers++;
@@ -115,7 +120,7 @@ function renderOffer(prox,label,name,olat,olon) {
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
-} // End renderStores Function
+//} // End renderStores Function
 function onGetLocationError(error)
 {
 	alert('ongetlocation');
