@@ -100,10 +100,11 @@ function getOffers(ml,pm)
 	alert('Lets try loading the jSon file!');
 	// Load the JSON
 	$.getJSON(jsonFile, function(offer) {
-		sortedoffer = $(offer).sort(sortByDistance);
+		alert('Im loaded');
+		//sortedoffer = $(offer).sort(sortByDistance);
 		$.each(offer.offer,function(index,value){ 
 		//alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
-			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude, value.description);
+			renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
 		});
 		// Done with offer, update message
 		updateAll();

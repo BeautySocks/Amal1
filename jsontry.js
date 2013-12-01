@@ -78,8 +78,8 @@ alert('before loaded');
 //			renderOffer(pm, index+1,value.title, value.lat, value.lng);
 			
 		$.each(data.offer,function(index,value){ 
-		alert(value.Latitude);
-			renderOffer(pm, index+1,value.name, value.Latitude, value.Longitude);
+		alert(value.location.Latitude);
+			renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude);
 //		});
 		});
 		// Done with offer, update message
