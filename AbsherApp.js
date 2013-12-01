@@ -95,19 +95,19 @@ function getOffers(ml,pm)
 	};
 	alert('BeforeLoad Json');
 	// Load the JSON
-	$.getJSON(jsonFile, function(offer) {
-		alert('Loading Json');
-		sortedoffer = $(offer).sort(sortByDistance);
-		$.each(sortedoffer,function(value){ 
-		alert('I will render now');
-		alert(value.name+' '+value.location.latitude+' '+value.location.longitude);
-			renderOffer(value.name, value.location.latitude, value.location.longitude);
-			alert('finished rendering');
-		});
-		// Done with offer, update message
-		
-		updateAll();
-	});	
+	$.getJSON("offers.json", function (json) {
+
+    // Set the variables from the results array
+    var name = json.results[0].name;
+    alert('Address : ', name);
+    
+    var latitude = json.results[0].location.latitude;
+    alert('Latitude : ', latitude);
+    
+    var longitude = json.results[0].location.longitude;
+    alert('Longitude : ', longitude);
+
+});
 	alert('finished loading');	
 }
 
