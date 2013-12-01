@@ -10,6 +10,7 @@ var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
 var jsonFile="offers.json";
 var sortedoffer;
+//totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
 	// iOS. BB. Android
@@ -123,7 +124,7 @@ function renderOffer(name,olat,olon) {
 		// Increment total stores
 		totaloffers++;
 		// Extend the map to fit 
-		bounds.extend(storelatlon);
+		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
