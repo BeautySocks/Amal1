@@ -86,7 +86,9 @@ function getOffers(ml,pm)
 	function sortByDistance(a,b){
 		alert('sort by distance');
 		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
+		alert('aofferlatlon');
 		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
+		alert('bofferlatlon');
 		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
 		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
@@ -99,7 +101,7 @@ function getOffers(ml,pm)
 		alert('Let me try sorting now');
 		sortedoffer = $(offer).sort(sortByDistance());
 		$.each(sortedoffer,function(index,value){ 
-			renderOffer(pm, index+1,value.name, value.Location.Latitude, value.Location.Longitude);
+			renderOffer(pm, index+1,value.name, value.location.latitude, value.location.longitude);
 		});
 		// Done with offer, update message
 		alert('Done with offers');
