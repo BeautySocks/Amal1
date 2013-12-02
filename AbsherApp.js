@@ -1,3 +1,8 @@
+//Initialize
+$(document).ready(function() {
+	alert('function1');
+	document.addEventListener("deviceready", onDeviceReady, false);
+});
 // Global variables
 var lat, lon, latlon, mylocation;
 var proxm, proxkm;
@@ -6,9 +11,28 @@ var zoomlevel, dzoom, bounds, distance;
 var jsonFile="offers.json";
 var sortedoffer;
 totaloffers=0;
-loadScript();
+// PhoneGap is loaded and it is now safe to make calls 
+function onDeviceReady() {
+	// iOS. BB. Android
+	alert('OnDeviceReady');
+	loadScript();
+	document.addEventListener("offline", onOffline, false);
+	document.addEventListener("online", onOnline, false);
+}
+function onOffline() {
+	// When device goes offline, throw an error
+	alert('onOffline');
+	onGetLocationError(4);
+}
+function onOnline() {
+	// When the device is back online, go to index
+	alert('onOnline');
+    $.mobile.changePage("#index");
+}
+
+// Load the Google maps API script with zoom level and desired proximity
 function loadScript(zl,pm) {
-	alert('Load Script');
+	alert('loadScript');
   var script = document.createElement("script");
   script.type = "text/javascript";
   script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&v=3&libraries=geometry&callback=initialize&async=2";
@@ -17,15 +41,16 @@ function loadScript(zl,pm) {
 }
 // The callback function after loading the script
 function initialize() {
-	alert('initialize');
+	alert('Initialize');
 	$.getScript("js/StyledMarker.js");	
 	var geoOptions = {'enableHighAccuracy': true, 'timeout': 10000, 'maximumAge':60000};
 	navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, geoOptions);
 	// Any other stuff you want to do here?
 }
 
+
 function onGetLocationSuccess(position) {
-	alert('on get location success');
+	alert('onGetLocationSuccess');
 	lat=position.coords.latitude;
 	lon=position.coords.longitude;
 	latlon=new google.maps.LatLng(lat, lon);
@@ -33,7 +58,7 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	zoomlevel=100;
+	
 	var myOptions={
 	zoom:zoomlevel,
 	center:latlon,
@@ -41,7 +66,7 @@ function onGetLocationSuccess(position) {
 	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
 	mapTypeId:google.maps.MapTypeId.ROADMAP,
 	};
-	alert(zoomlevel);
+	
 	google.maps.visualRefresh = true;
 	map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
 	var marker=new google.maps.Marker({
@@ -50,12 +75,11 @@ function onGetLocationSuccess(position) {
 	  title:"My Location!"
 	  });
 	mylocation = lat+","+lon;
+	proxm = 10000;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 10000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	//alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
@@ -139,7 +163,6 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 
 function onGetLocationError(error)
 {
-	alert('ongetlocation');
 	$("#errorholder").show();
 	$("#mapholder").hide();
 	var x=document.getElementById("errormsg");
@@ -159,6 +182,8 @@ function onGetLocationError(error)
 		  break;
 	} // End switch
 } // End onGetLocationError
+  
+
 /* ================================================= 
    ================ Events Section ================= 
    ================================================= */
