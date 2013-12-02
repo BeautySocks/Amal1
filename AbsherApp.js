@@ -75,7 +75,7 @@ function onGetLocationSuccess(position) {
 	  title:"My Location!"
 	  });
 	mylocation = lat+","+lon;
-	proxm = 10000;
+	proxm = 1000;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
 	// Now ready to get the stores
@@ -124,7 +124,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	// Process only if within requested distance
 	alert(parseFloat(distance,2));
 	alert(parseFloat(prox/1000,2));
-//	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+	//if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		alert('yay we passed the if');
 		// Increment total stores
 		totaloffers++;
@@ -142,10 +142,10 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		// Append to the list of results
 		alert('Appending to list');
 		$("#list").append('<li id="'+label+'><a href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
-//	} // End if
+	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
-} // End renderStores Function
+//} // End renderStores Function
 
 
 function onGetLocationError(error)
