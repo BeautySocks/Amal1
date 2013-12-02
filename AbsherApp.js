@@ -140,7 +140,6 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			position:offerlatlon,
 			map:map});
 		// Append to the list of results
-		alert('Appending to list');
 		$("#list").append('<li id="'+label+'><a href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 //	} // End if
 	$("#list").listview('refresh');
