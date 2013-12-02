@@ -52,7 +52,7 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 1000;
+	proxm = 10000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
 	//alert('asd'+mylocation+' '+proxm);
@@ -73,13 +73,11 @@ alert('before loaded');
 	// Load the JSON
 	$.getJSON(jsonFile, function(data) {
 		alert('Im loaded');
-//		$.each(data.places,function(index,value){ 
-//		alert('Key = '+(value.placeid)+' : value = '+value.title+' : latitude = '+value.lat);
-//			renderOffer(pm, index+1,value.title, value.lat, value.lng);
-			
 		$.each(data.offer,function(index,value){ 
-		alert(value.location.Latitude);
-			renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude);
+		alert('In the first $.each ');
+		//console.log( offer.offerid[4].location[0].Latitude );
+		//alert(value.location.Latitude);
+		renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
 //		});
 		});
 		// Done with offer, update message
@@ -91,7 +89,7 @@ alert('before loaded');
 	updates the map and list for every result within range
 	Args: offer info
 */
-function renderOffer(prox,label,name,olat,olon) {
+function renderOffer(prox,label,name,olat,olon,desc) {
 	alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
 	alert(offerlatlon);
@@ -99,10 +97,7 @@ function renderOffer(prox,label,name,olat,olon) {
 	// Process only if within requested distance
 	alert(parseFloat(distance,2));
 	alert(parseFloat(prox/1000,2));
-//	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		alert('yay we passed the if');
-		// Increment total stores
-		totaloffers++;
+	totaloffers++;
 		alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
@@ -114,13 +109,34 @@ function renderOffer(prox,label,name,olat,olon) {
 			{color:"FFFF66",text:label.toString()}),
 			position:offerlatlon,
 			map:map});
+		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details" data-rel="popup" id="'+label+'">'+name+'('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+		$("#parag").append(desc);
+		
+	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+		alert('yay we passed the if');
+		// Increment total stores
+//		totaloffers++;
+//		alert(totaloffers);
+//		// Extend the map to fit 
+//		bounds.extend(offerlatlon);
+//		map.fitBounds(bounds);
+//		alert('before updating maps with markers');
+//		// Update map with markers (requires StyledMarker.js) 	
+//		offermarker = new StyledMarker({
+//			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
+//			{color:"FFFF66",text:label.toString()}),
+//			position:offerlatlon,
+//			map:map});
 		// Append to the list of results
-		alert('Appending to list');
-		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+		//alert('Appending O to list');
+		$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 	} // End if
+
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
-//} // End renderStores Function
+} // End renderOffer Function
+
+
 function onGetLocationError(error)
 {
 	alert('ongetlocation');
@@ -143,3 +159,50 @@ function onGetLocationError(error)
 		  break;
 	} // End switch
 } // End onGetLocationError
+/* ================================================= 
+   ================ Events Section ================= 
+   ================================================= */
+
+$('#gohome').on('click', function (e)  {
+	if ($("#list li.onestore").length) {$('#list li.onestore').remove();}
+	if ($("#list li.nostore").length) {$('#list li.nostore').remove();}
+});
+
+$('#goback').on('tap', function ()  {
+	if ($("#detailslist li.oneitem").length) {$('#detailslist li.oneitem').remove();}
+	$("#detailslist").listview('refresh');
+	$.mobile.changePage("#results");
+	e.stopPropagation();
+    e.preventDefault();
+
+});
+
+
+$('#options').delegate('.option', 'tap', function ()  {
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	if(connectionStatus=='offline')
+	{
+		onGetLocationError(4);
+	}
+	else
+	{
+		if($(this).attr('id')=="reload")
+		{
+			loadScript(12,10000);
+			//location.reload();
+		} else if($(this).attr('id')=="get20") 
+		{
+			loadScript(11,20000);
+		}
+		else if($(this).attr('id')=="get50") 
+		{
+			loadScript(10,50000);
+		}
+		else if($(this).attr('id')=="getall") 
+		{
+			loadScript(9,500000);
+		}
+		$("#errorholder").hide();
+		$("#mapholder").show();
+	} // End else network
+});

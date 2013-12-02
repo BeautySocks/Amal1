@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/xml; charset=utf-8" />
+
 <title>Untitled Document</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
 
@@ -18,15 +20,337 @@
 </head>
 
 <body>
-<div id ="mapholder">
+<!-- Start of Content -->
+<!--<div data-role="content">	
+<div id="mapholder">
+
 </div>
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="false">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
 <h3>عروض</h3>
+<ul data-role="listview" id="listO" data-theme="a">
+</ul>
+</div>
+</div>
+</div>-->
+<!-- End of Contents-->
+ 
+<!-- Start of Offers Page -->
+<div data-role="page" id="offers" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>العروض</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">	
+<div id="mapholder">
+
+</div>
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="false" data-theme="a">
 <ul data-role="listview" id="list">
 </ul>
 </div>
 </div>
+<div id="details" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+<div data-role="content" class="popupBG">
+<div id="parag">	
+
+</div>
+</div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" id="listH" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="false" data-theme="a">
+<h3>عروض</h3>
+<ul data-role="listview" id="listH">
+</ul>
+</div>
+</div>
+</div>
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of Offers Page -->
+<!--Start of Details Page-->
+<div data-role="page" id="qwerty" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>العروض</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div id="listH">
+</div>
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!--End of Details Page-->
+<!-- Start of Page Div -->
+<div data-role="page" id="home" class="type-interior">
+
+<!-- Start of Header -->
+<div data-role="header">
+<h1>الصفحة الرئيسية</h1>
+
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" id="listH" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="false" data-theme="a">
+<h3>عروض</h3>
+<ul data-role="listview" id="listH">
+</ul>
+</div>
+</div>
+<div id="Banner">
+<div class="flexslider">
+  <ul class="slides">
+    <li>
+    <img src="css/images/img1.jpg" width="250" height="200" />
+   
+    </li>
+    <li>
+    <img src="css/images/img2.jpg" width="250" height="200" />
+    </li>
+    <li>
+    <img src="css/images/img3.jpg" width="250" height="200" />
+    </li>
+  </ul>
+</div>
+</div>
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div> 
+<!-- End of content div -->
+
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+	<div data-role="navbar" data-iconpos="left">
+		<ul id="options">
+			<li>
+            <a href="#home"><img src="css/images/home2.png" width="30" height="30"></a>
+            </li>
+			<li>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+		</ul>
+	</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Start of Panel-->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+</div>
+<!-- End of first page -->
 <script src="jsontry.js"></script>
 </body>
 </html>
