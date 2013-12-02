@@ -20,12 +20,12 @@ function onDeviceReady() {
 	document.addEventListener("online", onOnline, false);
 }
 function onOffline() {
-	 When device goes offline, throw an error
+	//When device goes offline, throw an error
 	alert('onOffline');
 	onGetLocationError(4);
 }
 function onOnline() {
-	 When the device is back online, go to index
+	//When the device is back online, go to index
 	alert('onOnline');
     $.mobile.changePage("#index");
 }
