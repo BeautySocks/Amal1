@@ -5,9 +5,8 @@ var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
 var jsonFile="offers.json";
 var sortedoffer;
-var map;
 totaloffers=0;
-loadScript();
+loadScript(7,50000);
 function loadScript(zl,pm) {
 	alert('Load Script');
   var script = document.createElement("script");
@@ -17,6 +16,7 @@ function loadScript(zl,pm) {
   // Any other stuff you want to do here?
 }
 // The callback function after loading the script
+
 function initialize() {
 	alert('initialize');
 	$.getScript("js/StyledMarker.js");	
@@ -24,6 +24,12 @@ function initialize() {
 	navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, geoOptions);
 	// Any other stuff you want to do here?
 }
+function TriggerM(){
+//	console.log('Helloooooo');
+//	initialize()
+	google.maps.event.trigger(map, 'resize');
+	console.log('I have resized it');
+	}
 function onGetLocationSuccess(position) {
 	alert('on get location success');
 	lat=position.coords.latitude;
@@ -56,7 +62,6 @@ function onGetLocationSuccess(position) {
 	proxm = 10000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	
 //alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
 
@@ -104,6 +109,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	alert(parseFloat(prox/1000,2));
 	totaloffers++;
 		alert(totaloffers);
+		  google.maps.event.trigger(map, 'resize');
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
@@ -117,7 +123,6 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			map:map});
 		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details" data-rel="popup" id="'+label+'">'+name+'('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 		$("#parag").append(desc);
-		
 	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		alert('yay we passed the if');
 		// Increment total stores
@@ -139,9 +144,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
-google.maps.event.trigger(map, 'resize');
-} // End renderOffer Function
-
+	} // End renderOffer Function
 function onGetLocationError(error)
 {
 	alert('ongetlocation');
@@ -182,7 +185,10 @@ $('#goback').on('tap', function ()  {
 
 });
 
-
+$('#index').on('pageshow', function(event, ui) {
+    console.log("pageshow");
+});
+	
 $('#options').delegate('.option', 'tap', function ()  {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	if(connectionStatus=='offline')
@@ -211,3 +217,12 @@ $('#options').delegate('.option', 'tap', function ()  {
 		$("#mapholder").show();
 	} // End else network
 });
+function Omap(){
+	console.log('Helloooooo');
+	google.maps.event.trigger(map, 'resize');
+	initialize()
+TriggerM();
+}
+function Event(){
+google.maps.event.trigger(map, 'resize');
+}

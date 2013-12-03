@@ -112,19 +112,19 @@ alert('before loaded');
 	Args: offer info
 */
 function renderOffer(prox,label,name,olat,olon,desc) {
-	alert('render offer');
+	//alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
-	alert(offerlatlon);
+	//alert(offerlatlon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
 	// Process only if within requested distance
-	alert(parseFloat(distance,2));
-	alert(parseFloat(prox/1000,2));
+	//alert(parseFloat(distance,2));
+	//alert(parseFloat(prox/1000,2));
 	totaloffers++;
-		alert(totaloffers);
+		//alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
-		alert('before updating maps with markers');
+		//alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
 			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
@@ -133,7 +133,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			map:map});
 		$("#list").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
 		if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		alert('yay we passed the if');
+		//alert('yay we passed the if');
 		$("#listH").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
 	} // End if	
 //	$("#list").listview('refresh');
@@ -143,7 +143,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 
 function onGetLocationError(error)
 {
-	alert('ongetlocation');
+	//alert('ongetlocation');
 	$("#errorholder").show();
 	$("#mapholder").hide();
 	var x=document.getElementById("errormsg");
@@ -210,3 +210,9 @@ $('#options').delegate('.option', 'tap', function ()  {
 		$("#mapholder").show();
 	} // End else network
 });
+
+function Omap(){
+	console.log('Helloooooo');
+	initialize()
+	google.maps.event.trigger(map, 'resize');
+	console.log('I have resized it');}

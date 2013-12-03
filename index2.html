@@ -48,15 +48,13 @@ function hideSplash() {
 <script src="jquery.flexslider.js"></script>
 
 <script type="text/javascript" charset="utf-8">
-  $(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide"
-  });
-});
-//////function map(){
-//////	console.log('Helloooooo');
-//////	google.maps.event.trigger(map, 'resize');
-//////}
+
+
+//function Omap(){
+//	console.log('Helloooooo');
+//	google.maps.event.trigger(map, 'resize');
+//	console.log('I have resized it');
+//}
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
 <style type="text/css">
@@ -70,6 +68,7 @@ function hideSplash() {
 <script type="text/javascript" src="js/StyledMarker.js"></script>
 </head> 
 <!-- End of Head -->
+
 
 <!-- Start of Body -->
 <body class="ui-body-a">
@@ -91,13 +90,13 @@ function hideSplash() {
 	<div data-role="navbar" data-iconpos="left">
 		<ul id="options">
 			<li>
-            <a href="#home"><img src="css/images/home2.png" width="30" height="30"></a>
+            <a href="#home" onClick="Omap()"><img src="css/images/home2.png" width="30" height="30"></a>
             </li>
 			<li>
             <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers" onClick="map()"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -124,7 +123,8 @@ function hideSplash() {
 <!-- End of Header -->
 
 <!-- Start of Content -->
-<div data-role="content">	
+<div data-role="content">
+<a href="#" onClick="Event()">Refresh</a>
 <div id="mapholder">
 </div>
 <div id="offerdetails">
@@ -145,7 +145,7 @@ function hideSplash() {
             <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            <a href="#offers" id="offerL"><img src="css/images/tag2.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
