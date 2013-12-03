@@ -66,6 +66,11 @@ function hideSplash() {
 <!-- End of Home Slider-->
 <script type="text/javascript" src="offers.json"></script>
 <script type="text/javascript" src="js/StyledMarker.js"></script>
+<script>
+$( document ).bind( "pageshow", function( event, data ){
+google.maps.event.trigger(map, 'resize');
+});
+</script>
 </head> 
 <!-- End of Head -->
 
@@ -96,7 +101,7 @@ function hideSplash() {
             <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers" onClick="initialize()"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>

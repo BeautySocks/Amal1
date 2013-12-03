@@ -1,6 +1,6 @@
 //Initialize
 $(document).ready(function() {
-	alert('function1');
+	//alert('function1');
 	//document.addEventListener("deviceready", onDeviceReady, false);
 });
 // Global variables
@@ -83,7 +83,7 @@ function onGetLocationSuccess(position) {
   
 function getOffers(ml,pm)
 {
-	alert('get offers');
+	//alert('get offers');
 	//function sortByDistance(a,b){
 //		alert('sort by distance');
 //		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);

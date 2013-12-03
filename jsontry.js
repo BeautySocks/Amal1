@@ -24,12 +24,7 @@ function initialize() {
 	navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, geoOptions);
 	// Any other stuff you want to do here?
 }
-function TriggerM(){
-//	console.log('Helloooooo');
-//	initialize()
-	google.maps.event.trigger(map, 'resize');
-	console.log('I have resized it');
-	}
+
 function onGetLocationSuccess(position) {
 	alert('on get location success');
 	lat=position.coords.latitude;
@@ -147,7 +142,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	} // End renderOffer Function
 function onGetLocationError(error)
 {
-	alert('ongetlocation');
+	//alert('ongetlocation');
 	$("#errorholder").show();
 	$("#mapholder").hide();
 	var x=document.getElementById("errormsg");
@@ -176,6 +171,8 @@ $('#gohome').on('click', function (e)  {
 	if ($("#list li.nostore").length) {$('#list li.nostore').remove();}
 });
 
+
+		
 $('#goback').on('tap', function ()  {
 	if ($("#detailslist li.oneitem").length) {$('#detailslist li.oneitem').remove();}
 	$("#detailslist").listview('refresh');
@@ -183,10 +180,6 @@ $('#goback').on('tap', function ()  {
 	e.stopPropagation();
     e.preventDefault();
 
-});
-
-$('#index').on('pageshow', function(event, ui) {
-    console.log("pageshow");
 });
 	
 $('#options').delegate('.option', 'tap', function ()  {
@@ -220,9 +213,14 @@ $('#options').delegate('.option', 'tap', function ()  {
 function Omap(){
 	console.log('Helloooooo');
 	google.maps.event.trigger(map, 'resize');
-	initialize()
-TriggerM();
+	//initialize()
+//TriggerM();
 }
 function Event(){
 google.maps.event.trigger(map, 'resize');
 }
+
+
+$( document ).bind( "pageshow", function( event, data ){
+google.maps.event.trigger(map, 'resize');
+});
