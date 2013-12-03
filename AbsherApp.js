@@ -15,7 +15,7 @@ totaloffers=0;
 //function onDeviceReady() {
 //	 iOS. BB. Android
 //	alert('OnDeviceReady');
-	loadScript();
+	loadScript(10,50000);
 //	document.addEventListener("offline", onOffline, false);
 //	document.addEventListener("online", onOnline, false);
 //}
@@ -57,7 +57,6 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	zoomlevel=100;
 	var myOptions={
 	zoom:zoomlevel,
 	center:latlon,
@@ -76,7 +75,7 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 10000;
+	proxm = 50000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
 	//alert('asd'+mylocation+' '+proxm);
@@ -125,7 +124,6 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
-
 		alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
@@ -138,8 +136,8 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		alert('yay we passed the if');
 		$("#listH").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
 	} // End if	
-//	$("#list").listview('refresh');
-//	$("#totaloffers").html(totaloffers);
+	$("#list").listview('refresh');
+	$("#totaloffers").html(totaloffers);
 } // End renderOffer Function
 
 
