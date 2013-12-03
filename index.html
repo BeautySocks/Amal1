@@ -8,7 +8,10 @@
 
 <!--3 files needed to download from iquery-->
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
-
+<script type="text/javascript" src="offers.js"></script>
+<script type="text/javascript" src="offers.json"></script>
+<script type="text/javascript" src="AbsherApp.js"></script>
+<script type="text/javascript" src="js/StyledMarker.js"></script>
 
 <!-- Our own Style Sheet -->
 <link href="absherstyle.css" rel="stylesheet" type="text/css">
@@ -21,8 +24,7 @@
 <!-- End Date-->
 
 <!------->
-<script type="text/javascript" src ="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src ="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src ="js/jquery-1.10.2.min.js"></script><script type="text/javascript" src ="js/jquery.mobile-1.3.2.min.js"></script>
 <!------->
 
 <!--Date //// CHECK LATER FOR ANOTHER WAY-->
@@ -45,7 +47,9 @@ function hideSplash() {
 <!-- JQuery for Home Slider -->
 
 <link rel="stylesheet" href="flexslider.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="jquery.flexslider.js"></script>
+
 <script type="text/javascript" charset="utf-8">
   $(window).load(function() {
   $('.flexslider').flexslider({
@@ -54,14 +58,29 @@ function hideSplash() {
 });
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
+
 <!-- End of Home Slider-->
-<script type="text/javascript" src="offers.json"></script>
-<script type="text/javascript" src="js/StyledMarker.js"></script>
+
+<!-- Flip Jquery -->
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.quickflip.min.js"></script>
+<script type="text/javascript" src="jquery.quickflip.source.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $('.quickflip-wrapper').quickFlip();
+});
+</script>
+<!-- End Flip Jquery  -->
+
+<!-- End of Flip Card Jquery-->
 </head> 
 <!-- End of Head -->
 
 <!-- Start of Body -->
 <body class="ui-body-a">
+
+
 <!-- Start of Page Div -->
 <div data-role="page" id="home" class="type-interior">
 
@@ -77,6 +96,9 @@ function hideSplash() {
 
 <!-- Start of Content -->
 <div data-role="content">
+<div id="mapholder">
+
+</div>
 <div id="Banner">
 <div class="flexslider">
   <ul class="slides">
@@ -151,7 +173,7 @@ function hideSplash() {
             <a href="#home"><img src="css/images/home2.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -283,10 +305,10 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -712,7 +734,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -832,7 +854,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -991,7 +1013,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -1075,7 +1097,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -1163,7 +1185,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 <li>
-            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -1271,6 +1293,7 @@ data-options='{"mode": "flipbox"}'>
         <!-- Submit Feedback -->
         <div data-role="button" align="right">
    <label for="submitfeedback"><strong>إرسال</strong></label>
+   
         </div>
    </form>
    <!-- End of Form-->
@@ -1286,7 +1309,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 <li>
-            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -1348,13 +1371,6 @@ data-options='{"mode": "flipbox"}'>
 <div id="mapholder">
 
 </div>
-<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="false" data-theme="a">
-<ul dir="rtl" data-role="listview" id="list">
-</ul>
-</div>
-</div>
-</div>
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -1366,7 +1382,7 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
                                                 <li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
@@ -1413,11 +1429,11 @@ data-options='{"mode": "flipbox"}'>
 </div>
 <!-- End of Offers Page -->
 
-<!--Start of Details Page-->
-<div data-role="page" id="details" data-icon="true">
+<!-- Start of Profile Page -->
+<div data-role="page" id="profile" data-icon="true">
 <!-- Start of Header -->
 <div data-role="header">
-<h1>العروض</h1>
+<h1>بطاقة أبشر</h1>
 <!-- Start of Panel -->
 <a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
 <a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
@@ -1426,6 +1442,22 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of Header -->
 
 <!-- Start of Content -->
+<div data-role="content" align="center">
+<div class="quickflip-wrapper">
+    <div>
+    
+    <a href="#back" class="quickFlipCta"><img src="css/images/absher_card.PNG" width="340" height="542" />
+   </a>
+   <div class="text">Hello</div>
+  </div>
+
+    <div>
+    <a href="#front" class="quickFlipCta"><img src="css/images/absher_card_back.PNG" width="340" height="542" />
+</a>
+    </div>
+</div>
+</div>
+</div>
 
 <!-- End of Contents-->
     
@@ -1438,10 +1470,10 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
                                                 <li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile2.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -1483,7 +1515,9 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of Panel-->
 
 </div>
-<!--End of Details Page-->
-<script src="AbsherApp.js"></script>
+<!-- End of Offers Page -->
+
+<script type="text/javascript" src="AbsherApp.js"></script>
+
 </body>
 </html>

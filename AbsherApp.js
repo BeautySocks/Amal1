@@ -57,7 +57,7 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	zoomlevel=10;
+	zoomlevel=100;
 	var myOptions={
 	zoom:zoomlevel,
 	center:latlon,
@@ -85,26 +85,24 @@ function onGetLocationSuccess(position) {
 function getOffers(ml,pm)
 {
 	alert('get offers');
-	function sortByDistance(a,b){
-		alert('sort by distance');
-		alert(a.location.latitude);
-		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
-		alert('aofferlatlon');
-		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
-		alert('bofferlatlon');
-		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
-		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
-		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
-		alert('I was successfully sorted!');
-	};
-	alert('Lets try loading the jSon file!');
+	//function sortByDistance(a,b){
+//		alert('sort by distance');
+//		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
+//		var bofferlatlon=new google.maps.LatLng(b.location.latitude, b.location.longitude);
+//		var adistance = (google.maps.geometry.spherical.computeDistanceBetween (aofferlatlon, latlon)/1000).toFixed(1);
+//		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
+//		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
+//	};
+alert('before loaded');
 	// Load the JSON
-	$.getJSON(jsonFile, function(offer) {
+	$.getJSON(jsonFile, function(data) {
 		alert('Im loaded');
-		//sortedoffer = $(offer).sort(sortByDistance);
-		$.each(offer.offer,function(index,value){ 
-		//alert(value.name+' '+value.location.latitude+' '+value.location.longitude+' '+pm);
-			renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
+		$.each(data.offer,function(index,value){ 
+		alert('In the first $.each ');
+		//console.log( offer.offerid[4].location[0].Latitude );
+		//alert(value.location.Latitude);
+		renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
+//		});
 		});
 		// Done with offer, update message
 		updateAll();
@@ -122,10 +120,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	// Process only if within requested distance
 	alert(parseFloat(distance,2));
 	alert(parseFloat(prox/1000,2));
-	//if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		alert('yay we passed the if');
-		// Increment total stores
-		totaloffers++;
+	totaloffers++;
 		alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
@@ -137,13 +132,30 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			{color:"FFFF66",text:label.toString()}),
 			position:offerlatlon,
 			map:map});
+		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details" data-rel="popup" id="'+label+'">'+name+'('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+				
+	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+		alert('yay we passed the if');
+		// Increment total stores
+//		totaloffers++;
+//		alert(totaloffers);
+//		// Extend the map to fit 
+//		bounds.extend(offerlatlon);
+//		map.fitBounds(bounds);
+//		alert('before updating maps with markers');
+//		// Update map with markers (requires StyledMarker.js) 	
+//		offermarker = new StyledMarker({
+//			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
+//			{color:"FFFF66",text:label.toString()}),
+//			position:offerlatlon,
+//			map:map});
 		// Append to the list of results
-		alert('Appending to list');
-		$("#list").append('<li id="'+label+'><p dir="rtl"><a href="#details">'+name+' ('+distance+'KM)</a></p></li>');
+		//alert('Appending O to list');
+		//$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 	} // End if
-	$("#list").listview('refresh');
-	$("#totaloffers").html(totaloffers);
-//} // End renderStores Function
+//	$("#list").listview('refresh');
+//	$("#totaloffers").html(totaloffers);
+} // End renderOffer Function
 
 
 function onGetLocationError(error)

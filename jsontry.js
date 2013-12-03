@@ -129,9 +129,8 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 //			map:map});
 		// Append to the list of results
 		//alert('Appending O to list');
-		$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
+		//$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 	} // End if
-
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
 } // End renderOffer Function
