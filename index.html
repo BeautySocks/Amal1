@@ -61,18 +61,6 @@ function hideSplash() {
 
 <!-- End of Home Slider-->
 
-<!-- Flip Jquery -->
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery.quickflip.min.js"></script>
-<script type="text/javascript" src="jquery.quickflip.source.js"></script>
-<script type="text/javascript">
-
-$(function() {
-    $('.quickflip-wrapper').quickFlip();
-});
-</script>
-<!-- End Flip Jquery  -->
-
 <!-- End of Flip Card Jquery-->
 </head> 
 <!-- End of Head -->
@@ -96,9 +84,6 @@ $(function() {
 
 <!-- Start of Content -->
 <div data-role="content">
-<div id="mapholder">
-
-</div>
 <div id="Banner">
 <div class="flexslider">
   <ul class="slides">
@@ -241,13 +226,13 @@ $(function() {
       <!--Work ID-->
       <div data-role="fieldcontain">
       <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="workID" type="text" id="workID" value=""/>
+      <input name="workID" type="tel" id="workID" value=""/>
       </div>	
       
       <!--PhoneNo-->
       <div data-role="fieldcontain">
 	  <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-	  <input name="PhoneNo" type="text" id="PhoneNo" value=""/>
+	  <input name="PhoneNo" type="tel" id="PhoneNo" value=""/>
       </div>
       
       <!--Email-->
@@ -1429,93 +1414,6 @@ data-options='{"mode": "flipbox"}'>
 </div>
 <!-- End of Offers Page -->
 
-<!-- Start of Profile Page -->
-<div data-role="page" id="profile" data-icon="true">
-<!-- Start of Header -->
-<div data-role="header">
-<h1>بطاقة أبشر</h1>
-<!-- Start of Panel -->
-<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
-<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
-<!-- End of Panel -->
-</div>
-<!-- End of Header -->
-
-<!-- Start of Content -->
-<div data-role="content" align="center">
-<div class="quickflip-wrapper">
-    <div>
-    
-    <a href="#back" class="quickFlipCta"><img src="css/images/absher_card.PNG" width="340" height="542" />
-   </a>
-   <div class="text">Hello</div>
-  </div>
-
-    <div>
-    <a href="#front" class="quickFlipCta"><img src="css/images/absher_card_back.PNG" width="340" height="542" />
-</a>
-    </div>
-</div>
-</div>
-</div>
-
-<!-- End of Contents-->
-    
-<!-- footer -->
-<div data-role="footer" data-position="fixed">
-<!-- Navbar -->
-<div data-role="navbar" data-iconpos="left">
-<ul id="options">
-                                                <li>
-            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
-            </li>
-                                                <li>
-            <a href="#profile"><img src="css/images/profile2.png" width="30" height="30"></a>
-            </li>
-            <li>
-            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
-            </li>
-            <li>
-            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
-            </li>
-                                </ul>
-                </div>
-    <!-- /navbar -->
-</div>
-<!-- End of footer -->
-
-
-<!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
-</ul>
-
-<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
-
-<div data-role="collapsible" data-theme="a">
-<h3>استفسار</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
-<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
-</li>
-</ul>
-</div> <!-- End second collapsible -->
-</div> <!-- End collapsible-->
-</div> 
-<!-- End of Panel-->
-
-</div>
-<!-- End of Offers Page -->
 
 <script type="text/javascript" src="AbsherApp.js"></script>
 

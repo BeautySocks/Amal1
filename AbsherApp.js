@@ -125,6 +125,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
+		
 		alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
@@ -134,25 +135,6 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			map:map});
 		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details" data-rel="popup" id="'+label+'">'+name+'('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
 				
-	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		alert('yay we passed the if');
-		// Increment total stores
-//		totaloffers++;
-//		alert(totaloffers);
-//		// Extend the map to fit 
-//		bounds.extend(offerlatlon);
-//		map.fitBounds(bounds);
-//		alert('before updating maps with markers');
-//		// Update map with markers (requires StyledMarker.js) 	
-//		offermarker = new StyledMarker({
-//			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
-//			{color:"FFFF66",text:label.toString()}),
-//			position:offerlatlon,
-//			map:map});
-		// Append to the list of results
-		//alert('Appending O to list');
-		//$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
-	} // End if
 //	$("#list").listview('refresh');
 //	$("#totaloffers").html(totaloffers);
 } // End renderOffer Function
