@@ -8,9 +8,7 @@
 
 <!--3 files needed to download from iquery-->
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
-<script type="text/javascript" src="offers.js"></script>
 <script type="text/javascript" src="offers.json"></script>
-<script type="text/javascript" src="AbsherApp.js"></script>
 <script type="text/javascript" src="js/StyledMarker.js"></script>
 
 <!-- Our own Style Sheet -->
@@ -56,6 +54,11 @@ function hideSplash() {
     animation: "slide"
   });
 });
+
+function loadM(){
+	console.log('Helloooooo');
+	google.maps.event.trigger(map, 'resize');
+}
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
 

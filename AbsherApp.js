@@ -136,8 +136,8 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		alert('yay we passed the if');
 		$("#listH").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
 	} // End if	
-	$("#list").listview('refresh');
-	$("#totaloffers").html(totaloffers);
+//	$("#list").listview('refresh');
+//	$("#totaloffers").html(totaloffers);
 } // End renderOffer Function
 
 

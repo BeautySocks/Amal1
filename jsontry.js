@@ -5,6 +5,7 @@ var totaloffers, offermarker;
 var zoomlevel, dzoom, bounds, distance;
 var jsonFile="offers.json";
 var sortedoffer;
+var map;
 totaloffers=0;
 loadScript();
 function loadScript(zl,pm) {
@@ -23,7 +24,6 @@ function initialize() {
 	navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, geoOptions);
 	// Any other stuff you want to do here?
 }
-
 function onGetLocationSuccess(position) {
 	alert('on get location success');
 	lat=position.coords.latitude;
@@ -33,9 +33,9 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	zoomlevel=100;
+	//zoomlevel=10;
 	var myOptions={
-	zoom:zoomlevel,
+	zoom:7,
 	center:latlon,
 	mapTypeControl:false,
 	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
@@ -52,12 +52,16 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
+	google.maps.event.trigger(map, 'resize');
 	proxm = 10000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	//alert('asd'+mylocation+' '+proxm);
+	
+//alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
-  
+
+
+ 
 function getOffers(ml,pm)
 {
 	alert('get offers');
@@ -92,6 +96,7 @@ alert('before loaded');
 function renderOffer(prox,label,name,olat,olon,desc) {
 	alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
+		bounds.extend(offerlatlon);
 	alert(offerlatlon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
 	// Process only if within requested distance
@@ -102,6 +107,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
+		map.panToBounds(bounds);
 		alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
@@ -133,8 +139,8 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	} // End if
 	$("#list").listview('refresh');
 	$("#totaloffers").html(totaloffers);
+google.maps.event.trigger(map, 'resize');
 } // End renderOffer Function
-
 
 function onGetLocationError(error)
 {
