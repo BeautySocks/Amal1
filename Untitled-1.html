@@ -51,6 +51,7 @@
     animation: "slide"
   });
 });
+
 </script>
 </head>
 
@@ -59,9 +60,24 @@
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
 <div data-role="collapsible" data-collapsed="false" data-theme="a">
 <h3>أقرب عرض إليك</h3>
-<ul id="listH" data-role="listview" data-inset="true">
+<ul id="list" data-role="listview" data-inset="true">
 </ul>
 </div>
+</div>
+<script>
+$('#searchPickPlace').children('li').bind('touchstart mousedown', function(e) {
+    alert('Selected Name=' + $(this).attr('data-name'));
+});
+</script>
+ <ul id="searchPickPlace" data-role="listview">
+       <!-- <li data-name="Remuera"><a data-transition="slide" id="Remuera" href="search-list.html">Remuera</a></li>
+        <li data-name="Posonby"><a data-transition="slide" id="Ponsonby" href="search-list.html">Ponsonby</a></li>-->
+    </ul>
+
+<div id="detailsD">
+<ul id="details">
+</ul>
+
 </div>
 <script type="text/javascript" src="jsontry2.js"></script>
 </body>
