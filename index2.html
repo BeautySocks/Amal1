@@ -44,7 +44,7 @@ function hideSplash() {
 <!-- JQuery for Home Slider -->
 
 <link rel="stylesheet" href="flexslider.css" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
 <script src="jquery.flexslider.js"></script>
 
 <script type="text/javascript" charset="utf-8">
@@ -67,8 +67,10 @@ function hideSplash() {
 <script type="text/javascript" src="offers.json"></script>
 <script type="text/javascript" src="js/StyledMarker.js"></script>
 <script>
-$( document ).bind( "pageshow", function( event, data ){
-google.maps.event.trigger(map, 'resize');
+  $(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
 });
 </script>
 </head> 
@@ -87,7 +89,32 @@ google.maps.event.trigger(map, 'resize');
 <h1>الصفحة الرئيسية</h1>
 </div>
 <!-- End of Header -->
+<div data-role="content">
+<div id="Banner">
+<div class="flexslider">
+  <ul class="slides">
+    <li>
+    <img src="css/images/img1.jpg" width="250" height="200" />
+    </li>
+    <li>
+    <img src="css/images/img2.jpg" width="250" height="200" />
+    </li>
+    <li>
+    <img src="css/images/img3.jpg" width="250" height="200" />
+    </li>
+  </ul>
+</div>
+</div>
 
+<br />
+<br />
+<h2 dir="rtl">أقرب عرض إليك</h2>
+<a href="#offers" data-role="button">لمشاهدة جميع العروض</a>
+<ul id="listH" data-role="listview" data-inset="true">
+</ul>
+
+
+</div>
 
 <!-- footer -->
 <div data-role="footer" data-position="fixed">
@@ -101,7 +128,7 @@ google.maps.event.trigger(map, 'resize');
             <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers" onClick="initialize()"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -130,10 +157,20 @@ google.maps.event.trigger(map, 'resize');
 <!-- Start of Content -->
 <div data-role="content">
 <a href="#" onClick="Event()">Refresh</a>
+
 <div id="mapholder">
 </div>
-<div id="offerdetails">
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" >
+<div data-role="collapsible" data-collapsed="false" >
+<ul data-role="listview" id="list" data-filter="true">
+</ul>
 </div>
+</div>
+
+<div id="errorholder">
+</div>
+
 </div>
 
     <!-- End of Contents-->
@@ -150,7 +187,7 @@ google.maps.event.trigger(map, 'resize');
             <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers" id="offerL"><img src="css/images/tag2.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>

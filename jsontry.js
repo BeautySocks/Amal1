@@ -8,7 +8,7 @@ var sortedoffer;
 totaloffers=0;
 loadScript(7,50000);
 function loadScript(zl,pm) {
-	alert('Load Script');
+	//alert('Load Script');
   var script = document.createElement("script");
   script.type = "text/javascript";
   script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&v=3&libraries=geometry&callback=initialize&async=2";
@@ -16,9 +16,8 @@ function loadScript(zl,pm) {
   // Any other stuff you want to do here?
 }
 // The callback function after loading the script
-
 function initialize() {
-	alert('initialize');
+	//alert('initialize');
 	$.getScript("js/StyledMarker.js");	
 	var geoOptions = {'enableHighAccuracy': true, 'timeout': 10000, 'maximumAge':60000};
 	navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError, geoOptions);
@@ -26,7 +25,7 @@ function initialize() {
 }
 
 function onGetLocationSuccess(position) {
-	alert('on get location success');
+	//alert('on get location success');
 	lat=position.coords.latitude;
 	lon=position.coords.longitude;
 	latlon=new google.maps.LatLng(lat, lon);
@@ -34,15 +33,14 @@ function onGetLocationSuccess(position) {
 	mapholder.style.height='200px';
 	mapholder.style.width=window.innerWidth;
 	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
-	//zoomlevel=10;
 	var myOptions={
-	zoom:7,
+	zoom:zoomlevel,
 	center:latlon,
 	mapTypeControl:false,
 	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
 	mapTypeId:google.maps.MapTypeId.ROADMAP,
 	};
-	alert(zoomlevel);
+	//alert(zoomlevel);
 	google.maps.visualRefresh = true;
 	map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
 	var marker=new google.maps.Marker({
@@ -53,18 +51,15 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	google.maps.event.trigger(map, 'resize');
-	proxm = 10000;
+	proxm = 50000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-//alert('asd'+mylocation+' '+proxm);
+	//alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
-
-
- 
+  
 function getOffers(ml,pm)
 {
-	alert('get offers');
+	//alert('get offers');
 	//function sortByDistance(a,b){
 //		alert('sort by distance');
 //		var aofferlatlon=new google.maps.LatLng(a.location.latitude, a.location.longitude);
@@ -73,73 +68,57 @@ function getOffers(ml,pm)
 //		var bdistance = (google.maps.geometry.spherical.computeDistanceBetween (bofferlatlon, latlon)/1000).toFixed(1);
 //		return parseFloat(adistance,2) > parseFloat(bdistance,2) ? 1 : -1;
 //	};
-alert('before loaded');
+//alert('before loaded');
 	// Load the JSON
 	$.getJSON(jsonFile, function(data) {
-		alert('Im loaded');
+		//alert('Im loaded');
 		$.each(data.offer,function(index,value){ 
-		alert('In the first $.each ');
-		//console.log( offer.offerid[4].location[0].Latitude );
-		//alert(value.location.Latitude);
 		renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
 //		});
+
 		});
 		// Done with offer, update message
 		updateAll();
 	});		
 }
-
 /* 	Function: renderOffer
 	updates the map and list for every result within range
 	Args: offer info
 */
 function renderOffer(prox,label,name,olat,olon,desc) {
-	alert('render offer');
+	//alert('render offer');
 	var offerlatlon=new google.maps.LatLng(olat, olon);
-		bounds.extend(offerlatlon);
-	alert(offerlatlon);
+	//alert(offerlatlon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
 	// Process only if within requested distance
-	alert(parseFloat(distance,2));
-	alert(parseFloat(prox/1000,2));
+	//alert(parseFloat(distance,2));
+	//alert(parseFloat(prox/1000,2));
 	totaloffers++;
-		alert(totaloffers);
-		  google.maps.event.trigger(map, 'resize');
+		//alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
-		map.panToBounds(bounds);
-		alert('before updating maps with markers');
+		//alert('before updating maps with markers');
 		// Update map with markers (requires StyledMarker.js) 	
 		offermarker = new StyledMarker({
 			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
 			{color:"FFFF66",text:label.toString()}),
 			position:offerlatlon,
 			map:map});
-		$("#list").append('<li id="'+label+'"><a class="dlink" href="#details" data-rel="popup" id="'+label+'">'+name+'('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
-		$("#parag").append(desc);
-	if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
-		alert('yay we passed the if');
-		// Increment total stores
-//		totaloffers++;
-//		alert(totaloffers);
-//		// Extend the map to fit 
-//		bounds.extend(offerlatlon);
-//		map.fitBounds(bounds);
-//		alert('before updating maps with markers');
-//		// Update map with markers (requires StyledMarker.js) 	
-//		offermarker = new StyledMarker({
-//			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
-//			{color:"FFFF66",text:label.toString()}),
-//			position:offerlatlon,
-//			map:map});
-		// Append to the list of results
-		//alert('Appending O to list');
-		//$("#listH").append('<li id="'+label+'"><a class="dlink" href="#details" id="'+label+'">'+name+' ('+distance+'KM)</a><span class="ui-li-count ui-btn-corner-all">'+label+'</span></li>');
-	} // End if
-	$("#list").listview('refresh');
-	$("#totaloffers").html(totaloffers);
-	} // End renderOffer Function
+		$("#list").append('<li id="'+label+'"><a href="#offerdetails" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
+//$("#list").listview("refresh");		
+		if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+		//alert('yay we passed the if');
+		$("#listH").append('<li id="'+label+'"><a href="#offerdetails"id="'+label+'">'+name+'</a></li>');
+	} // End if	
+	//$('#listH').listview('refresh');
+$("#listH").listview("refresh");
+
+//	$("#totaloffers").html(totaloffers);
+} 
+// End renderOffer Function
+
+
 function onGetLocationError(error)
 {
 	//alert('ongetlocation');
@@ -171,8 +150,6 @@ $('#gohome').on('click', function (e)  {
 	if ($("#list li.nostore").length) {$('#list li.nostore').remove();}
 });
 
-
-		
 $('#goback').on('tap', function ()  {
 	if ($("#detailslist li.oneitem").length) {$('#detailslist li.oneitem').remove();}
 	$("#detailslist").listview('refresh');
@@ -181,7 +158,8 @@ $('#goback').on('tap', function ()  {
     e.preventDefault();
 
 });
-	
+
+
 $('#options').delegate('.option', 'tap', function ()  {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	if(connectionStatus=='offline')
@@ -212,15 +190,8 @@ $('#options').delegate('.option', 'tap', function ()  {
 });
 function Omap(){
 	console.log('Helloooooo');
-	google.maps.event.trigger(map, 'resize');
-	//initialize()
-//TriggerM();
+	//initialize();
 }
 function Event(){
 google.maps.event.trigger(map, 'resize');
 }
-
-
-$( document ).bind( "pageshow", function( event, data ){
-google.maps.event.trigger(map, 'resize');
-});

@@ -213,6 +213,6 @@ $('#options').delegate('.option', 'tap', function ()  {
 
 function Omap(){
 	console.log('Helloooooo');
-	initialize()
-	google.maps.event.trigger(map, 'resize');
+	initialize();
+	//google.maps.event.trigger(map, 'resize');
 	console.log('I have resized it');}

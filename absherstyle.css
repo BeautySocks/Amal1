@@ -17,7 +17,7 @@ font-weight:400;
 background-image: url(css/images/2.png);
    background-size: cover;
 }
-.ui-body-a div div div ul li p {
+.ui-body-a div div div ul li p { 
 	text-align: right;
 }
 .ui-body-a div div div h3 {
