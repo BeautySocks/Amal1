@@ -132,10 +132,11 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			position:offerlatlon,
 			map:map});
 		$("#list").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
-		if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		//alert('yay we passed the if');
-		$("#listH").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
+		$("#listH").append('<li id="'+label+'"><a href="#offerdetails"id="'+label+'">'+name+'</a></li>');
 	} // End if	
+	$('#listH').listview('refresh');
 //	$("#list").listview('refresh');
 //	$("#totaloffers").html(totaloffers);
 } // End renderOffer Function
