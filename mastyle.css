@@ -2,8 +2,15 @@
 /* CSS Document */
 
 #Banner {
-	height: 200px;
+	height: 190px;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
+}
+#AbsherCard
+{
+	background:url(css/images/absher_card.PNG);
+	height:542px;
+	width:340px;
+	
 }
