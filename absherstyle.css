@@ -71,7 +71,7 @@ margin-bottom: 0px;
 text-align: center;
 }
 .divRight {
-text-align: right;
+
 }
 .ui-page .ui-content .ui-listview .ui-btn-text a {
 	text-align: right;
@@ -177,3 +177,14 @@ color: white;
 #nav-panel ul li a {
 	text-align: right;
 }
+.ui-body-a #offerdetails div #offerdetailsD div div ul li {
+	text-align: right !important;
+}
+
+.spanRight
+{
+    text-align: right; 
+    display:block;	
+}
+.textsize
+{ font-size:20px;}

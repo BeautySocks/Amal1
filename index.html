@@ -106,7 +106,7 @@ function hideSplash() {
 <br />
 <h2 dir="rtl">أقرب عرض إليك</h2>
 <a href="#offers" data-role="button">لمشاهدة جميع العروض</a>
-<ul id="listH" data-role="listview" data-inset="true">
+<ul dir="rtl" id="listH" data-role="listview" data-inset="true">
 </ul>
 
 
@@ -171,7 +171,7 @@ function hideSplash() {
             <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers" onClick="Omap()"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -1596,8 +1596,22 @@ ctx.restore();
 
 <!-- Start of Content -->
 <div data-role="content">
-<div id="offerdetails">
+<div id="oneoffermap">
 </div>
+
+<br/>
+<div id="offerdetailsD" class="divRight" >
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" >
+<div data-role="collapsible" data-collapsed="false" >
+<ul data-role="listview">
+<h3>العرض</h3>
+
+</ul>
+</div>
+</div>
+</div>
+
+
 
 </div>
 

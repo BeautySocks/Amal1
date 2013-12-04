@@ -1,7 +1,7 @@
 //Initialize
 $(document).ready(function() {
 	//alert('function1');
-	//document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
 });
 // Global variables
 var lat, lon, latlon, mylocation;
@@ -12,23 +12,23 @@ var jsonFile="offers.json";
 var sortedoffer;
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
-//function onDeviceReady() {
+function onDeviceReady() {
 //	 iOS. BB. Android
-//	alert('OnDeviceReady');
+	alert('OnDeviceReady');
 	loadScript(10,50000);
-//	document.addEventListener("offline", onOffline, false);
-//	document.addEventListener("online", onOnline, false);
-//}
-//function onOffline() {
-//	//When device goes offline, throw an error
-//	alert('onOffline');
-//	onGetLocationError(4);
-//}
-//function onOnline() {
-//	//When the device is back online, go to index
-//	alert('onOnline');
-//    $.mobile.changePage("#index");
-//}
+	document.addEventListener("offline", onOffline, false);
+	document.addEventListener("online", onOnline, false);
+}
+function onOffline() {
+	//When device goes offline, throw an error
+	alert('onOffline');
+	onGetLocationError(4);
+}
+function onOnline() {
+	//When the device is back online, go to index
+	alert('onOnline');
+    $.mobile.changePage("#index");
+}
 
 // Load the Google maps API script with zoom level and desired proximity
 function loadScript(zl,pm) {
@@ -78,7 +78,6 @@ function onGetLocationSuccess(position) {
 	proxm = 50000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
-	//alert('asd'+mylocation+' '+proxm);
 } // End onGetLocationSuccess
   
 function getOffers(ml,pm)
@@ -97,11 +96,7 @@ function getOffers(ml,pm)
 	$.getJSON(jsonFile, function(data) {
 		//alert('Im loaded');
 		$.each(data.offer,function(index,value){ 
-		//alert('In the first $.each ');
-		//console.log( offer.offerid[4].location[0].Latitude );
-		//alert(value.location.Latitude);
 		renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
-//		});
 		});
 		// Done with offer, update message
 		updateAll();
@@ -117,10 +112,7 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	//alert(offerlatlon);
 	distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
 	// Process only if within requested distance
-	//alert(parseFloat(distance,2));
-	//alert(parseFloat(prox/1000,2));
 	totaloffers++;
-		//alert(totaloffers);
 		// Extend the map to fit 
 		bounds.extend(offerlatlon);
 		map.fitBounds(bounds);
@@ -131,17 +123,93 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 			{color:"FFFF66",text:label.toString()}),
 			position:offerlatlon,
 			map:map});
-		$("#list").append('<li id="'+label+'"><a href="#details" data-rel="popup" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
-if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
+$("#list").append('<li id="'+label+'"><a href="#offerdetails" id="'+label+'"><span dir="rtl">'+name+' ('+distance+'KM)</span></a></li>');
+//$("#list").listview("refresh");		
+		if(parseFloat(distance,2)<=parseFloat(prox/1000,2)) {
 		//alert('yay we passed the if');
 		$("#listH").append('<li id="'+label+'"><a href="#offerdetails"id="'+label+'">'+name+'</a></li>');
 	} // End if	
-	$('#listH').listview('refresh');
-//	$("#list").listview('refresh');
-//	$("#totaloffers").html(totaloffers);
-} // End renderOffer Function
+	//$('#listH').listview('refresh');
+$("#listH").listview("refresh");
+$("#totaloffers").html(totaloffers);
+
+} 
 
 
+
+$('#list').delegate('li', 'click', function() {
+ //alert($(this).text());
+ var Oid= this.id;
+ if (Oid)
+ {			
+
+	 $.getJSON(jsonFile, function(data) {
+		$.each(data.offer,function(index,value){ 
+		if(Oid == value.offerid)
+		{
+			$("#oneoffermap").empty();
+			google.maps.event.trigger(map, 'resize');
+	mapholder=document.getElementById('oneoffermap');
+	mapholder.style.height='200px';
+	mapholder.style.width=window.innerWidth;
+	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
+	var myOptions={
+	zoom:zoomlevel,
+	center:latlon,
+	mapTypeControl:false,
+	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
+	mapTypeId:google.maps.MapTypeId.ROADMAP,
+	};
+	//alert(zoomlevel);
+	google.maps.visualRefresh = true;
+	map=new google.maps.Map(document.getElementById("oneoffermap"),myOptions);
+	google.maps.event.trigger(map, 'resize');
+	console.log('I resized');
+	var marker=new google.maps.Marker({
+	  position:latlon,
+	  map:map,
+	  title:"My Location!"
+	  });
+		var offerlatlon=new google.maps.LatLng(value.location.Latitude, value.location.Longitude);
+		distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
+		bounds.extend(offerlatlon);
+		map.fitBounds(bounds);
+		//alert('before updating maps with markers');
+		// Update map with markers (requires StyledMarker.js) 	
+		var label=index+1;
+		offermarker = new StyledMarker({
+			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
+			{color:"FFFF66",text:label.toString()}),
+			position:offerlatlon,
+			map:map});
+			google.maps.event.trigger(map, 'resize');
+			
+		$("#offerdetailsD").empty();
+		//$("#offerdetailsD").append('<li><h3>العرض</h3><span dir="rtl">'+value.name+'</span><h3>مدة العرض</h3><li>'+value.duration+'</li><h3>تفاصيل العرض</h3><li>'+value.description+'</li></li>');
+		$("#offerdetailsD").append(
+		'<li><span class="spanRight" dir="rtl">'
+		+'<h2 class="textsize">'+value.name+'</strong></h2>'
+		+'</span></li>'
+		
+		+'<li><span class="spanRight" dir="rtl">'
+		+'تفاصيل العرض: '
+		+'<br />'+value.description
+		+'</span></li>'
+		
+		+'<li><span class="spanRight" dir="rtl">'
+		+'مدة العرض: '+value.duration
+		+'</span></li>'
+		
+		);
+		$("#offerdetailsD").listview().listview("refresh");
+		//$( myTable ).table().table("refresh");
+
+		}
+		});
+	 });
+	 }
+ //alert(this.id);
+});
 function onGetLocationError(error)
 {
 	//alert('ongetlocation');
