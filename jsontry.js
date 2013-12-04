@@ -113,12 +113,28 @@ function renderOffer(prox,label,name,olat,olon,desc) {
 	} // End if	
 	//$('#listH').listview('refresh');
 $("#listH").listview("refresh");
+$("#totaloffers").html(totaloffers);
 
-//	$("#totaloffers").html(totaloffers);
 } 
 // End renderOffer Function
-
-
+$('#list').delegate('li', 'click', function() {
+ //alert($(this).text());
+ var Oid= this.id;
+ if (Oid)
+ {
+	 $.getJSON(jsonFile, function(data) {
+		$.each(data.offer,function(index,value){ 
+		if(Oid == value.offerid)
+		{
+		$("#offerdetailsD").empty()
+		$("#offerdetailsD").append('<p>'+value.description+'</p>')
+		$("#offerdetailsD").listview("refersh");
+		}
+		});
+	 });
+	 }
+ //alert(this.id);
+});
 function onGetLocationError(error)
 {
 	//alert('ongetlocation');
