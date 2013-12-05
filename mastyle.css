@@ -12,5 +12,15 @@
 	background:url(css/images/absher_card.PNG);
 	height:542px;
 	width:340px;
+	position:absolute;
+	z-index:900;
+}
+#backCard
+{
+	background:url(css/images/absher_card_back.PNG);
+	height:542px;
+	width:340px;
+	position:absolute;
+	z-index:800;
 	
 }

@@ -30,6 +30,7 @@
 <script type="text/javascript" src="js/date/jqm-datebox.mode.flipbox.min.js"></script>
 <script type="text/javascript" src="js/date/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 <!-- End Date-->
+
 <!-- Script for splash screen-->
 <!--<script type="text/javascript">
 $(function() {
@@ -43,7 +44,6 @@ function hideSplash() {
 <!-- End of script for splash screen-->
 
 <!-- JQuery for Home Slider -->
-
 <link rel="stylesheet" href="flexslider.css" type="text/css">
 <script src="jquery.flexslider.js"></script>
 <script type="text/javascript" charset="utf-8">
@@ -54,24 +54,18 @@ function hideSplash() {
 });
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
-
 <!-- End of Home Slider-->
-
-<!-- End of Flip Card Jquery-->
 </head> 
 <!-- End of Head -->
 
 <!-- Start of Body -->
 <body class="ui-body-a">
-
-
 <!-- Start of Page Div -->
 <div data-role="page" id="home" class="type-interior">
 
 <!-- Start of Header -->
 <div data-role="header">
 <h1>الصفحة الرئيسية</h1>
-
 <!-- Start of Panel -->
 <a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
 <!-- End of Panel -->
@@ -101,14 +95,14 @@ function hideSplash() {
     </ul>
   </div>
 </div>
-
 <br />
 <br />
+<!-- Nearest Offer-->
 <h2 dir="rtl">أقرب عرض إليك</h2>
 <a href="#offers" data-role="button">لمشاهدة جميع العروض</a>
 <ul dir="rtl" id="listH" data-role="listview" data-inset="true">
 </ul>
-
+<!--End of nearest offer-->
 
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
@@ -116,7 +110,6 @@ function hideSplash() {
 <a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
-
 <!-- Start of Content -->
 	<div data-role="content" class="popupBG">	
 <!-- Start of Form -->	
@@ -159,6 +152,7 @@ function hideSplash() {
 </div> 
 <!-- End of content div -->
 
+
 <!-- footer -->
 <div data-role="footer" data-position="fixed">
 <!-- Navbar -->
@@ -182,8 +176,8 @@ function hideSplash() {
 </div> 
 <!-- End of footer -->
 
-<!-- Start of Panel-->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<!-- Start of Home Page Panel-->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -191,13 +185,6 @@ function hideSplash() {
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -209,7 +196,8 @@ function hideSplash() {
 </div> <!-- End second collapsible -->
 </div> <!-- End collapsible-->
 </div> 
-<!-- End Panel -->
+<!-- End of Home Page Panel -->
+
 </div>
 <!-- End of first page -->
 
@@ -230,30 +218,101 @@ function hideSplash() {
 <!-- End of Header -->
 
 <!-- Start of Content -->
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#localreg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#localreg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+
 <div data-role="content">	
 <!-- Start of Form -->	
 	<form action="#home" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
       <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="workID" type="tel" id="workID" value=""/>
+      <input name="workID" type="search" required data-clear-btn="true" id="workID" value=""/>
       </div>	
       
-      <!--PhoneNo-->
+       <!--Employee Name-->
+      <div data-role="fieldcontain">
+      <label for="EmpName" dir="rtl"><strong>اسم العامل المواطن</strong></label>
+      <input name="EmpName" type="text" required data-clear-btn="true" id="EmpName" value=""/>
+      </div>	
+      
+      <!-- Company Name-->
+      <div data-role="fieldcontain">
+      <label for="ComName" dir="rtl"><strong>اسم المنشأة</strong></label>
+      <input name="ComName" type="text" required data-clear-btn="true" id="ComName" value=""/>
+      </div>
+      
+       <!-- Job Title -->
+      <div data-role="fieldcontain">
+      <label for="JobTitle" dir="rtl"><strong>المسمى الوظيفي</strong></label>
+      <input name="JobTitle" type="text" required data-clear-btn="true" id="JobTitle" value=""/>
+      </div>
+      
+      <!-- Issue Date -->
+      <div data-role="fieldcontain">
+      <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
+      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
+      </div>
+      
+      <!-- PhoneNo -->
       <div data-role="fieldcontain">
 	  <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-	  <input name="PhoneNo" type="tel" id="PhoneNo" value=""/>
+	  <input name="PhoneNo" type="tel" required data-clear-btn="true" id="PhoneNo" value=""/>
       </div>
       
       <!--Email-->
       <div data-role="fieldcontain">
-      <label for="PhoneNo" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
-      <input name="PhoneNo" type="text" id="PhoneNo" value=""/>
+      <label for="EmpEmail" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
+      <input name="EmpEmail" type="email" required data-clear-btn="true" id="EmpEmail" value=""/>
       </div>
       
       <!--PO Box-->
       <div data-role="fieldcontain">
-      <label for="PhoneNo" dir="rtl"><strong>صندوق البريد</strong></label>
+      <label for="EmpPOBox" dir="rtl"><strong>صندوق البريد</strong></label>
+      <input name="EmpPOBox" type="text" required data-clear-btn="true" id="EmpPOBox" value=""/>
       </div>
       
       <!--Emirates-->
@@ -268,23 +327,29 @@ function hideSplash() {
       <option value="RAC">رأس الخيمة</option>
       <option value="AJM">عجمان</option>
       </select>
-      <input name="PhoneNo2" type="text" id="PhoneNo2" value=""/>
+      </div>
+      
+      <!--Upload UAE ID-->      
+      <div data-role="fieldcontain">
+	  <label for="UAEID" dir="rtl"><strong>صورة بطاقة الإمارات للهوية</strong></label>
+	  <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true">
       </div>
       
       <!--Date-->      
       <div data-role="fieldcontain">
 	  <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
-	  <input name="mydate" id="mydate" type="date" data-role="datebox"
+	  <input name="mydate" required id="mydate" type="date" data-role="datebox"
 data-options='{"mode": "flipbox"}'>
       </div>
       
       
-      <!--Upload-->      
+      <!--Upload Proof -->      
       <div data-role="fieldcontain">
-	  <label for="mydate" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
-	  <input id="file-1" name="file-1" value="" type="file" data-clear-btn="false">
+	  <label for="Proof" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
+	  <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true">
       </div>
       
+      <!-- Submit-->
       <button type="submit" data-icon="check"><strong>تسجيل</strong></button>
    </form>
 <!-- End of Form-->
@@ -300,22 +365,23 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
             </li>
 		</ul>
 	</div>
+
     <!-- /navbar -->
 </div> 
 <!-- End of footer -->
 
 <!-- Local Reg Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -323,13 +389,7 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
+
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -688,11 +748,57 @@ data-options='{"mode": "flipbox"}'>
 </div>
 <!--End of Set for the third PDF list-->
 
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 </div>
 <!-- End of Content -->
 
 <!-- About Absher Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -700,13 +806,6 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -717,7 +816,7 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 </div> <!-- End second collapsible -->
 </div> <!-- End collapsible-->
-</div>  
+</div> 
 <!-- End Panel -->
 
 <!-- footer -->
@@ -838,8 +937,56 @@ data-options='{"mode": "flipbox"}'>
 
    </form>
    <!-- End of Form-->
-	</div>
-    
+   
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div>
+<!-- End of Content -->
+
 <!-- footer -->
 <div data-role="footer" data-position="fixed">
 <!-- Navbar -->
@@ -864,7 +1011,7 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of footer -->
 
 <!-- Company Reg Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -872,13 +1019,6 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -996,6 +1136,53 @@ data-options='{"mode": "flipbox"}'>
 	<button type="submit" data-icon="check" >تسجيل</button>
    </form>
    <!-- End of Form-->
+   
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 	</div>
 <!-- End of Content -->
 
@@ -1023,7 +1210,7 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of footer -->
 
 <!-- Company Reg 2 Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1031,13 +1218,6 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1055,7 +1235,7 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of Company registration page2-->
 
 
-<!--Start of Login popup -->
+<!--Start of Login Page -->
 <div id="login" data-role="page" >
 <!-- Start of Header -->
 <div data-role="header">
@@ -1068,7 +1248,80 @@ data-options='{"mode": "flipbox"}'>
 
 </div>
 <!-- End of Header -->
+ <!-- Start of Content -->
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#login" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#login" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+
 <!--Start of Content-->
+
+<!--Start of registration Div-->
+<div  id="Reg" data-role="popup">
+<div data-role="header">
+<a href="#login" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <div data-role="fieldcontain" >
+      <div style="padding: -4px 15px;">
+      <a href="#LocalReg" data-role="button"> تسجيل المواطنين </a>
+       <a href="#CompanyReg" data-role="button"> تسجيل الشركات الداعمة</a> 
+      </div>
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of  registration Div-->
+
 <div data-role="content">
 
 <form>
@@ -1081,6 +1334,9 @@ data-options='{"mode": "flipbox"}'>
 <button type="submit" data-icon="check" >دخول</button>
 </div>
 </form>
+
+<!-- Reg Popup-->
+<a href="#Reg" data-rel="popup" class="spanRight" data-inline="true">لم يسبق لك التسجيل؟</a>
 </div>
 <!--End of Content-->
 <!-- footer -->
@@ -1107,7 +1363,7 @@ data-options='{"mode": "flipbox"}'>
 <!-- End of footer -->
 
 <!-- LOGIN PAGE Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1115,13 +1371,6 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1138,13 +1387,15 @@ data-options='{"mode": "flipbox"}'>
 </div>
 <!-- End of Login page-->
 
+
 <!-- Start of Contact Us Page -->
 <div data-role="page" id="contactus" data-icon="true">
 <!-- Start of Header -->
 <div data-role="header">
 <h1>تواصل معنا</h1>
 <!-- Start of Panel -->
-<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href ="#nav-panel"dat
+a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
 <a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
 <!-- End of Panel -->
 </div>
@@ -1158,7 +1409,7 @@ data-options='{"mode": "flipbox"}'>
       <td><a href="contactus@absher.ae"><img src="css/images/email.png" width="70" height="70"></a></td>
     </tr>
     <tr>
-      <td><a href="tel:971-2-2222221"><img src="css/images/contact.png" width="70" height="70"></a></td>
+      <td><a href="tel:971-4-7023333"><img src="css/images/contact.png" width="70" height="70"></a></td>
       <td><a href="http://instagram.com/AbsherUAE"><img src="css/images/insta.png" width="70" height="70"></a></td>
     </tr>
     <tr>
@@ -1166,9 +1417,55 @@ data-options='{"mode": "flipbox"}'>
       <td><a href="https://twitter.com/AbsherUAE"><img src="css/images/twitter.png" width="70" height="70"></a></td>
     </tr>
   </table>
-<a href="#addfeedback" data-role="button"><strong>أضف اقتراح</strong></a>
+  <p>&nbsp;</p>
+<a href="#addfeedback" data-role="button"><strong>شاركنا الرأي</strong></a>
+ 
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
 
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
 
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 </div>
 <!-- End of Content -->
 <!-- a footer is optional -->
@@ -1191,11 +1488,11 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 </div>
     <!-- /navbar -->
-</div> 
+</div>
 <!-- End of footer -->
-
-<!-- Contact PAGE Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+ 
+<!-- Contact PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1203,13 +1500,7 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
+
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1222,79 +1513,98 @@ data-options='{"mode": "flipbox"}'>
 </div> <!-- End collapsible-->
 </div> 
 <!-- End Panel -->
-
+ 
 </div>
 <!-- End of Contact Us Page -->
-
 
 <!-- Start of Feedback Page -->
 <div data-role="page" id="addfeedback" data-icon="true">
 <!-- Start of Header -->
 <div data-role="header">
-<h1>أضف اقتراح</h1>
+<h1>شاركنا الرأي</h1>
 <!-- Start of Panel -->
 <a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
 <a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
 <!-- End of Panel -->
 </div>
 <!-- End of Header -->
-
-
-
+ 
+ 
+ 
 <!-- Start of Content -->
 <div data-role="content">
-
+ 
 <!-- Start of Form -->
  
-<form action="#" method="get" >
-      <!-- Customer Name -->
+<form action="#" method="post" >
+      <!-- Subject -->
       <div data-role="fieldcontain" align="right">
-      <label for="Name"><strong>الاسم</strong></label>
-      <input name="Name" dir="rtl" type="text" id="Name" value=""/>
+      <label for="Subject"><strong>الموضوع</strong></label>
+      <input name="Subject" dir="rtl" type="text" id="Subject" value=""/>
       </div>
- 
-      
-      <!--Work ID -->
-      <div data-role="fieldcontain" align="right">
-      <label for="WorkID"><strong>رقم بطاقة العمل</strong></label>
- <input name="WorkID" type="text" id="WorkID" value=""/>
      
-      </div>
-      
-      
-      <!--Email-->
-      <div data-role="fieldcontain" align="right">
-      <label for="Email"><strong>عنوان البريد الإلكتروني</strong> </label>
-      <input name="Email" type="text" id="Email" value=""/>  
-      </div>
-      
-      
-       <!-- Feedback Type -->
-        <div data-role="fieldcontain" align="right">
-     <label for="FeedbackType"><strong>نوع الرسالة</strong> </label>
-      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
-      <option value="Suggestion">اقتراح</option>
-      <option value="Complain">شكوى</option>
-      </select>
-     
-      </div>
-      
         <!-- Feedback Message -->
         <div data-role="fieldcontain" align="right">
-   <label for="feedbackmessage"><strong>الرسالة</strong></label>
+   <label for="feedbackmessage"><strong>الملاحظات</strong></label>
   <textarea name="feedbackmessage" dir="rtl" id="feedbackmessage"></textarea>
         </div>
-        
+       
         <!-- Submit Feedback -->
         <div data-role="button" align="right">
    <label for="submitfeedback"><strong>إرسال</strong></label>
-   
         </div>
    </form>
    <!-- End of Form-->
+   
+   <!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 </div>
     <!-- End of Contents-->
-    
+   
 <!-- a footer is optional -->
 <div data-role="footer" data-position="fixed">
 <!-- Navbar -->
@@ -1315,10 +1625,10 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 </div>
     <!-- /navbar -->
-</div> 
+</div>
 <!-- End of footer -->
-<!-- FEEDBACK PAGE Panel --> 
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<!-- FEEDBACK PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1326,13 +1636,7 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
+
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1372,7 +1676,52 @@ data-options='{"mode": "flipbox"}'>
 </div>
 </div>
 
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
 
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 </div>
 <!-- End of Contents-->
     
@@ -1401,7 +1750,7 @@ data-options='{"mode": "flipbox"}'>
 
 
 <!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1409,13 +1758,6 @@ data-options='{"mode": "flipbox"}'>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1446,9 +1788,11 @@ data-options='{"mode": "flipbox"}'>
 
 <!-- Start of Content -->
 <div data-role="content">
-<div id="AbsherCard"> 	
-<canvas id="myCanvas" width="340" height="542">
-	Your browser does not support the canvas element.
+<a href="#profile2">
+
+<div id="AbsherCard">
+<canvas id="myCanvas" width="340" height="542" >
+Your browser does not support the canvas element.
    </canvas>
 
 <script type="text/javascript">
@@ -1485,10 +1829,7 @@ var rText = '3/12/2017';
 ctx.fillText(rText , 55, 35);
 ctx.restore();
 </script>
-
-<canvas id="myCanvas" width="340" height="542"></canvas>
     <script>
-	
       function loadImages(sources, callback) {
         var images = {};
         var loadedImages = 0;
@@ -1513,16 +1854,63 @@ ctx.restore();
       var sources = {
         defaultpic: "css/images/defaultpic.jpg"
       };
-	  
-	
+ 
       loadImages(sources, function(images) {
-		ctx.translate(100,300);
-		ctx.rotate(0.5*Math.PI);
+ctx.translate(100,300);
+ctx.rotate(0.5*Math.PI);
         context.drawImage(images.defaultpic, -280, - 215, 145, 145)
       });
-</script>
+</script></div></a>
 
-</div></div> 
+
+</div> 
+
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -1550,7 +1938,7 @@ ctx.restore();
 
 
 <!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1558,13 +1946,6 @@ ctx.restore();
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-<div data-role="collapsible" data-collapsed="true" data-theme="a">
-<h3>التسجيل</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
-<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
-</ul>
-</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1580,6 +1961,124 @@ ctx.restore();
 
 </div>
 <!-- End of Profile Page -->
+
+<!-- Start of Profile2 Page -->
+<div data-role="page" id="profile2" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>بطاقة أبشر</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">
+<a href="#profile">
+<div id="backCard"> 
+</div>
+</a>
+</div> 
+
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#profile"><img src="css/images/profile2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of Profile2 Page -->
+
 
 
 <!-- Start of Offer Details Page -->
@@ -1610,12 +2109,54 @@ ctx.restore();
 </div>
 </div>
 </div>
-
-
-
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
 </div>
 
-    <!-- End of Contents-->
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div>
+<!-- End of Contents-->
     
 <!-- footer -->
 <div data-role="footer" data-position="fixed">
@@ -1626,7 +2167,7 @@ ctx.restore();
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
                                                 <li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
@@ -1642,14 +2183,25 @@ ctx.restore();
 
 
 <!-- OFFERS PAGE Panel -->
-<div id="nav-panel" class="Panel" data-role="panel" data-theme="a" data-position-fixed="true">
-<ul class="nav-search" data-role="listview" data-theme="a">
-<li data-icon="delete"><a href="#" data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#panel-fixed-page2">الدخول</a></li>
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
 <li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
 </li>
 </ul>
-</div>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
 <!-- End of Panel-->
 
 </div>

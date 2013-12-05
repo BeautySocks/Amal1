@@ -15,7 +15,7 @@ totaloffers=0;
 function onDeviceReady() {
 //	 iOS. BB. Android
 	alert('OnDeviceReady');
-	loadScript(10,50000);
+	loadScript(10,10000);
 	document.addEventListener("offline", onOffline, false);
 	document.addEventListener("online", onOnline, false);
 }
@@ -75,7 +75,7 @@ function onGetLocationSuccess(position) {
 	mylocation = lat+","+lon;
 	bounds.extend(latlon);
 	map.fitBounds(bounds);
-	proxm = 50000;
+	proxm = 10000;
 	// Now ready to get the stores
 	getOffers(mylocation,proxm);
 } // End onGetLocationSuccess
@@ -138,6 +138,80 @@ $("#totaloffers").html(totaloffers);
 
 
 $('#list').delegate('li', 'click', function() {
+ //alert($(this).text());
+ var Oid= this.id;
+ if (Oid)
+ {			
+
+	 $.getJSON(jsonFile, function(data) {
+		$.each(data.offer,function(index,value){ 
+		if(Oid == value.offerid)
+		{
+			$("#oneoffermap").empty();
+			google.maps.event.trigger(map, 'resize');
+	mapholder=document.getElementById('oneoffermap');
+	mapholder.style.height='200px';
+	mapholder.style.width=window.innerWidth;
+	bounds = new google.maps.LatLngBounds(); // Required for zoom level and center
+	var myOptions={
+	zoom:zoomlevel,
+	center:latlon,
+	mapTypeControl:false,
+	navigationControlOptions:{style: google.maps.NavigationControlStyle.SMALL},
+	mapTypeId:google.maps.MapTypeId.ROADMAP,
+	};
+	//alert(zoomlevel);
+	google.maps.visualRefresh = true;
+	map=new google.maps.Map(document.getElementById("oneoffermap"),myOptions);
+	google.maps.event.trigger(map, 'resize');
+	console.log('I resized');
+	var marker=new google.maps.Marker({
+	  position:latlon,
+	  map:map,
+	  title:"My Location!"
+	  });
+		var offerlatlon=new google.maps.LatLng(value.location.Latitude, value.location.Longitude);
+		distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
+		bounds.extend(offerlatlon);
+		map.fitBounds(bounds);
+		//alert('before updating maps with markers');
+		// Update map with markers (requires StyledMarker.js) 	
+		var label=index+1;
+		offermarker = new StyledMarker({
+			styleIcon:new StyledIcon(StyledIconTypes.MARKER,
+			{color:"FFFF66",text:label.toString()}),
+			position:offerlatlon,
+			map:map});
+			google.maps.event.trigger(map, 'resize');
+			
+		$("#offerdetailsD").empty();
+		//$("#offerdetailsD").append('<li><h3>العرض</h3><span dir="rtl">'+value.name+'</span><h3>مدة العرض</h3><li>'+value.duration+'</li><h3>تفاصيل العرض</h3><li>'+value.description+'</li></li>');
+		$("#offerdetailsD").append(
+		'<li><span class="spanRight" dir="rtl">'
+		+'<h2 class="textsize">'+value.name+'</strong></h2>'
+		+'</span></li>'
+		
+		+'<li><span class="spanRight" dir="rtl">'
+		+'تفاصيل العرض: '
+		+'<br />'+value.description
+		+'</span></li>'
+		
+		+'<li><span class="spanRight" dir="rtl">'
+		+'مدة العرض: '+value.duration
+		+'</span></li>'
+		
+		);
+		$("#offerdetailsD").listview().listview("refresh");
+		//$( myTable ).table().table("refresh");
+
+		}
+		});
+	 });
+	 }
+ //alert(this.id);
+});
+
+$('#listH').delegate('li', 'click', function() {
  //alert($(this).text());
  var Oid= this.id;
  if (Oid)

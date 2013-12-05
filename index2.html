@@ -131,7 +131,7 @@ function hideSplash() {
             <a href="#home" onClick="Omap()"><img src="css/images/home2.png" width="30" height="30"></a>
             </li>
 			<li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
@@ -294,6 +294,510 @@ function hideSplash() {
 <!-- End of Offers Page -->
 
 
+
+
+
+
+
+
+<!-- Start of Profile Page -->
+<div data-role="page" id="profile" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>بطاقة أبشر</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">
+<a href="#profile2">
+<div id="AbsherCard"> 
+<canvas id="myCanvas" width="340" height="542" >
+Your browser does not support the canvas element.
+</canvas>
+
+<script type="text/javascript">
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+
+ctx.font = '10pt Tahoma';
+
+
+ctx.fillStyle="#fff";
+ctx.save();
+ctx.translate(100,300);
+ctx.rotate(0.5*Math.PI);
+
+var rText = '890150355';
+ctx.fillText(rText , 55, -30);
+ctx.restore();
+
+ctx.fillStyle="#fff";
+ctx.save();
+ctx.translate(100,300);
+ctx.rotate(0.5*Math.PI);
+
+var rText = '4/12/2013';
+ctx.fillText(rText , 55, 5);
+ctx.restore();
+
+ctx.fillStyle="#fff";
+ctx.save();
+ctx.translate(100,300);
+ctx.rotate(0.5*Math.PI);
+
+var rText = '3/12/2017';
+ctx.fillText(rText , 55, 35);
+ctx.restore();
+</script>
+
+ <canvas id="myCanvas" width="340" height="542"></canvas>
+    <script>
+      function loadImages(sources, callback) {
+        var images = {};
+        var loadedImages = 0;
+        var numImages = 0;
+        // get num of sources
+        for(var src in sources) {
+          numImages++;
+        }
+        for(var src in sources) {
+          images[src] = new Image();
+          images[src].onload = function() {
+            if(++loadedImages >= numImages) {
+              callback(images);
+            }
+          };
+          images[src].src = sources[src];
+        }
+      }
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      var sources = {
+        defaultpic: "css/images/defaultpic.jpg"
+      };
+ 
+      loadImages(sources, function(images) {
+ctx.translate(100,300);
+ctx.rotate(0.5*Math.PI);
+        context.drawImage(images.defaultpic, -280, - 215, 145, 145)
+      });
+</script></div></a>
+
+
+</div> 
+
+
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#profile"><img src="css/images/profile2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of ProfileBack Page -->
+
+<!-- Start of Profile2 Page -->
+<div data-role="page" id="profile2" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>بطاقة أبشر</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content">
+<a href="#profile">
+<div id="backCard"> 
+</div>
+</a>
+</div> 
+
+
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#profile"><img src="css/images/profile2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of Profile2 Page -->
+
+
+
+<!-- Start of Contact Us Page -->
+<div data-role="page" id="contactus" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>تواصل معنا</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+
+
+<!-- Start of Content -->
+<div data-role="content" align="center">
+  <p>&nbsp;</p>
+  <table width="200" border="0" cellpadding="10">
+    <tr>
+      <td><a href="https://www.facebook.com/absheruae"><img src="css/images/facebook.png" width="70" height="70"></a></td>
+      <td><a href="contactus@absher.ae"><img src="css/images/email.png" width="70" height="70"></a></td>
+    </tr>
+    <tr>
+      <td><a href="tel:971-2-2222221"><img src="css/images/contact.png" width="70" height="70"></a></td>
+      <td><a href="http://instagram.com/AbsherUAE"><img src="css/images/insta.png" width="70" height="70"></a></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.youtube.com/AbsherUAE"><img src="css/images/youtube.png" width="70" height="70"></a></td>
+      <td><a href="https://twitter.com/AbsherUAE"><img src="css/images/twitter.png" width="70" height="70"></a></td>
+    </tr>
+  </table>
+<a href="#addfeedback" data-role="button"><strong>شاركنا الرأي</strong></a>
+
+
+</div>
+<!-- End of Content -->
+<!-- a footer is optional -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+<li>
+            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact2.png" width="30" height="30"></a>
+            </li>
+</ul>
+</div>
+    <!-- /navbar -->
+</div> 
+<!-- End of footer -->
+
+<!-- Contact PAGE Panel --> 
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div>
+<!-- End of Contact Us Page -->
+
+
+<!-- Start of Feedback Page -->
+<div data-role="page" id="addfeedback" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>شاركنا الرأي</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+ 
+ <!-- Start of Content -->
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#addfeedback" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#addfeedback" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+	<div data-role="content" class="popupBG">	
+<!-- Start of Form -->	
+	<form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>	
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+ 
+<!-- Start of Content -->
+<div data-role="content">
+ 
+<!-- Start of Form -->
+ 
+<form action="#" method="post" >
+      <!-- Subject -->
+      <div data-role="fieldcontain" align="right">
+      <label for="Subject"><strong>الموضوع</strong></label>
+      <input name="Subject" dir="rtl" type="text" required data-clear-btn="true" id="Subject" value=""/>
+      </div>
+     
+        <!-- Feedback Message -->
+        <div data-role="fieldcontain" align="right">
+   <label for="feedbackmessage"><strong>الملاحظات</strong></label>
+  <textarea name="feedbackmessage" dir="rtl" required data-clear-btn="true" id="feedbackmessage"></textarea>
+        </div>
+       
+        <!-- Submit Feedback -->
+        <div data-role="button" align="right">
+   <label for="submitfeedback"><strong>إرسال</strong></label>
+        </div>
+   </form>
+   <!-- End of Form-->
+</div>
+    <!-- End of Contents-->
+   
+<!-- a footer is optional -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+<li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+<li>
+            <a href="b.html"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact2.png" width="30" height="30"></a>
+            </li>
+</ul>
+</div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+<!-- Start of Feedback Panel-->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End Panel -->
+
+</div>
+<!-- End of Feedback Page -->
 
 <script type="text/javascript" src="jsontry.js"></script>
 </body>

@@ -67,8 +67,11 @@ overflow: hidden;
 margin-bottom: 0px;
 
 }
+#nav-panel {
+overflow: hidden;	
+}
 .centerBanner {
-text-align: center;
+
 }
 .divRight {
 
@@ -188,3 +191,6 @@ color: white;
 }
 .textsize
 { font-size:20px;}
+.centerbutton {
+	text-align: center;
+}
