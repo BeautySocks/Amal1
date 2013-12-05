@@ -1832,7 +1832,6 @@ ctx.fillText(rText , 40, 41);
 ctx.restore();
 </script>
     <script>
- 
       function loadImages(sources, callback) {
         var images = {};
         var loadedImages = 0;
@@ -1858,7 +1857,6 @@ ctx.restore();
         defaultpic: "css/images/defaultpic.jpg"
       };
  
- 
       loadImages(sources, function(images) {
 ctx.translate(100,300);
 ctx.rotate(0.5*Math.PI);
@@ -1868,6 +1866,8 @@ ctx.rotate(0.5*Math.PI);
 
 
 </div> 
+
+
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -1894,8 +1894,8 @@ ctx.rotate(0.5*Math.PI);
 <!-- End of footer -->
 
 
-<!-- Profile PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1903,6 +1903,13 @@ ctx.rotate(0.5*Math.PI);
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
@@ -1937,9 +1944,9 @@ ctx.rotate(0.5*Math.PI);
 <div id="backCard">
 </div>
 </a>
-
-
 </div> 
+
+
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -1966,8 +1973,8 @@ ctx.rotate(0.5*Math.PI);
 <!-- End of footer -->
 
 
-<!-- Panel2 PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -1975,6 +1982,13 @@ ctx.rotate(0.5*Math.PI);
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+<div data-role="collapsible" data-collapsed="true" data-theme="a">
+<h3>التسجيل</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#LocalReg" class="SmallFont">تسجيل المواطنين العاملين في القطاع الخاص</a></li>
+<li><a href="#CompanyReg">تسجيل الشركات الداعمة</a></li>
+</ul>
+</div> <!-- End first collapsible -->
 
 <div data-role="collapsible" data-theme="a">
 <h3>استفسار</h3>
