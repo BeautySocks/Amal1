@@ -354,8 +354,8 @@ alert('authenticate');
 			  });	 
 		  if (NotEqual==true)
 			 {
-				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
 				  $.mobile.changePage("#login");
+				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
 			 }	 
 	});		  
 }

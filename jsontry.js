@@ -14,7 +14,8 @@ var jsonFile="offers.json";
 var sortedoffer;
 var userName, password;
 var jsonEmpsFile="employees.json";
-var NotEqual=true;
+//document.getElementById("errM").style.display = "none";
+//var errorMessage = document.getElementById("errM").style.display = "none";
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 //function onDeviceReady() {
@@ -325,6 +326,7 @@ function FormSubmit(){
 function authenticate() { 
 alert('authenticate');
    $.getJSON(jsonEmpsFile, function(data) {
+	    document.getElementById("errM").style.display = "none";
 	   NotEqual=true;
 	   alert(data.Employees.workID);
 		alert('json');
@@ -333,16 +335,21 @@ alert('authenticate');
 		  //NotEqual=true;
 			 if((userName==value.workID)&&(password==value.Password))
 			  {
-				  var Wid=value.workID;				  
+				  //var Wid=value.workID;				  
 			  	  NotEqual = false;
 				  $.mobile.changePage("#profile");
 			  }
 			  });	 
 		  if (NotEqual==true)
 			 {
-				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-				  $.mobile.changePage("#login");
-			 }	 
-	});		  
+				//document.getElementById("errM").style.display = 'inline';
+				//('errM').innerHTML = 'Try message 1 again...';
+				//errM.innerHTML="Error: " + errorMessage + ".";
+				//errorMessage='رقم بطاقة العمل أو كلمة المرور غير صحيحة';
+				//$("#errM").append('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+				$.mobile.changePage("#login");
+				alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+			 }
+	}); 
 }
   
