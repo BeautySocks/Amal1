@@ -324,3 +324,35 @@ $(document).on("pageshow", "#offerdetails", function( event ) {
 
     }
 );
+
+function FormSubmit(){
+            //collect userName and password entered by users
+            userName = $("#un").val();
+            password = $("#pw").val();
+            //call the authenticate function
+			authenticate();
+}
+	
+function authenticate() { 
+alert('authenticate');
+   $.getJSON(jsonEmpsFile, function(data) {
+	   NotEqual=true;
+	   alert(data.Employees.workID);
+		alert('json');
+		//console.log(data);
+		  $.each(data.Employees,function(index,value){ 
+		  //NotEqual=true;
+			 if((userName==value.workID)&&(password==value.Password))
+			  {
+				  var Wid=value.workID;				  
+			  	  NotEqual = false;
+				  $.mobile.changePage("#profile");
+			  }
+			  });	 
+		  if (NotEqual==true)
+			 {
+				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+				  $.mobile.changePage("#login");
+			 }	 
+	});		  
+}

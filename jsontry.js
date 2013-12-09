@@ -1,7 +1,7 @@
 //Initialize
 $(document).ready(function() {
         //alert('function1');
-        document.addEventListener("deviceready", onDeviceReady, false);	
+        //document.addEventListener("deviceready", onDeviceReady, false);	
 });
 // Global variables
 var lat, lon, latlon, mylocation;
@@ -14,6 +14,7 @@ var jsonFile="offers.json";
 var sortedoffer;
 var userName, password;
 var jsonEmpsFile="employees.json";
+var NotEqual=true;
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 //function onDeviceReady() {
@@ -111,8 +112,8 @@ function getOffers(ml,pm)
 }
 /*      Function: renderOffer
         updates the map and list for every result within range
-        Args: offer info
-*/
+        Args: offer info*/
+
 function renderOffer(prox,label,name,olat,olon,desc) {
         var offerlatlon=new google.maps.LatLng(olat, olon);
         distance = (google.maps.geometry.spherical.computeDistanceBetween (offerlatlon, latlon)/1000).toFixed(1);
@@ -257,13 +258,8 @@ function onGetLocationError(error)
 } // End onGetLocationError
 /* ================================================= 
    ================ Events Section ================= 
-   ================================================= */
-
-$('#gohome').on('click', function (e)  {
-        if ($("#list li.onestore").length) {$('#list li.onestore').remove();}
-        if ($("#list li.nostore").length) {$('#list li.nostore').remove();}
-});
-
+   ================================================= 
+*/
 $('#goback').on('tap', function ()  {
         if ($("#detailslist li.oneitem").length) {$('#detailslist li.oneitem').remove();}
         $("#detailslist").listview('refresh');
@@ -317,29 +313,36 @@ $(document).on("pageshow", "#offerdetails", function( event ) {
     }
 );
 
-$("#btnSubmit").click(function () {
+
+function FormSubmit(){
             //collect userName and password entered by users
             userName = $("#un").val();
             password = $("#pw").val();
             //call the authenticate function
-            authenticate(userName, password);
-        });
-		
- function authenticate(userName, password) {
-	 
-		$.getJSON(jsonFile, function(data) {
-			$.each(data.offer,function(index,value){ 
-			    if((value.offerid == userName)&&(value.name==password))
-				{
-					alert('Welcome');					
-					//$.mobile.changePage("#offers");
-				}
-				else
-				{
-					$.mobile.changePage("#contactus");
-					alert('WHAT DID YOU JUST WRITE HUUUUH?');
-
-					}
-				});
-			});
-    }
+			authenticate();
+}
+	
+function authenticate() { 
+alert('authenticate');
+   $.getJSON(jsonEmpsFile, function(data) {
+	   NotEqual=true;
+	   alert(data.Employees.workID);
+		alert('json');
+		//console.log(data);
+		  $.each(data.Employees,function(index,value){ 
+		  //NotEqual=true;
+			 if((userName==value.workID)&&(password==value.Password))
+			  {
+				  var Wid=value.workID;				  
+			  	  NotEqual = false;
+				  $.mobile.changePage("#profile");
+			  }
+			  });	 
+		  if (NotEqual==true)
+			 {
+				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+				  $.mobile.changePage("#login");
+			 }	 
+	});		  
+}
+  

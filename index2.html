@@ -56,47 +56,6 @@ function hideSplash() {
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
 <!-- End of Home Slider-->
-<script>
-////var client= new Usergrid.Client({
-////	orgName:'Absher',
-////	appName:'sandbox'  //sandbox
-////});
-////var employees = {
-////	'type':'item',
-////	'uuid':'f030278a-5fd4-11e3-a777-61b099209f8a'
-////}
-//////get the collection
-////var employees = new Usergrid.Collection(em);
-////employees.setQueryParams({"ql":"select workid, password where workid="+userName+" and password="+password});
-////alert('LOL');
-////employees.fetch(function(response) {
-////		// Process the regular store
-////		
-////	}); // end fetch store
-//
-//var client = new Usergrid.Client({
-//  orgName: 'absher',
-//  appName: 'sandbox'
-//});
-//
-//
-//var options = {
-//  //method: 'POST',
-//  endpoint: '/employees',
-//  qs: { ql: 'select  *' }
-//};
-//
-//client.request(options, function(err, data) {
-//  if (err) {
-//    console.log(err);
-//    return;
-//  }
-//
-//  console.log('Successful!');
-//});
-//</script>
-
-
 </head> 
 <!-- End of Head -->
 
@@ -1386,14 +1345,14 @@ data-options='{"mode": "flipbox"}'>
 
 <div data-role="content">
 
-<form>
+<form data-ajax="false"  method="post">
 <div style="padding: 10px 20px;">
 <h3><strong>الدخول</strong></h3>
 <label class="ui-hidden-accessible" for="un">رقم البطاقة :</label>
 <input dir="rtl" id="un" name="user" value="" type="text"  placeholder="رقم البطاقة">
 <label class="ui-hidden-accessible" for="pw">كلمة السر: </label>
 <input dir="rtl" id="pw" name="pass" value="" type="password" placeholder="كلمة السر">
-<button type="submit" name="btnSubmit" id="btnSubmit" >دخول</button>
+<input type="button" value="دخول" onClick="FormSubmit()" ></input>
 </div>
 </form>
 
