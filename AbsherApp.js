@@ -4,6 +4,24 @@ $(document).ready(function() {
         document.addEventListener("deviceready", onDeviceReady, false);
 });
 
+// Global variables
+var lat, lon, latlon, mylocation;
+var proxm, proxkm;
+var totaloffers, offermarker;
+var zoomlevel, dzoom, bounds, distance;
+var zoomlevel2, dzoom2, bounds2, distance2;
+var offerlatlon, olat, olon;
+var jsonFile="offers.json";
+var sortedoffer;
+totaloffers=0;
+// PhoneGap is loaded and it is now safe to make calls 
+function onDeviceReady() {
+//         iOS. BB. Android
+        //alert('OnDeviceReady');
+        loadScript(10,10000);
+//		$.mobile.defaultPageTransition   = 'none';
+//        $.mobile.defaultDialogTransition = 'none';
+//        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
 $(document).bind("mobileinit", function(){
 
@@ -25,27 +43,6 @@ $.event.special.swipe.scrollSupressionThreshold = 100;
 
 $(document).bind("touchstart", function(event){})
 ///////////////////////////////////////////////////////////////////////
-
-
-// Global variables
-var lat, lon, latlon, mylocation;
-var proxm, proxkm;
-var totaloffers, offermarker;
-var zoomlevel, dzoom, bounds, distance;
-var zoomlevel2, dzoom2, bounds2, distance2;
-var offerlatlon, olat, olon;
-var jsonFile="offers.json";
-var sortedoffer;
-totaloffers=0;
-// PhoneGap is loaded and it is now safe to make calls 
-function onDeviceReady() {
-//         iOS. BB. Android
-        //alert('OnDeviceReady');
-        loadScript(10,10000);
-//		$.mobile.defaultPageTransition   = 'none';
-//        $.mobile.defaultDialogTransition = 'none';
-//        $.mobile.buttonMarkup.hoverDelay = 0;
-
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
 }
