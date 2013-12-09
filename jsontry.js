@@ -13,6 +13,8 @@ var offerlatlon, olat, olon;
 var jsonFile="offers.json";
 var sortedoffer;
 var userName, password;
+var workID,password2;
+var newItem, myObjectString1, myObjectString2, myObjectString3;
 var jsonEmpsFile="employees.json";
 var jsonEmpsFileTRY="names.json";
 //document.getElementById("errM").style.display = "none";
@@ -353,37 +355,49 @@ alert('authenticate');
 			 }
 	}); 
 }
-
-//function save () {
-//	$.getJSON(jsonEmpsFileTRY, function(data) {
-//    // If title does not exist, add new item
-//        // Format it for the JSON object
-//		//var item = Employees[Employees.length] = {"workID" : '+workID+',"Password" : '+password+'};
-//        var item = ('"Employees" : {"workID" : '+workID+',"Password" : '+password+'}');
-//        // THE PROBLEM SEEMS TO BE HERE??
-//        // Error: "Result of expression 'library.push' [undefined] is not a function"
-//        Employees.push(item);
-//        // Save to Database. Then on callback...
-//        document.write('Added: <b>'+workID+'</b>');
-//
-//save();});
-//}
-//function save(){
-//window.convertToJSON = function(selectors)
-//{
-//    var list = {};
-//    selectors.forEach(function(selector){
-//        var el = document.querySelectorAll(selector)[0];
-//        list[el.name] = el.value;
-//    })
-//    console.log(list);
-//    alert(JSON.stringify(list));
-//}
-//
-////}
 function save(){
-		  var array =  JSON.parse(jsonEmpsFileTRY).items;
-		  var newItem = {"WorkID":"#WorkID", "Password":"#Password"};
-		  array.push(newItem);
-		  console.log("done!");
+//var frm = $("#pp");
+//var data = JSON.stringify(frm.serializeArray());
+
+newItem = {"WorkID":$("#WorkID").val(),"Password":$("#Password").val()};
+//workID=$("#WorkID").val();
+//password2=$("#Password").val();
+//console.log(workID+' '+password2);
+myObjectString1 = JSON.stringify(newItem);
+myObjectString2 = JSON.stringify(password2);
+//console.log(myObjectString1,myObjectString2);
+//fuckwork(myObjectString1,myObjectString2);
 }
+
+//console.log(newItem);
+//myObjectString = JSON.stringify(newItem);
+//
+//
+//jsonEmpsFileTRY.push(myObjectString);
+//function fuckwork(obj1,obj2){
+//$.getJSON(jsonEmpsFileTRY, function(data) {	
+////var array =  jsonEmpsFileTRY;
+////array.push(newItem);
+//$.each(data.employees,function(index,value){ 
+//		  //serialize
+////jsonEmpsFileTRY[jsonEmpsFileTRY.length+1] = myObjectString;
+////employees["3"] = myObjectString;
+////console.log(jsonEmpsFileTRY["3"]);
+//
+//});
+//});
+//}
+
+//$.getJSON("names.json", function(obj) {	
+//$.each(obj.employees,function(index, value){ 
+//var id = value.eid;
+//var workid=value.WorkID;
+//var password=value.Password;
+//console.log(id+' '+workid+' '+password);
+//});
+//
+//objToAdd=myObjectString1;
+//console.log(objToAdd);
+//obj.employees[3] = objToAdd;
+//console.log(obj.employees[3]);
+//});
