@@ -14,6 +14,7 @@ var jsonFile="offers.json";
 var sortedoffer;
 var userName, password;
 var jsonEmpsFile="employees.json";
+var jsonEmpsFileTRY="names.json";
 //document.getElementById("errM").style.display = "none";
 //var errorMessage = document.getElementById("errM").style.display = "none";
 totaloffers=0;
@@ -353,6 +354,36 @@ alert('authenticate');
 	}); 
 }
 
-event.prop = 'foo';
-// or
-event['prop'] = 'foo';
+//function save () {
+//	$.getJSON(jsonEmpsFileTRY, function(data) {
+//    // If title does not exist, add new item
+//        // Format it for the JSON object
+//		//var item = Employees[Employees.length] = {"workID" : '+workID+',"Password" : '+password+'};
+//        var item = ('"Employees" : {"workID" : '+workID+',"Password" : '+password+'}');
+//        // THE PROBLEM SEEMS TO BE HERE??
+//        // Error: "Result of expression 'library.push' [undefined] is not a function"
+//        Employees.push(item);
+//        // Save to Database. Then on callback...
+//        document.write('Added: <b>'+workID+'</b>');
+//
+//save();});
+//}
+//function save(){
+//window.convertToJSON = function(selectors)
+//{
+//    var list = {};
+//    selectors.forEach(function(selector){
+//        var el = document.querySelectorAll(selector)[0];
+//        list[el.name] = el.value;
+//    })
+//    console.log(list);
+//    alert(JSON.stringify(list));
+//}
+//
+////}
+function save(){
+		  var array =  JSON.parse("names.json").items;
+		  var newItem = {"WorkID":"#WorkID", "Password":"#Password"};
+		  array.push(newItem);
+		  console.log("done!");
+}

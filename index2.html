@@ -75,6 +75,9 @@ function hideSplash() {
 
 <!-- Start of Content -->
 <div data-role="content">
+<h2>JSON</h2>
+<pre id="result">
+</pre>
 <div id="Banner">
 <div class="flexslider">
     <ul class="slides">
@@ -275,9 +278,9 @@ function hideSplash() {
         <form action="#home" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
-      <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="workID" type="text" required data-clear-btn="true" id="workID" value=""/>
-      </div>    
+	  <label for="WorkID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
+      <input name="WorkID" type="text" required data-clear-btn="true" id="WorkID" value=""/>    
+      </div> 
       
       <!--Password-->
       <div data-role="fieldcontain">
@@ -368,7 +371,7 @@ data-options='{"mode": "flipbox"}'>
       </div>
       
       <!-- Submit-->
-      <button type="submit" data-icon="check"><strong>تسجيل</strong></button>
+      <button type="submit" onClick="save()" id="LocBtn" data-icon="check"><strong>تسجيل</strong></button>
    </form>
 <!-- End of Form-->
         </div>
