@@ -3,6 +3,30 @@ $(document).ready(function() {
         //alert('function1');
         document.addEventListener("deviceready", onDeviceReady, false);
 });
+
+///////////////////////////////////////////////////////////////////////
+$(document).bind("mobileinit", function(){
+
+$.mobile.touchOverflowEnabled = false;
+
+$.mobile.defaultPageTransition = 'none';
+
+$.mobile.defaultDialogTransition = 'none';
+
+$.mobile.useFastClick = false
+
+$.mobile.buttonMarkup.hoverDelay = 0;
+
+$.mobile.page.prototype.options.domCache = false;
+
+$.event.special.swipe.scrollSupressionThreshold = 100;
+
+});
+
+$(document).bind("touchstart", function(event){})
+///////////////////////////////////////////////////////////////////////
+
+
 // Global variables
 var lat, lon, latlon, mylocation;
 var proxm, proxkm;
@@ -18,7 +42,7 @@ function onDeviceReady() {
 //         iOS. BB. Android
         //alert('OnDeviceReady');
         loadScript(10,10000);
-		$.mobile.defaultPageTransition   = 'none';
+//		$.mobile.defaultPageTransition   = 'none';
 //        $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 
