@@ -13,6 +13,9 @@ var zoomlevel2, dzoom2, bounds2, distance2;
 var offerlatlon, olat, olon;
 var jsonFile="offers.json";
 var sortedoffer;
+var userName, password;
+var jsonEmpsFile="employees.json";
+var NotEqual=true;
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 function onDeviceReady() {
