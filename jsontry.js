@@ -382,7 +382,7 @@ alert('authenticate');
 //
 ////}
 function save(){
-		  var array =  JSON.parse(jsonObj).items;
+		  var array =  JSON.parse(jsonEmpsFileTRY).items;
 		  var newItem = {"WorkID":"#WorkID", "Password":"#Password"};
 		  array.push(newItem);
 		  console.log("done!");

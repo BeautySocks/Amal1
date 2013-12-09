@@ -22,7 +22,7 @@ function onDeviceReady() {
 //         iOS. BB. Android
         //alert('OnDeviceReady');
         loadScript(10,10000);
-		$.mobile.defaultPageTransition   = 'none';
+//   	$.mobile.defaultPageTransition   = 'none';
 //      $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
@@ -32,10 +32,10 @@ function onDeviceReady() {
 //$.mobile.defaultPageTransition = 'none';
 //$.mobile.touchOverflowEnabled = false;
 //$.mobile.defaultDialogTransition = 'none';
-//$.mobile.useFastClick = false;
+$.mobile.useFastClick = false;
 //$.mobile.buttonMarkup.hoverDelay = 0;
-//$.mobile.page.prototype.options.domCache = false;
-//$.event.special.swipe.scrollSupressionThreshold = 100;
+$.mobile.page.prototype.options.domCache = false;
+$.event.special.swipe.scrollSupressionThreshold = 100;
 ///////////////////////////////////////////////////////////////////////
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
