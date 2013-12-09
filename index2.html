@@ -104,7 +104,6 @@ function hideSplash() {
 //			  alert("The book was added."); 
 //			  } 
 //			  });
-
 			function SaveME(){
 //$('#LocBtn').bind('click', function createBook () {
                 new_Loc_emp = { 
@@ -124,15 +123,17 @@ function hideSplash() {
 				};
                 employees.addEntity(new_Loc_emp, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
-                   } else {  
+                   } else {
+					   $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
+					  //$("#content").trigger('create');
+
                    } 
                 });
-                 
+
 
 //              });
 			}
-//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -175,6 +176,7 @@ function hideSplash() {
                 companies.addEntity(new_com_emp, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
                    } else {  
+				   	  $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
@@ -402,7 +404,7 @@ function hideSplash() {
 
 <div data-role="content">        
 <!-- Start of Form -->        
-        <form action="#home" id="pp" method="post" >
+        <form action="#home" id="FormLocReg" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
 	  <label for="WorkID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
@@ -498,8 +500,7 @@ data-options='{"mode": "flipbox"}'>
       </div>
       
       <!-- Submit-->
-      <button type="submit" id="LocBtn" onClick="SaveME()" data-icon="check"><strong>تسجيل</strong></button>
-   </form>
+<input type="button" value="تسجيل" onClick="SaveME()" ></input>   </form>
 <!-- End of Form-->
         </div>
 <!-- End of Contents-->
@@ -1283,7 +1284,7 @@ data-options='{"mode": "flipbox"}'>
            </label>
     </fieldset>
 </div>
-      <button type="submit" id="ComBtn" onClick="SaveME2()" data-icon="check"><strong>تسجيل</strong></button>
+<input type="button" value="تسجيل" onClick="SaveME2()" ></input>   </form>
    </form>
    <!-- End of Form-->
    

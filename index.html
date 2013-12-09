@@ -127,6 +127,7 @@ function hideSplash() {
                 employees.addEntity(new_Loc_emp, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
                    } else {  
+				   	  $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
@@ -177,6 +178,7 @@ function hideSplash() {
                 companies.addEntity(new_com_emp, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
                    } else {  
+				   	  $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
@@ -481,7 +483,7 @@ data-options='{"mode": "flipbox"}'>
       </div>
       
       <!-- Submit-->
-      <button type="submit" id="LocBtn" onClick="SaveME()" data-icon="check"><strong>تسجيل</strong></button>
+<input type="button" value="تسجيل" onClick="SaveME()" ></input>   </form>
    </form>
 <!-- End of Form-->
         </div>
@@ -1265,7 +1267,7 @@ data-options='{"mode": "flipbox"}'>
            </label>
     </fieldset>
 </div>
-      <button type="submit" id="ComBtn" onClick="SaveME2()" data-icon="check"><strong>تسجيل</strong></button>
+<input type="button" value="تسجيل" onClick="SaveME2()" ></input>   </form>
    </form>
    <!-- End of Form-->
    
