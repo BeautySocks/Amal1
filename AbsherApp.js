@@ -19,8 +19,8 @@ function onDeviceReady() {
         //alert('OnDeviceReady');
         loadScript(10,10000);
 		$.mobile.defaultPageTransition   = 'none';
-        $.mobile.defaultDialogTransition = 'none';
-        $.mobile.buttonMarkup.hoverDelay = 0;
+//        $.mobile.defaultDialogTransition = 'none';
+//        $.mobile.buttonMarkup.hoverDelay = 0;
 
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
