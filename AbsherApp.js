@@ -337,11 +337,11 @@ function FormSubmit(){
 }
 	
 function authenticate() { 
-alert('authenticate');
+//alert('authenticate');
    $.getJSON(jsonEmpsFile, function(data) {
 	   NotEqual=true;
-	   alert(data.Employees.workID);
-		alert('json');
+	   //alert(data.Employees.workID);
+		//alert('json');
 		//console.log(data);
 		  $.each(data.Employees,function(index,value){ 
 		  //NotEqual=true;
