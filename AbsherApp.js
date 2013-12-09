@@ -14,23 +14,27 @@ var jsonFile="offers.json";
 var sortedoffer;
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
-//function onDeviceReady() {
-////         iOS. BB. Android
-//        alert('OnDeviceReady');
+function onDeviceReady() {
+//         iOS. BB. Android
+        alert('OnDeviceReady');
         loadScript(10,10000);
-//        document.addEventListener("offline", onOffline, false);
-//        document.addEventListener("online", onOnline, false);
-//}
-//function onOffline() {
-//        //When device goes offline, throw an error
-//        alert('onOffline');
-//        onGetLocationError(4);
-//}
-//function onOnline() {
-//        //When the device is back online, go to index
-//        alert('onOnline');
-//    $.mobile.changePage("#index");
-//}
+		$.mobile.defaultPageTransition   = 'none';
+                $.mobile.defaultDialogTransition = 'none';
+                $.mobile.buttonMarkup.hoverDelay = 0;
+
+        document.addEventListener("offline", onOffline, false);
+        document.addEventListener("online", onOnline, false);
+}
+function onOffline() {
+        //When device goes offline, throw an error
+        alert('onOffline');
+        onGetLocationError(4);
+}
+function onOnline() {
+        //When the device is back online, go to index
+        alert('onOnline');
+    $.mobile.changePage("#index");
+}
 
 // Load the Google maps API script with zoom level and desired proximity
 function loadScript(zl,pm) {

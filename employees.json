@@ -1,0 +1,64 @@
+{
+  "Employees": [
+    {
+      "workID": "12346",
+      "Password": "KHL1234",
+      "EmpName": "Khalid",
+      "ComName": "Alrostamani group",
+      "JobTitle": "Manager",
+      "IssueDate": "1997-10-11T00:00:00.000Z",
+      "PhoneNo": "055-9771769",
+      "EmpEmail": "KHL@hotmail.com",
+      "EmpPOBox": "13562",
+      "EmpEmirates": "SHJ",
+      "UAEID": "css\\images\\ID_CARD.jpg",
+      "PensionDate": "1998-02-24T20:00:00.000Z",
+      "Proof": "css\\images\\ID_CARD.jpg"
+    },
+    {
+      "workID": "12348",
+      "Password": "Ali1234",
+      "EmpName": "Ali",
+      "ComName": "Paris Gallery",
+      "JobTitle": "Seller",
+      "IssueDate": "1996-10-26T00:00:00.000Z",
+      "PhoneNo": "055-9765769",
+      "EmpEmail": "Ali@hotmail.com",
+      "EmpPOBox": "19062",
+      "EmpEmirates": "AD",
+      "UAEID": "css\\images\\ID_CARD2.jpg",
+      "PensionDate": "2001-10-22T20:00:00.000Z",
+      "Proof": "css\\images\\ID_CARD2.jpg"
+    },
+    {
+      "workID": "12348",
+      "Password": "Ali1234",
+      "EmpName": "Ali",
+      "ComName": "Paris Gallery",
+      "JobTitle": "Seller",
+      "IssueDate": "1996-10-26T00:00:00.000Z",
+      "PhoneNo": "055-9765769",
+      "EmpEmail": "Ali@hotmail.com",
+      "EmpPOBox": "19062",
+      "EmpEmirates": "AD",
+      "UAEID": "css\\images\\ID_CARD2.jpg",
+      "PensionDate": "2001-10-22T20:00:00.000Z",
+      "Proof": "css\\images\\ID_CARD2.jpg"
+    },
+    {
+      "workID": "12349",
+      "Password": "Sultan1234",
+      "EmpName": "Sultan",
+      "ComName": "Abu Dhabi Islamic Bank",
+      "JobTitle": "Sales Manager",
+      "IssueDate": "1991-02-09T00:00:00.000Z",
+      "PhoneNo": "055-6969696",
+      "EmpEmail": "Sultan@hotmail.com",
+      "EmpPOBox": "19062",
+      "EmpEmirates": "FUJ",
+      "UAEID": "css\\images\\ID_CARD2.jpg",
+      "PensionDate": "1992-10-10T20:00:00.000Z",
+      "Proof": "css\\images\\ID_CARD2.jpg"
+    }
+  ]
+}

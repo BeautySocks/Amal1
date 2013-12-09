@@ -1,7 +1,7 @@
 //Initialize
 $(document).ready(function() {
         //alert('function1');
-        //document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEventListener("deviceready", onDeviceReady, false);	
 });
 // Global variables
 var lat, lon, latlon, mylocation;
@@ -12,6 +12,8 @@ var zoomlevel2, dzoom2, bounds2, distance2;
 var offerlatlon, olat, olon;
 var jsonFile="offers.json";
 var sortedoffer;
+var userName, password;
+var jsonEmpsFile="employees.json";
 totaloffers=0;
 // PhoneGap is loaded and it is now safe to make calls 
 //function onDeviceReady() {
@@ -20,6 +22,9 @@ totaloffers=0;
         loadScript(10,10000);
 //        document.addEventListener("offline", onOffline, false);
 //        document.addEventListener("online", onOnline, false);
+//		  $.mobile.defaultPageTransition   = 'none';
+//		  $.mobile.defaultDialogTransition = 'none';
+//		  $.mobile.buttonMarkup.hoverDelay = 0;
 //}
 //function onOffline() {
 //        //When device goes offline, throw an error
@@ -31,7 +36,7 @@ totaloffers=0;
 //        alert('onOnline');
 //    $.mobile.changePage("#index");
 //}
-//
+
 // Load the Google maps API script with zoom level and desired proximity
 function loadScript(zl,pm) {
         //alert('Load Script');
@@ -95,7 +100,7 @@ function getOffers(ml,pm)
 //        };
 //alert('before loaded');
         // Load the JSON
-        $.getJSON(jsonFile, function(data) {
+        $.getJSON(jsonEmpsFile, function(data) {
                 //alert('Im loaded');
                 $.each(data.offer,function(index,value){ 
                 renderOffer(pm, index+1,value.name, value.location.Latitude, value.location.Longitude, value.description);
@@ -224,6 +229,10 @@ if (Oid)
 		});
    }
 });
+
+
+
+
 function onGetLocationError(error)
 {
         //alert('ongetlocation');
@@ -307,3 +316,31 @@ $(document).on("pageshow", "#offerdetails", function( event ) {
 
     }
 );
+
+$("#btnSubmit").click(function () {
+            //collect userName and password entered by users
+            userName = $("#un").val();
+            password = $("#pw").val();
+            //call the authenticate function
+            authenticate(userName, password);
+        });
+		
+ function authenticate(userName, password) {
+	 
+		$.getJSON(jsonFile, function(data) {
+			$.each(data.offer,function(index,value){ 
+			    if((value.offerid == userName)&&(value.name==password))
+				{
+					alert('Welcome');					
+					//$.mobile.changePage("#offers");
+				}
+				else
+				{
+					$.mobile.changePage("#contactus");
+					alert('WHAT DID YOU JUST WRITE HUUUUH?');
+
+					}
+				});
+			});
+    }
+
