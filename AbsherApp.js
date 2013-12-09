@@ -24,10 +24,10 @@ function onDeviceReady() {
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
 $.mobile.touchOverflowEnabled = false;
-$.mobile.defaultPageTransition = 'none';
-$.mobile.defaultDialogTransition = 'none';
+//$.mobile.defaultPageTransition = 'none';
+//$.mobile.defaultDialogTransition = 'none';
 $.mobile.useFastClick = false
-$.mobile.buttonMarkup.hoverDelay = 0;
+//$.mobile.buttonMarkup.hoverDelay = 0;
 $.mobile.page.prototype.options.domCache = false;
 $.event.special.swipe.scrollSupressionThreshold = 100;
 ///////////////////////////////////////////////////////////////////////
