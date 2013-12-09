@@ -352,4 +352,7 @@ alert('authenticate');
 			 }
 	}); 
 }
-  
+
+event.prop = 'foo';
+// or
+event['prop'] = 'foo';

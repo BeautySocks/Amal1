@@ -29,11 +29,11 @@ function onDeviceReady() {
 
 // Setting #container div as a jqm pageContainer
 // Setting default page transition to slide
-$.mobile.defaultPageTransition = 'slide';
+$.mobile.defaultPageTransition = 'none';
 $.mobile.touchOverflowEnabled = false;
 $.mobile.defaultPageTransition = 'none';
 $.mobile.defaultDialogTransition = 'none';
-$.mobile.useFastClick = false
+$.mobile.useFastClick = false;
 //$.mobile.buttonMarkup.hoverDelay = 0;
 //$.mobile.page.prototype.options.domCache = false;
 //$.event.special.swipe.scrollSupressionThreshold = 100;
