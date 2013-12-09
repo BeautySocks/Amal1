@@ -23,25 +23,13 @@ function onDeviceReady() {
 //        $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
-$(document).bind("mobileinit", function(){
-
 $.mobile.touchOverflowEnabled = false;
-
 $.mobile.defaultPageTransition = 'none';
-
 $.mobile.defaultDialogTransition = 'none';
-
 $.mobile.useFastClick = false
-
 $.mobile.buttonMarkup.hoverDelay = 0;
-
 $.mobile.page.prototype.options.domCache = false;
-
 $.event.special.swipe.scrollSupressionThreshold = 100;
-
-});
-
-$(document).bind("touchstart", function(event){})
 ///////////////////////////////////////////////////////////////////////
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
