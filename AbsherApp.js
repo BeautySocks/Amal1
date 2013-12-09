@@ -23,13 +23,10 @@ function onDeviceReady() {
 //        $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
-$(document).one("mobileinit", function () {
-	
+
 // Setting #container div as a jqm pageContainer
-$.mobile.pageContainer = $('#container');
 // Setting default page transition to slide
 $.mobile.defaultPageTransition = 'slide';
-
 $.mobile.touchOverflowEnabled = false;
 $.mobile.defaultPageTransition = 'none';
 $.mobile.defaultDialogTransition = 'none';
@@ -37,7 +34,6 @@ $.mobile.useFastClick = false
 $.mobile.buttonMarkup.hoverDelay = 0;
 $.mobile.page.prototype.options.domCache = false;
 $.event.special.swipe.scrollSupressionThreshold = 100;
-        });
 ///////////////////////////////////////////////////////////////////////
         document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline, false);
