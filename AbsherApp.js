@@ -154,9 +154,7 @@ $("#totaloffers").html(totaloffers);
 } 
 
 function ReadytoUse(label,name,olat,olon,desc,dur){
-        
-				  $("#oneoffermap").empty();
-				  mapholder=document.getElementById('oneoffermap');
+        				  mapholder=document.getElementById('oneoffermap');
 				  mapholder.style.height='200px';
 				  mapholder.style.width=window.innerWidth;
 				  bounds2 = new google.maps.LatLngBounds(); // Required for zoom level and center
