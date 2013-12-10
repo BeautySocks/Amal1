@@ -22,7 +22,7 @@ function onDeviceReady() {
 //         iOS. BB. Android
         //alert('OnDeviceReady');
         loadScript(10,10000);
-   	$.mobile.defaultPageTransition   = 'none';
+   	$.mobile.defaultPageTransition   = 'slide';
 //      $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
