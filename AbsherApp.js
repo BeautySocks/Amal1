@@ -22,9 +22,9 @@ function onDeviceReady() {
 //         iOS. BB. Android
         //alert('OnDeviceReady');
         loadScript(10,10000);
-   	$.mobile.defaultPageTransition   = 'none';
-      $.mobile.defaultDialogTransition = 'none';
-        $.mobile.buttonMarkup.hoverDelay = 0;
+//   	$.mobile.defaultPageTransition   = 'none';
+//      $.mobile.defaultDialogTransition = 'none';
+//        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
 
 // Setting #container div as a jqm pageContainer
@@ -322,6 +322,6 @@ $(document).on("pageshow", "#offers", function( event ) {
 $(document).on("pageshow", "#offerdetails", function( event ) {
 		google.maps.event.trigger(map2, "resize");
 		map2.fitBounds(bounds2);
-
+		map2.setZoom(16);   
     }
 );
