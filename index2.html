@@ -105,7 +105,6 @@ function hideSplash() {
 //			  } 
 //			  });
 			function SaveME(){
-//$('#LocBtn').bind('click', function createBook () {
                 new_Loc_emp = { 
 				"workID": $("#workID").val(),
 				"Password": $("#Password").val(),
@@ -126,16 +125,9 @@ function hideSplash() {
                    } else {
 					   $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
-					  //$("#content").trigger('create');
-
                    } 
                 });
-
-
-//              });
-			}
-			
-			
+			}	
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -146,16 +138,13 @@ function hideSplash() {
                 type:'companies',
                 qs:{ql:'order by CompanyNo DESC'}
             }
-
             var companies;
-
             client.createCollection(options, function (err, companies) {
                 if (err) {
                     alert("Couldn't get the list of books.");
                 } else {
                     while(companies.hasNextEntity()) {
                         var company = companies.getNextEntity();
-                        //alert(company.get("CompanyNo")); // Output the title of the book
                     }
                 }
             });
@@ -182,58 +171,77 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
-                 
-
-//              });
 			}
-			
 //////////////////////////////////////////////////////////////////////////////////////////
 //								ADD YOUR SUGGESTION										//
 //////////////////////////////////////////////////////////////////////////////////////////
-		    var suggestion = new Usergrid.Collection( { "client":client, "type":"companies" } );
-			Usergrid.ApiClient.init('absher', 'companies');
+		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
+			Usergrid.ApiClient.init('absher', 'suggestions');
             // Make a new "book" collection and read data
             var options = {
-                type:'companies',
-                qs:{ql:'order by CompanyNo DESC'}
+                type:'suggestions',
+                qs:{ql:'order by title DESC'}
             }
-
-            var companies;
-
-            client.createCollection(options, function (err, companies) {
+            var suggestions;
+            client.createCollection(options, function (err, suggestions) {
                 if (err) {
                     alert("Couldn't get the list of books.");
                 } else {
-                    while(companies.hasNextEntity()) {
-                        var company = companies.getNextEntity();
-                        //alert(company.get("CompanyNo")); // Output the title of the book
+                    while(suggestions.hasNextEntity()) {
+                        var suggestion = suggestions.getNextEntity();
                     }
                 }
             });
-			function SaveME2(){
-                new_com_emp = { 
-				"registered": $("#select-choice-b").val(),
-				"CompanyNo": $("#CompanyNo").val(),
-				"ArabicName": $("#ArabicName").val(),
-				"EnglishName": $("#EnglishName").val(),
-				"EconomicActivity": $("#EconomicActivity").val(),
-				"Address": $("#Address").val(),
-				"Emirates": $("#select-choice-a").val(),
-				"CoorName": $("#Name").val(),
-				"CoorMobileNo": $("#MobileNo").val(),
-				"CoorEmail": $("#Email").val(),
-				"CoorPOBox": $("#POBox").val(),
-				"CoorEmirates": $("#select-choice-c").val(),
-				"OfferDetail": $("#OfferDetail").val()				
+			function SaveSugg(){
+                new_sugg = { 
+				"title": $("#Subject").val(),
+				"details": $("#feedbackmessage").val()				
 				};
-                companies.addEntity(new_com_emp, function (error, response) {
+                suggestions.addEntity(new_sugg, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
                    } else {  
 				   	  $.mobile.changePage("#home");
-                      alert("لقد تم التسجيل بنجاح.");
+                      alert("شكراً لمشاركتنا الرأي");
                    } 
                 });
 			}
+			
+			
+			
+//////////////////////////////////////////////////////////////////////////////////////////
+//								CHECK LOGIN												//
+//////////////////////////////////////////////////////////////////////////////////////////
+	//	function FormSubmit(){
+		
+				/*
+				- Specify the 'type' of the entity to be retrieved, 'book' in this case.
+				- Specify the 'UUID' property of the entity to be retrieved. You can get this from the 
+				  response we showed you when the entity was created. */                              
+				 function FormSubmit() {
+					 var wid= $("#un").val();
+					 var pw=$("#pw").val();
+				/* Next we pass our properties to getEntity(), which initiates our GET request: */
+		    var employees = new Usergrid.Collection( { "client":client, "type":"employees" } );
+			Usergrid.ApiClient.init('absher', 'employees');
+            // Make a new "book" collection and read data
+            var options = {
+                type:'employees',
+                qs:{ql:"Employees.workID='"+wid+"' and Employees.Password='"+pw+"'"}
+            }
+
+            var employees;
+            client.createCollection(options, function (err, employees) {
+                if (!employees.hasNextEntity()) {
+				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+                } else {
+                    while(employees.hasNextEntity()) {
+                        var employee = employees.getNextEntity();
+						$.mobile.changePage("#profile");
+                    }
+                }
+            });			
+		}
+		
         </script>
 </head> 
 <!-- End of Head -->
@@ -1754,11 +1762,9 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
         </div>
        
         <!-- Submit Feedback -->
-        <div data-role="button" align="right">
-   <label for="submitfeedback"><strong>إرسال</strong></label>
-        </div>
+<input type="button" value="إرسال" onClick="SaveSugg()" ></input>
    </form>
-   <!-- End of Form-->
+   <!-- End of Form -->
    
    <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
