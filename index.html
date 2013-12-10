@@ -121,7 +121,7 @@ function hideSplash() {
 				"EmpPOBox": $("#EmpPOBox").val(),
 				"EmpEmirates": $("#select-choice-a").val(),
 				"UAEID": "css\\images\\"+$("#UAEID").val(),
-				"mydate": $("#mydate").val(),
+				"PensionDate": $("#mydate").val(),
 				"Proof": "css\\images\\"+$("#Proof").val()
 				};
                 employees.addEntity(new_Loc_emp, function (error, response) {
@@ -403,8 +403,20 @@ function hideSplash() {
       <!--Work ID-->
       <div data-role="fieldcontain">
       <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="workID" type="search" required data-clear-btn="true" id="workID" value=""/>
-      </div>        
+      <input name="workID" type="text" required data-clear-btn="true" id="workID" value=""/>
+      </div> 
+             
+      <!--Password-->
+      <div data-role="fieldcontain">
+      <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
+      <input name="Password" type="text" required data-clear-btn="true" class="required" id="Password" value=""/>
+      </div> 
+        
+      <!--RetPassword-->
+      <div data-role="fieldcontain">
+      <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
+      <input name="RetPassword" type="text" required data-clear-btn="true" class="required" id="RetPassword" value=""/>
+      </div>         
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
@@ -427,8 +439,9 @@ function hideSplash() {
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
-      </div>
+          <input name="IssueDate" required id="IssueDate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}'>      
+</div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">

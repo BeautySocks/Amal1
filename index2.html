@@ -402,73 +402,73 @@ function hideSplash() {
 </div>
 <!--End of Inquiry 2 Div-->
 
-<div data-role="content">        
+<div data-role="content">   
 <!-- Start of Form -->        
         <form action="#home" id="FormLocReg" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
 	  <label for="WorkID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="WorkID" type="text" required data-clear-btn="true" id="WorkID" value=""/>    
+      <input name="WorkID" type="text" required data-clear-btn="true" class="required" id="WorkID" value=""/>    
       </div> 
       
       <!--Password-->
       <div data-role="fieldcontain">
       <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
-      <input name="Password" type="text" required data-clear-btn="true" id="Password" value=""/>
+      <input name="Password" type="text" required data-clear-btn="true" class="required" id="Password" value=""/>
       </div> 
         
       <!--RetPassword-->
       <div data-role="fieldcontain">
       <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
-      <input name="RetPassword" type="text" required data-clear-btn="true" id="RetPassword" value=""/>
+      <input name="RetPassword" type="text" required data-clear-btn="true" class="required" id="RetPassword" value=""/>
       </div>         
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
       <label for="EmpName" dir="rtl"><strong>اسم العامل المواطن</strong></label>
-      <input name="EmpName" type="text" required data-clear-btn="true" id="EmpName" value=""/>
+      <input name="EmpName" type="text" required data-clear-btn="true" class="required" id="EmpName" value=""/>
       </div>        
       
       <!-- Company Name-->
       <div data-role="fieldcontain">
       <label for="ComName" dir="rtl"><strong>اسم المنشأة</strong></label>
-      <input name="ComName" type="text" required data-clear-btn="true" id="ComName" value=""/>
+      <input name="ComName" type="text" required data-clear-btn="true" class="required" id="ComName" value=""/>
       </div>
       
        <!-- Job Title -->
       <div data-role="fieldcontain">
       <label for="JobTitle" dir="rtl"><strong>المسمى الوظيفي</strong></label>
-      <input name="JobTitle" type="text" required data-clear-btn="true" id="JobTitle" value=""/>
+      <input name="JobTitle" type="text" required data-clear-btn="true" class="required" id="JobTitle" value=""/>
       </div>
       
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
-      </div>
+<input name="IssueDate" required id="IssueDate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}'>      </div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">
           <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-          <input name="PhoneNo" type="tel" required data-clear-btn="true" id="PhoneNo" value=""/>
+          <input name="PhoneNo" type="tel" required data-clear-btn="true" class="required" id="PhoneNo" value=""/>
       </div>
       
       <!--Email-->
       <div data-role="fieldcontain">
       <label for="EmpEmail" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
-      <input name="EmpEmail" type="email" required data-clear-btn="true" id="EmpEmail" value=""/>
+      <input name="EmpEmail" type="email" required data-clear-btn="true" class="required" id="EmpEmail" value=""/>
       </div>
       
       <!--PO Box-->
       <div data-role="fieldcontain">
       <label for="EmpPOBox" dir="rtl"><strong>صندوق البريد</strong></label>
-      <input name="EmpPOBox" type="text" required data-clear-btn="true" id="EmpPOBox" value=""/>
+      <input name="EmpPOBox" type="text" required data-clear-btn="true" class="required" id="EmpPOBox" value=""/>
       </div>
       
       <!--Emirates-->
       <div data-role="fieldcontain">
       <label for="select-choice-a" class="select" dir="rtl"><strong>الإمارة</strong></label>
-      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <select name="select-choice-a" id="select-choice-a" class="required" data-native-menu="false">
       <option value="AD">أبوظبي</option>
       <option value="UMQ">أم القيوين</option>
       <option value="DXB">دبي</option>
@@ -482,13 +482,13 @@ function hideSplash() {
       <!--Upload UAE ID-->      
       <div data-role="fieldcontain">
           <label for="UAEID" dir="rtl"><strong>صورة بطاقة الإمارات للهوية</strong></label>
-          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true">
+          <input id="UAEID" name="UAEID" value="" type="file" class="required" data-clear-btn="true">
       </div>
       
       <!--Date-->      
       <div data-role="fieldcontain">
           <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
-          <input name="mydate" required id="mydate" type="date" data-role="datebox"
+          <input name="mydate" required id="mydate" type="date"  class="required" data-role="datebox"
 data-options='{"mode": "flipbox"}'>
       </div>
       
@@ -496,7 +496,7 @@ data-options='{"mode": "flipbox"}'>
       <!--Upload Proof -->      
       <div data-role="fieldcontain">
           <label for="Proof" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
-          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true">
+          <input id="Proof" name="Proof" value="" type="file" class="required" data-clear-btn="true">
       </div>
       
       <!-- Submit-->
