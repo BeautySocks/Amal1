@@ -320,14 +320,8 @@ $(document).on("pageshow", "#offers", function( event ) {
     }
 );
 $(document).on("pageshow", "#offerdetails", function( event ) {
-	   	$.mobile.defaultPageTransition   = 'slide';
-        $.mobile.defaultDialogTransition = 'pop';
-        $.mobile.buttonMarkup.hoverDelay = 200;
 		google.maps.event.trigger(map2, "resize");
 		map2.fitBounds(bounds2);
-		map2.setZoom(16);   
-		$.mobile.defaultPageTransition   = 'none';
-
 
     }
 );
