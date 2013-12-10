@@ -134,6 +134,8 @@ function hideSplash() {
 
 //              });
 			}
+			
+			
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -183,6 +185,54 @@ function hideSplash() {
                  
 
 //              });
+			}
+			
+//////////////////////////////////////////////////////////////////////////////////////////
+//								ADD YOUR SUGGESTION										//
+//////////////////////////////////////////////////////////////////////////////////////////
+		    var suggestion = new Usergrid.Collection( { "client":client, "type":"companies" } );
+			Usergrid.ApiClient.init('absher', 'companies');
+            // Make a new "book" collection and read data
+            var options = {
+                type:'companies',
+                qs:{ql:'order by CompanyNo DESC'}
+            }
+
+            var companies;
+
+            client.createCollection(options, function (err, companies) {
+                if (err) {
+                    alert("Couldn't get the list of books.");
+                } else {
+                    while(companies.hasNextEntity()) {
+                        var company = companies.getNextEntity();
+                        //alert(company.get("CompanyNo")); // Output the title of the book
+                    }
+                }
+            });
+			function SaveME2(){
+                new_com_emp = { 
+				"registered": $("#select-choice-b").val(),
+				"CompanyNo": $("#CompanyNo").val(),
+				"ArabicName": $("#ArabicName").val(),
+				"EnglishName": $("#EnglishName").val(),
+				"EconomicActivity": $("#EconomicActivity").val(),
+				"Address": $("#Address").val(),
+				"Emirates": $("#select-choice-a").val(),
+				"CoorName": $("#Name").val(),
+				"CoorMobileNo": $("#MobileNo").val(),
+				"CoorEmail": $("#Email").val(),
+				"CoorPOBox": $("#POBox").val(),
+				"CoorEmirates": $("#select-choice-c").val(),
+				"OfferDetail": $("#OfferDetail").val()				
+				};
+                companies.addEntity(new_com_emp, function (error, response) {
+                   if (error) { alert("لم تتم إدخال البيانات الصحيحة");
+                   } else {  
+				   	  $.mobile.changePage("#home");
+                      alert("لقد تم التسجيل بنجاح.");
+                   } 
+                });
 			}
         </script>
 </head> 
