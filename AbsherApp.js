@@ -22,7 +22,7 @@ function onDeviceReady() {
 //         iOS. BB. Android
         //alert('OnDeviceReady');
         loadScript(10,10000);
-   	$.mobile.defaultPageTransition   = 'fade';
+//   	$.mobile.defaultPageTransition   = 'none';
 //      $.mobile.defaultDialogTransition = 'none';
 //        $.mobile.buttonMarkup.hoverDelay = 0;
 ///////////////////////////////////////////////////////////////////////
@@ -154,7 +154,9 @@ $("#totaloffers").html(totaloffers);
 } 
 
 function ReadytoUse(label,name,olat,olon,desc,dur){
-        				  mapholder=document.getElementById('oneoffermap');
+        
+				  $("#oneoffermap").empty();
+				  mapholder=document.getElementById('oneoffermap');
 				  mapholder.style.height='200px';
 				  mapholder.style.width=window.innerWidth;
 				  bounds2 = new google.maps.LatLngBounds(); // Required for zoom level and center
@@ -321,5 +323,38 @@ $(document).on("pageshow", "#offerdetails", function( event ) {
 		google.maps.event.trigger(map2, "resize");
 		map2.fitBounds(bounds2);
 		map2.setZoom(16);   
+
     }
 );
+
+function FormSubmit(){
+            //collect userName and password entered by users
+            userName = $("#un").val();
+            password = $("#pw").val();
+            //call the authenticate function
+			authenticate();
+}
+	
+function authenticate() { 
+//alert('authenticate');
+   $.getJSON(jsonEmpsFile, function(data) {
+	   NotEqual=true;
+	   //alert(data.Employees.workID);
+		//alert('json');
+		//console.log(data);
+		  $.each(data.Employees,function(index,value){ 
+		  //NotEqual=true;
+			 if((userName==value.workID)&&(password==value.Password))
+			  {
+				  var Wid=value.workID;				  
+			  	  NotEqual = false;
+				  $.mobile.changePage("#profile");
+			  }
+			  });	 
+		  if (NotEqual==true)
+			 {
+				  $.mobile.changePage("#login");
+				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+			 }	 
+	});		  
+}

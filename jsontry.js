@@ -17,9 +17,6 @@ var workID,password2;
 var newItem, myObjectString1, myObjectString2, myObjectString3;
 var jsonEmpsFile="employees.json";
 var jsonEmpsFileTRY="names.json";
-   	$.mobile.defaultPageTransition   = 'none';
-      $.mobile.defaultDialogTransition = 'none';
-        $.mobile.buttonMarkup.hoverDelay = 0;
 //document.getElementById("errM").style.display = "none";
 //var errorMessage = document.getElementById("errM").style.display = "none";
 totaloffers=0;
@@ -321,62 +318,40 @@ $(document).on("pageshow", "#offerdetails", function( event ) {
 );
 
 
-//function FormSubmit(){
-//            //collect userName and password entered by users
-//            userName = $("#un").val();
-//            password = $("#pw").val();
-//            //call the authenticate function
-//			authenticate();
-//}
-//	
-//function authenticate() { 
-//alert('authenticate');
-//   $.getJSON(jsonEmpsFile, function(data) {
-//	    document.getElementById("errM").style.display = "none";
-//	   NotEqual=true;
-//	   alert(data.Employees.workID);
-//		alert('json');
-//		//console.log(data);
-//		  $.each(data.Employees,function(index,value){ 
-//		  //NotEqual=true;
-//			 if((userName==value.workID)&&(password==value.Password))
-//			  {
-//				  //var Wid=value.workID;				  
-//			  	  NotEqual = false;
-//				  $.mobile.changePage("#profile");
-//			  }
-//			  });	 
-//		  if (NotEqual==true)
-//			 {
-//				//document.getElementById("errM").style.display = 'inline';
-//				//('errM').innerHTML = 'Try message 1 again...';
-//				//errM.innerHTML="Error: " + errorMessage + ".";
-//				//errorMessage='رقم بطاقة العمل أو كلمة المرور غير صحيحة';
-//				//$("#errM").append('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-//				$.mobile.changePage("#login");
-//				alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-//			 }
-//	}); 
-//}
-
-
-
-//$(document).on("pageshow", "#LocalReg", function() {
-// 
-//	$.validator.addMethod("passmatch", function(value) {
-//			return value == $("#password").val();
-//	}, 'Confirmation password must match.');
-// 
-//	$("#registerForm").validate({
-// 
-//		errorPlacement: function(error, element) {
-//			if (element.attr("name") === "favcolor") {
-//				error.insertAfter($(element).parent());
-//			} else {
-//				error.insertAfter(element);
-//			}
-//		}
-// 
-//	});
-// 
-//});
+function FormSubmit(){
+            //collect userName and password entered by users
+            userName = $("#un").val();
+            password = $("#pw").val();
+            //call the authenticate function
+			authenticate();
+}
+	
+function authenticate() { 
+alert('authenticate');
+   $.getJSON(jsonEmpsFile, function(data) {
+	    document.getElementById("errM").style.display = "none";
+	   NotEqual=true;
+	   alert(data.Employees.workID);
+		alert('json');
+		//console.log(data);
+		  $.each(data.Employees,function(index,value){ 
+		  //NotEqual=true;
+			 if((userName==value.workID)&&(password==value.Password))
+			  {
+				  //var Wid=value.workID;				  
+			  	  NotEqual = false;
+				  $.mobile.changePage("#profile");
+			  }
+			  });	 
+		  if (NotEqual==true)
+			 {
+				//document.getElementById("errM").style.display = 'inline';
+				//('errM').innerHTML = 'Try message 1 again...';
+				//errM.innerHTML="Error: " + errorMessage + ".";
+				//errorMessage='رقم بطاقة العمل أو كلمة المرور غير صحيحة';
+				//$("#errM").append('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+				$.mobile.changePage("#login");
+				alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+			 }
+	}); 
+}

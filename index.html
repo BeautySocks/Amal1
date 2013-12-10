@@ -10,7 +10,8 @@
 --><link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
 <script type="text/javascript" src="offers.json"></script>
 <script type="text/javascript" src="js/StyledMarker.js"></script>
-<script type="text/javascript" src="energize.js"></script>
+<!--<script type="text/javascript" src="energize.js"></script>
+<script type="text/javascript" src="energize-min.js"></script>-->
 <!-- Our own Style Sheet -->
 <link href="absherstyle.css" rel="stylesheet" type="text/css">
 
@@ -60,6 +61,10 @@ function hideSplash() {
 <script src="js/usergrid.SDK.js"></script>
 <script src="js/usergrid.0.10.5.js"></script>
         <!-- Don't forget to include the SDK -->
+<!--        <script src="https://apigee.com/usergrid/sdk/usergrid.0.10.5.js"></script>
+-->        <!-- If you prefer a local copy, you can find the file at the root the SDK’s github repo
+             github.com/apigee/usergrid-javascript-sdk -->
+
         <script type="text/javascript">
             // Initializing the SDK
             var client = new Usergrid.Client({
@@ -70,6 +75,7 @@ function hideSplash() {
 
 		    var employees = new Usergrid.Collection( { "client":client, "type":"employees" } );
 			Usergrid.ApiClient.init('absher', 'employees');
+            // Make a new "book" collection and read data
             var options = {
                 type:'employees',
                 qs:{ql:'order by workID DESC'}
@@ -83,12 +89,28 @@ function hideSplash() {
                 } else {
                     while(employees.hasNextEntity()) {
                         var employee = employees.getNextEntity();
+                       // alert(employee.get("workID")); // Output the title of the book
                     }
                 }
             });
+
+            // Uncomment the next 4 lines if you want to write data
+//var employees;
+//
+//             employee = { "workID": "123486" };
+//             employees.addEntity(employee, function (error, response) {
+//              if (error) {
+//				   alert("Couldn't add the book.");
+//              } 
+//			  else { 
+//			  alert("The book was added."); 
+//			  } 
+//			  });
+
 			function SaveME(){
+//$('#LocBtn').bind('click', function createBook () {
                 new_Loc_emp = { 
-				"workID": $("#wid").val(),
+				"workID": $("#workID").val(),
 				"Password": $("#Password").val(),
 				"EmpName": $("#EmpName").val(),
 				"ComName": $("#ComName").val(),
@@ -99,7 +121,7 @@ function hideSplash() {
 				"EmpPOBox": $("#EmpPOBox").val(),
 				"EmpEmirates": $("#select-choice-a").val(),
 				"UAEID": "css\\images\\"+$("#UAEID").val(),
-				"PensionDate": $("#mydate").val(),
+				"mydate": $("#mydate").val(),
 				"Proof": "css\\images\\"+$("#Proof").val()
 				};
                 employees.addEntity(new_Loc_emp, function (error, response) {
@@ -109,23 +131,31 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
+                 
+
+//              });
 			}
+//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
 		    var companies = new Usergrid.Collection( { "client":client, "type":"companies" } );
 			Usergrid.ApiClient.init('absher', 'companies');
+            // Make a new "book" collection and read data
             var options = {
                 type:'companies',
                 qs:{ql:'order by CompanyNo DESC'}
             }
+
             var companies;
+
             client.createCollection(options, function (err, companies) {
                 if (err) {
                     alert("Couldn't get the list of books.");
                 } else {
                     while(companies.hasNextEntity()) {
                         var company = companies.getNextEntity();
+                        //alert(company.get("CompanyNo")); // Output the title of the book
                     }
                 }
             });
@@ -152,65 +182,10 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
+                 
+
+//              });
 			}
-//////////////////////////////////////////////////////////////////////////////////////////
-//								ADD YOUR SUGGESTION										//
-//////////////////////////////////////////////////////////////////////////////////////////
-		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
-			Usergrid.ApiClient.init('absher', 'suggestions');
-            var options = {
-                type:'suggestions',
-                qs:{ql:'order by title DESC'}
-            }
-            var suggestions;
-            client.createCollection(options, function (err, suggestions) {
-                if (err) {
-                    alert("Couldn't get the list of books.");
-                } else {
-                    while(suggestions.hasNextEntity()) {
-                        var suggestion = suggestions.getNextEntity();
-                    }
-                }
-            });
-			function SaveSugg(){
-                new_sugg = { 
-				"title": $("#Subject").val(),
-				"details": $("#feedbackmessage").val()				
-				};
-                suggestions.addEntity(new_sugg, function (error, response) {
-                   if (error) { alert("لم تتم إدخال البيانات الصحيحة");
-                   } else {  
-				   	  $.mobile.changePage("#home");
-                      alert("شكراً لمشاركتنا الرأي");
-                   } 
-                });
-			}
-//////////////////////////////////////////////////////////////////////////////////////////
-//								CHECK LOGIN												//
-//////////////////////////////////////////////////////////////////////////////////////////                 
-function FormSubmit() {
-		 var wid= $("#un").val();
-		 var pw=$("#pw").val();
-				/* Next we pass our properties to getEntity(), which initiates our GET request: */
-		    var employees = new Usergrid.Collection( { "client":client, "type":"employees" } );
-			Usergrid.ApiClient.init('absher', 'employees');
-            // Make a new "book" collection and read data
-            var options = {
-                type:'employees',
-                qs:{ql:"Employees.workID='"+wid+"' and Employees.Password='"+pw+"'"}
-            }
-            var employees;
-            client.createCollection(options, function (err, employees) {
-                if (!employees.hasNextEntity()) {
-				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-                } else {
-                    while(employees.hasNextEntity()) {
-                        var employee = employees.getNextEntity();
-						$.mobile.changePage("#profile");
-                    }
-                }
-            });			
-		}
         </script>
 <!-- End of Registration-->
 </head> 
@@ -274,8 +249,8 @@ function FormSubmit() {
         <form action="#" method="get" >
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID2" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID2" type="text" id="workID2" value="" align="right"/> 
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
       <input name="search" type="button" value="بحث">
       </div>        
     </form>
@@ -427,21 +402,9 @@ function FormSubmit() {
         <form action="#home" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
-      <label for="wid" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="wid" type="text" required data-clear-btn="true" id="wid" value=""/>
-      </div> 
-             
-      <!--Password-->
-      <div data-role="fieldcontain">
-      <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
-      <input name="Password" type="text" required data-clear-btn="true" class="required" id="Password" value=""/>
-      </div> 
-        
-      <!--RetPassword-->
-      <div data-role="fieldcontain">
-      <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
-      <input name="RetPassword" type="text" required data-clear-btn="true" class="required" id="RetPassword" value=""/>
-      </div>         
+      <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
+      <input name="workID" type="search" required data-clear-btn="true" id="workID" value=""/>
+      </div>        
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
@@ -464,9 +427,8 @@ function FormSubmit() {
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-          <input name="IssueDate" required id="IssueDate" type="date" data-role="datebox"
-data-options='{"mode": "flipbox"}'>      
-</div>
+      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
+      </div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">
@@ -1724,7 +1686,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
        
         <!-- Submit Feedback -->
         <div data-role="button" align="right">
-<input type="button" value="إرسال" onClick="SaveSugg()" ></input>
+   <label for="submitfeedback"><strong>إرسال</strong></label>
         </div>
    </form>
    <!-- End of Form-->
@@ -1947,132 +1909,6 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 </div>
 <!-- End of Offers Page -->
 
-<!-- Start of Offer Details Page -->
-<div data-role="page" id="offerdetails" data-icon="true">
-<!-- Start of Header -->
-<div data-role="header">
-<h1>العروض</h1>
-<!-- Start of Panel -->
-<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
-<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
-<!-- End of Panel -->
-</div>
-<!-- End of Header -->
-
-<!-- Start of Content -->
-<div data-role="content">
-<div id="oneoffermap">
-</div>
-
-<br/>
-<div id="offerdetailsD" class="divRight" >
-<div data-role="collapsible-set" data-inset="false" data-iconpos="right" >
-<div data-role="collapsible" data-collapsed="false" >
-<ul data-role="listview">
-<h3>العرض</h3>
-
-</ul>
-</div>
-</div>
-</div>
-<!--Start of Inquiry 1 Div-->
-<div  id="Inquiry1" data-role="popup">
-<div data-role="header">
-<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
-
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 1 Div-->
-
-<!--Start of Inquiry 2 Div-->
-<div id="Inquiry2" data-role="popup">
-<div data-role="header">
-<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 2 Div-->
-</div>
-<!-- End of Contents-->
-    
-<!-- footer -->
-<div data-role="footer" data-position="fixed">
-<!-- Navbar -->
-<div data-role="navbar" data-iconpos="left">
-<ul id="options">
-                                                <li>
-            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
-            </li>
-                                                <li>
-            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
-            </li>
-            <li>
-            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
-            </li>
-            <li>
-            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
-            </li>
-                                </ul>
-                </div>
-    <!-- /navbar -->
-</div>
-<!-- End of footer -->
-
-
-<!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
-</ul>
-
-<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
-
-<div data-role="collapsible" data-theme="a">
-<h3>استفسار</h3>
-<ul data-role="listview" id="panelcategories" data-theme="a">
-<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
-<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
-</li>
-</ul>
-</div> <!-- End second collapsible -->
-</div> <!-- End collapsible-->
-</div> 
-<!-- End of Panel-->
-
-</div>
-<!-- End of Offer Details Page -->
-
 <!-- Start of Profile Page -->
 <div data-role="page" id="profile" data-icon="true">
 <!-- Start of Header -->
@@ -2289,7 +2125,131 @@ ctx.rotate(0.5*Math.PI);
 
 
 
+<!-- Start of Offer Details Page -->
+<div data-role="page" id="offerdetails" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>العروض</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
 
+<!-- Start of Content -->
+<div data-role="content">
+<div id="oneoffermap">
+</div>
+
+<br/>
+<div id="offerdetailsD" class="divRight" >
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" >
+<div data-role="collapsible" data-collapsed="false" >
+<ul data-role="listview">
+<h3>العرض</h3>
+
+</ul>
+</div>
+</div>
+</div>
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+        <form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+        <form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div>
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+    <!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of Offer Details Page -->
 <script type="text/javascript" src="AbsherApp.js"></script>
 </body>
 </html>

@@ -105,8 +105,9 @@ function hideSplash() {
 //			  } 
 //			  });
 			function SaveME(){
+//$('#LocBtn').bind('click', function createBook () {
                 new_Loc_emp = { 
-				"workID": $("#zxc").val(),
+				"workID": $("#workID").val(),
 				"Password": $("#Password").val(),
 				"EmpName": $("#EmpName").val(),
 				"ComName": $("#ComName").val(),
@@ -125,9 +126,14 @@ function hideSplash() {
                    } else {
 					   $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
+					  //$("#content").trigger('create');
+
                    } 
                 });
-			}	
+
+
+//              });
+			}
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -138,13 +144,16 @@ function hideSplash() {
                 type:'companies',
                 qs:{ql:'order by CompanyNo DESC'}
             }
+
             var companies;
+
             client.createCollection(options, function (err, companies) {
                 if (err) {
                     alert("Couldn't get the list of books.");
                 } else {
                     while(companies.hasNextEntity()) {
                         var company = companies.getNextEntity();
+                        //alert(company.get("CompanyNo")); // Output the title of the book
                     }
                 }
             });
@@ -171,77 +180,10 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
-			}
-//////////////////////////////////////////////////////////////////////////////////////////
-//								ADD YOUR SUGGESTION										//
-//////////////////////////////////////////////////////////////////////////////////////////
-		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
-			Usergrid.ApiClient.init('absher', 'suggestions');
-            // Make a new "book" collection and read data
-            var options = {
-                type:'suggestions',
-                qs:{ql:'order by title DESC'}
-            }
-            var suggestions;
-            client.createCollection(options, function (err, suggestions) {
-                if (err) {
-                    alert("Couldn't get the list of books.");
-                } else {
-                    while(suggestions.hasNextEntity()) {
-                        var suggestion = suggestions.getNextEntity();
-                    }
-                }
-            });
-			function SaveSugg(){
-                new_sugg = { 
-				"title": $("#Subject").val(),
-				"details": $("#feedbackmessage").val()				
-				};
-                suggestions.addEntity(new_sugg, function (error, response) {
-                   if (error) { alert("لم تتم إدخال البيانات الصحيحة");
-                   } else {  
-				   	  $.mobile.changePage("#home");
-                      alert("شكراً لمشاركتنا الرأي");
-                   } 
-                });
-			}
-			
-			
-			
-//////////////////////////////////////////////////////////////////////////////////////////
-//								CHECK LOGIN												//
-//////////////////////////////////////////////////////////////////////////////////////////
-	//	function FormSubmit(){
-		
-				/*
-				- Specify the 'type' of the entity to be retrieved, 'book' in this case.
-				- Specify the 'UUID' property of the entity to be retrieved. You can get this from the 
-				  response we showed you when the entity was created. */                              
-				 function FormSubmit() {
-					 var wid= $("#un").val();
-					 var pw=$("#pw").val();
-				/* Next we pass our properties to getEntity(), which initiates our GET request: */
-		    var employees = new Usergrid.Collection( { "client":client, "type":"employees" } );
-			Usergrid.ApiClient.init('absher', 'employees');
-            // Make a new "book" collection and read data
-            var options = {
-                type:'employees',
-                qs:{ql:"Employees.workID='"+wid+"' and Employees.Password='"+pw+"'"}
-            }
+                 
 
-            var employees;
-            client.createCollection(options, function (err, employees) {
-                if (!employees.hasNextEntity()) {
-				  alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-                } else {
-                    while(employees.hasNextEntity()) {
-                        var employee = employees.getNextEntity();
-						$.mobile.changePage("#profile");
-                    }
-                }
-            });			
-		}
-		
+//              });
+			}
         </script>
 </head> 
 <!-- End of Head -->
@@ -460,73 +402,73 @@ function hideSplash() {
 </div>
 <!--End of Inquiry 2 Div-->
 
-<div data-role="content">   
+<div data-role="content">        
 <!-- Start of Form -->        
         <form action="#home" id="FormLocReg" method="post" >
       <!--Work ID-->
       <div data-role="fieldcontain">
-	  <label for="zxc" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="zxc" type="text" required data-clear-btn="true" class="required" id="zxc" value=""/>    
+	  <label for="WorkID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
+      <input name="WorkID" type="text" required data-clear-btn="true" id="WorkID" value=""/>    
       </div> 
       
       <!--Password-->
       <div data-role="fieldcontain">
       <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
-      <input name="Password" type="text" required data-clear-btn="true" class="required" id="Password" value=""/>
+      <input name="Password" type="text" required data-clear-btn="true" id="Password" value=""/>
       </div> 
         
       <!--RetPassword-->
       <div data-role="fieldcontain">
       <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
-      <input name="RetPassword" type="text" required data-clear-btn="true" class="required" id="RetPassword" value=""/>
+      <input name="RetPassword" type="text" required data-clear-btn="true" id="RetPassword" value=""/>
       </div>         
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
       <label for="EmpName" dir="rtl"><strong>اسم العامل المواطن</strong></label>
-      <input name="EmpName" type="text" required data-clear-btn="true" class="required" id="EmpName" value=""/>
+      <input name="EmpName" type="text" required data-clear-btn="true" id="EmpName" value=""/>
       </div>        
       
       <!-- Company Name-->
       <div data-role="fieldcontain">
       <label for="ComName" dir="rtl"><strong>اسم المنشأة</strong></label>
-      <input name="ComName" type="text" required data-clear-btn="true" class="required" id="ComName" value=""/>
+      <input name="ComName" type="text" required data-clear-btn="true" id="ComName" value=""/>
       </div>
       
        <!-- Job Title -->
       <div data-role="fieldcontain">
       <label for="JobTitle" dir="rtl"><strong>المسمى الوظيفي</strong></label>
-      <input name="JobTitle" type="text" required data-clear-btn="true" class="required" id="JobTitle" value=""/>
+      <input name="JobTitle" type="text" required data-clear-btn="true" id="JobTitle" value=""/>
       </div>
       
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-<input name="IssueDate" required id="IssueDate" type="date" data-role="datebox"
-data-options='{"mode": "flipbox"}'>      </div>
+      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
+      </div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">
           <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-          <input name="PhoneNo" type="tel" required data-clear-btn="true" class="required" id="PhoneNo" value=""/>
+          <input name="PhoneNo" type="tel" required data-clear-btn="true" id="PhoneNo" value=""/>
       </div>
       
       <!--Email-->
       <div data-role="fieldcontain">
       <label for="EmpEmail" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
-      <input name="EmpEmail" type="email" required data-clear-btn="true" class="required" id="EmpEmail" value=""/>
+      <input name="EmpEmail" type="email" required data-clear-btn="true" id="EmpEmail" value=""/>
       </div>
       
       <!--PO Box-->
       <div data-role="fieldcontain">
       <label for="EmpPOBox" dir="rtl"><strong>صندوق البريد</strong></label>
-      <input name="EmpPOBox" type="text" required data-clear-btn="true" class="required" id="EmpPOBox" value=""/>
+      <input name="EmpPOBox" type="text" required data-clear-btn="true" id="EmpPOBox" value=""/>
       </div>
       
       <!--Emirates-->
       <div data-role="fieldcontain">
       <label for="select-choice-a" class="select" dir="rtl"><strong>الإمارة</strong></label>
-      <select name="select-choice-a" id="select-choice-a" class="required" data-native-menu="false">
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
       <option value="AD">أبوظبي</option>
       <option value="UMQ">أم القيوين</option>
       <option value="DXB">دبي</option>
@@ -540,13 +482,13 @@ data-options='{"mode": "flipbox"}'>      </div>
       <!--Upload UAE ID-->      
       <div data-role="fieldcontain">
           <label for="UAEID" dir="rtl"><strong>صورة بطاقة الإمارات للهوية</strong></label>
-          <input id="UAEID" name="UAEID" value="" type="file" class="required" data-clear-btn="true">
+          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true">
       </div>
       
       <!--Date-->      
       <div data-role="fieldcontain">
           <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
-          <input name="mydate" required id="mydate" type="date"  class="required" data-role="datebox"
+          <input name="mydate" required id="mydate" type="date" data-role="datebox"
 data-options='{"mode": "flipbox"}'>
       </div>
       
@@ -554,7 +496,7 @@ data-options='{"mode": "flipbox"}'>
       <!--Upload Proof -->      
       <div data-role="fieldcontain">
           <label for="Proof" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
-          <input id="Proof" name="Proof" value="" type="file" class="required" data-clear-btn="true">
+          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true">
       </div>
       
       <!-- Submit-->
@@ -1762,9 +1704,11 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
         </div>
        
         <!-- Submit Feedback -->
-<input type="button" value="إرسال" onClick="SaveSugg()" ></input>
+        <div data-role="button" align="right">
+   <label for="submitfeedback"><strong>إرسال</strong></label>
+        </div>
    </form>
-   <!-- End of Form -->
+   <!-- End of Form-->
    
    <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
