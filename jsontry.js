@@ -326,32 +326,32 @@ function FormSubmit(){
 			authenticate();
 }
 	
-function authenticate() { 
-alert('authenticate');
-   $.getJSON(jsonEmpsFile, function(data) {
-	    document.getElementById("errM").style.display = "none";
-	   NotEqual=true;
-	   alert(data.Employees.workID);
-		alert('json');
-		//console.log(data);
-		  $.each(data.Employees,function(index,value){ 
-		  //NotEqual=true;
-			 if((userName==value.workID)&&(password==value.Password))
-			  {
-				  //var Wid=value.workID;				  
-			  	  NotEqual = false;
-				  $.mobile.changePage("#profile");
-			  }
-			  });	 
-		  if (NotEqual==true)
-			 {
-				//document.getElementById("errM").style.display = 'inline';
-				//('errM').innerHTML = 'Try message 1 again...';
-				//errM.innerHTML="Error: " + errorMessage + ".";
-				//errorMessage='رقم بطاقة العمل أو كلمة المرور غير صحيحة';
-				//$("#errM").append('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-				$.mobile.changePage("#login");
-				alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
-			 }
-	}); 
-}
+//function authenticate() { 
+//alert('authenticate');
+//   $.getJSON(jsonEmpsFile, function(data) {
+//	    document.getElementById("errM").style.display = "none";
+//	   NotEqual=true;
+//	   alert(data.Employees.workID);
+//		alert('json');
+//		//console.log(data);
+//		  $.each(data.Employees,function(index,value){ 
+//		  //NotEqual=true;
+//			 if((userName==value.workID)&&(password==value.Password))
+//			  {
+//				  //var Wid=value.workID;				  
+//			  	  NotEqual = false;
+//				  $.mobile.changePage("#profile");
+//			  }
+//			  });	 
+//		  if (NotEqual==true)
+//			 {
+//				//document.getElementById("errM").style.display = 'inline';
+//				//('errM').innerHTML = 'Try message 1 again...';
+//				//errM.innerHTML="Error: " + errorMessage + ".";
+//				//errorMessage='رقم بطاقة العمل أو كلمة المرور غير صحيحة';
+//				//$("#errM").append('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+//				$.mobile.changePage("#login");
+//				alert('رقم بطاقة العمل أو كلمة المرور غير صحيحة');
+//			 }
+//	}); 
+//}

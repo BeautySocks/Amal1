@@ -64,7 +64,6 @@ function hideSplash() {
 <!--        <script src="https://apigee.com/usergrid/sdk/usergrid.0.10.5.js"></script>
 -->        <!-- If you prefer a local copy, you can find the file at the root the SDK’s github repo
              github.com/apigee/usergrid-javascript-sdk -->
-
         <script type="text/javascript">
             // Initializing the SDK
             var client = new Usergrid.Client({
@@ -93,8 +92,42 @@ function hideSplash() {
                     }
                 }
             });
-
+//////////////////////////////////////////////////////////////////////////////////////////
+//								EMPLOYEES LOGIN											//
+//////////////////////////////////////////////////////////////////////////////////////////
+			function loginEmp(){
+				if (
+				  ($("#user").val()== '')||
+				  ($("#pass").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+			}
+			else{
+                employees.fetch(
+                    // Success Callback
+                    function () {
+						NotEqual=true;
+						while(employees.hasNextEntity()) {
+							var employee = employees.getNextEntity();
+							if ((employee.get("workID") == $("#user").val()) && ((employee.get("Password")==$("#pass").val())))
+							{
+								NotEqual=false;
+								$.mobile.changePage("#profile");
+							}
+						}
+						if (NotEqual==true)
+						alert('رقم بطاقة العمل أو كلمة المرور التي أدخلتها غير صحيحة');
+						document.Login.user.focus();
+                     }
+				)
+			  }
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
+//								EMPLOYEES REG											//
+//////////////////////////////////////////////////////////////////////////////////////////
 			function SaveME(){
+				alert($("#orkID").val());
 				var readyR=true;
 				//VALIDATION
 			if (
@@ -278,6 +311,39 @@ function hideSplash() {
                    } 
                 });
    			}
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
+//								ADD YOUR SUGGESTION										//
+//////////////////////////////////////////////////////////////////////////////////////////
+		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
+			Usergrid.ApiClient.init('absher', 'suggestions');
+            // Make a new "book" collection and read data
+            var options = {
+                type:'suggestions',
+                qs:{ql:'order by title DESC'}
+            }
+            var suggestions;
+            client.createCollection(options, function (err, suggestions) {
+                if (err) {
+                    alert("Couldn't get the list of books.");
+                } else {
+                    while(suggestions.hasNextEntity()) {
+                        var suggestion = suggestions.getNextEntity();
+                    }
+                }
+            });
+			function SaveSugg(){
+                new_sugg = { 
+				"title": $("#Subject").val(),
+				"details": $("#feedbackmessage").val()				
+				};
+                suggestions.addEntity(new_sugg, function (error, response) {
+                   if (error) { alert("لم تتم إدخال البيانات الصحيحة");
+                   } else {  
+				   	  $.mobile.changePage("#home");
+                      alert("شكراً لمشاركتنا الرأي");
+                   } 
+                });
 			}
         </script>
 <!-- End of Registration-->
@@ -1499,7 +1565,7 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#" method="get" id="">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
       <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
@@ -1565,14 +1631,15 @@ data-options='{"mode": "flipbox"}' required/>
 
 <div data-role="content">
 
-<form>
+<form name="Login">
 <div style="padding: 10px 20px;">
 <h3><strong>الدخول</strong></h3>
 <label class="ui-hidden-accessible" for="un">رقم بطاقة العمل:</label>
-<input dir="rtl" id="un" name="user" value="" type="text"  placeholder="رقم بطاقة العمل">
+<input dir="rtl" id="user" name="user" value="" type="text"  placeholder="رقم بطاقة العمل">
 <label class="ui-hidden-accessible" for="pw">كلمة السر: </label>
-<input dir="rtl" id="pw" name="pass" value="" type="password" placeholder="كلمة السر">
-<input type="button" value="دخول" onClick="FormSubmit()" ></input>
+<input dir="rtl" id="pass" name="pass" value="" type="password" placeholder="كلمة السر">
+<!-- Submit-->
+<input type="button" value="دخول" onClick="loginEmp()" ></input>
 </div>
 </form>
 
@@ -1777,7 +1844,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
  
 <!-- Start of Form -->
  
-<form action="#" method="post" >
+<form action="#" method="post">
       <!-- Subject -->
       <div data-role="fieldcontain" align="right">
       <label for="Subject"><strong>الموضوع</strong></label>
@@ -1791,9 +1858,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
         </div>
        
         <!-- Submit Feedback -->
-        <div data-role="button" align="right">
-   <label for="submitfeedback"><strong>إرسال</strong></label>
-        </div>
+<input type="button" value="إرسال" onClick="SaveSugg()" ></input>
    </form>
    <!-- End of Form-->
    
