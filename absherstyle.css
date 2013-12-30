@@ -200,3 +200,15 @@ color: white;
 	font-size: 14px;
 	font-weight: bold;
 }
+
+label.error {
+    float: none; 
+    color: red; 
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    width: 100%;
+    display: block;
+    margin-left: 22%;
+}

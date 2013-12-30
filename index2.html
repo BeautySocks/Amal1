@@ -6,12 +6,12 @@
 
 <title> Absher Initiative </title>
 
-<!--3 files needed to download from iquery-->
-<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
+<!--3 files needed to download from iquery
+--><link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
 <script type="text/javascript" src="offers.json"></script>
 <script type="text/javascript" src="js/StyledMarker.js"></script>
-<script src="js/usergrid.SDK.js"></script>
-
+<!--<script type="text/javascript" src="energize.js"></script>
+<script type="text/javascript" src="energize-min.js"></script>-->
 <!-- Our own Style Sheet -->
 <link href="absherstyle.css" rel="stylesheet" type="text/css">
 
@@ -56,6 +56,8 @@ function hideSplash() {
 </script>
 <link href="mastyle.css" rel="stylesheet" type="text/css" media="all" />
 <!-- End of Home Slider-->
+
+<!-- Start of Registration-->
 <script src="js/usergrid.SDK.js"></script>
 <script src="js/usergrid.0.10.5.js"></script>
         <!-- Don't forget to include the SDK -->
@@ -92,22 +94,63 @@ function hideSplash() {
                 }
             });
 
-            // Uncomment the next 4 lines if you want to write data
-//var employees;
-//
-//             employee = { "workID": "123486" };
-//             employees.addEntity(employee, function (error, response) {
-//              if (error) {
-//				   alert("Couldn't add the book.");
-//              } 
-//			  else { 
-//			  alert("The book was added."); 
-//			  } 
-//			  });
 			function SaveME(){
-//$('#LocBtn').bind('click', function createBook () {
-                new_Loc_emp = { 
-				"workID": $("#workID").val(),
+				var readyR=true;
+				//VALIDATION
+			if (
+				  ($("#orkID").val()== '')||
+				  ($("#Password").val()=='')||
+				  ($("#RetPassword").val()=='')||
+				  ($("#EmpName").val()=='')||
+				  ($("#ComName").val()=='')||
+				  ($("#JobTitle").val()=='')||
+				  ($("#IssueDate").val()=='')||
+				  ($("#PhoneNo").val()=='')||
+				  ($("#EmpEmail").val()=='')||
+				  ($("#EmpPOBox").val()=='')||
+				  ($("#select-choice-a").val()=='')||
+				  ($("#UAEID").val()=='')||
+				  ($("#mydate").val()=='')||
+				  ($("#Proof").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+				readyR=false;
+				document.LocReg.orkID.focus();
+			}
+			else{
+			//Validate Password and Password Confirm
+			if (($("#Password").val())!=($("#RetPassword").val()))
+			{
+				alert('كلمة المرور التي أدخلتها غير متطابقة');
+				readyR=false;
+				document.LocReg.Password.focus() ;
+			}
+			
+			//Validate email correct or not
+			var x=$("#EmpEmail").val();
+			var atpos=x.indexOf("@");
+			var dotpos=x.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  {
+			  alert("عنوان البريد الذي أدخلته غير صحيح");
+			  readyR=false;
+			  document.LocReg.EmpEmail.focus() ;
+			  }
+			  
+			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#PhoneNo").val()))) 
+			 {
+			  alert('رقم الهاتف المتحرك غير صحيح');
+			  document.LocReg.PhoneNo.focus() ;
+			 }
+			}
+			if(readyR==true){		  
+			LocalReg();
+			}
+			function LocalReg(){
+			 new_Loc_emp = { 
+				"workID": $("#orkID").val(),
 				"Password": $("#Password").val(),
 				"EmpName": $("#EmpName").val(),
 				"ComName": $("#ComName").val(),
@@ -123,17 +166,14 @@ function hideSplash() {
 				};
                 employees.addEntity(new_Loc_emp, function (error, response) {
                    if (error) { alert("لم تتم إدخال البيانات الصحيحة");
-                   } else {
-					   $.mobile.changePage("#home");
+                   } else {  
+				   	  $.mobile.changePage("#home");
                       alert("لقد تم التسجيل بنجاح.");
-					  //$("#content").trigger('create');
-
                    } 
                 });
-
-
-//              });
 			}
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -158,6 +198,63 @@ function hideSplash() {
                 }
             });
 			function SaveME2(){
+				var readyRC=true;
+				//VALIDATION
+			if (
+				  ($("#CompanyNo").val()== '')||
+				  ($("#ArabicName").val()=='')||
+				  ($("#EnglishName").val()=='')||
+				  ($("#EconomicActivity").val()=='')||
+				  ($("#Address").val()=='')||
+				  ($("#select-choice-a").val()=='')||
+				  ($("#select-choice-b").val()=='')||
+				  ($("#Name").val()=='')||
+				  ($("#MobileNo").val()=='')||
+				  ($("#OfficeNo").val()=='')||
+				  ($("#Email").val()=='')||
+				  ($("#POBox").val()=='')||
+				  ($("#select-choice-c").val()=='')||
+				  ($("#OfferDetail").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+				readyRC=false;
+				document.ComReg.CompanyNo.focus();
+			}
+			else{
+			//Validate email correct or not
+			var x=$("#Email").val();
+			var atpos=x.indexOf("@");
+			var dotpos=x.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  {
+			  alert("عنوان البريد الذي أدخلته غير صحيح");
+			  readyRC=false;
+			  document.ComReg2.Email.focus() ;
+			  }
+			
+			//Check if checkbox is checked or not
+			if(!document.ComReg2.checkbox.checked)
+				{
+				alert('لم تتم الموافقة على الشروط');
+				}
+			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#MobileNo").val()))) 
+			 {
+			  alert('رقم الهاتف المتحرك غير صحيح');
+			  document.ComReg2.MobileNo.focus() ;
+			 }
+			 			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#OfficeNo").val()))) 
+			 {
+			  alert('رقم هاتف المكتب غير صحيح');
+			  document.ComReg2.OfficeNo.focus() ;
+			 }
+			}	
+			if(readyRC==true){		  
+			CompanyReg();
+			}
+			function CompanyReg(){
                 new_com_emp = { 
 				"registered": $("#select-choice-b").val(),
 				"CompanyNo": $("#CompanyNo").val(),
@@ -168,6 +265,7 @@ function hideSplash() {
 				"Emirates": $("#select-choice-a").val(),
 				"CoorName": $("#Name").val(),
 				"CoorMobileNo": $("#MobileNo").val(),
+				"OfficeNo": $("#OfficeNo").val(),
 				"CoorEmail": $("#Email").val(),
 				"CoorPOBox": $("#POBox").val(),
 				"CoorEmirates": $("#select-choice-c").val(),
@@ -180,17 +278,16 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
-                 
-
-//              });
+   			}
 			}
         </script>
+<!-- End of Registration-->
 </head> 
 <!-- End of Head -->
 
 <!-- Start of Body -->
 <body class="ui-body-a">
-
+<!-- Start of Page Div -->
 <div data-role="page" id="home" class="type-interior">
 
 <!-- Start of Header -->
@@ -204,9 +301,6 @@ function hideSplash() {
 
 <!-- Start of Content -->
 <div data-role="content">
-<h2>JSON</h2>
-<pre id="result">
-</pre>
 <div id="Banner">
 <div class="flexslider">
     <ul class="slides">
@@ -230,11 +324,6 @@ function hideSplash() {
 </div>
 <br />
 <br />
-
-<p id="try">
-</p>
-
-
 <!-- Nearest Offer-->
 <h2 dir="rtl">أقرب عرض إليك</h2>
 <a href="#offers" data-role="button">لمشاهدة جميع العروض</a>
@@ -404,71 +493,72 @@ function hideSplash() {
 
 <div data-role="content">        
 <!-- Start of Form -->        
-        <form action="#home" id="FormLocReg" method="post" >
+        <form action="#home" method="post" id="LocReg" name="LocReg">
       <!--Work ID-->
       <div data-role="fieldcontain">
-	  <label for="WorkID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="WorkID" type="text" required data-clear-btn="true" id="WorkID" value=""/>    
-      </div> 
+      <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
+      <input name="workID" type="text"  data-clear-btn="true" id="orkID"  class="required" minlength="4" value="" required/>
+      </div>        
       
-      <!--Password-->
+       <!--Password-->
       <div data-role="fieldcontain">
       <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
-      <input name="Password" type="text" required data-clear-btn="true" id="Password" value=""/>
+      <input name="Password" type="password"  data-clear-btn="true"  id="Password" value="" class="required" required/>
       </div> 
         
       <!--RetPassword-->
       <div data-role="fieldcontain">
       <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
-      <input name="RetPassword" type="text" required data-clear-btn="true" id="RetPassword" value=""/>
+      <input name="RetPassword" type="password"  data-clear-btn="true"  id="RetPassword" value="" required/>
       </div>         
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
       <label for="EmpName" dir="rtl"><strong>اسم العامل المواطن</strong></label>
-      <input name="EmpName" type="text" required data-clear-btn="true" id="EmpName" value=""/>
+      <input name="EmpName" type="text"  data-clear-btn="true" id="EmpName"  value="" required/>
       </div>        
       
       <!-- Company Name-->
       <div data-role="fieldcontain">
       <label for="ComName" dir="rtl"><strong>اسم المنشأة</strong></label>
-      <input name="ComName" type="text" required data-clear-btn="true" id="ComName" value=""/>
+      <input name="ComName" type="text"  data-clear-btn="true" id="ComName"  value="" required/>
       </div>
       
        <!-- Job Title -->
       <div data-role="fieldcontain">
       <label for="JobTitle" dir="rtl"><strong>المسمى الوظيفي</strong></label>
-      <input name="JobTitle" type="text" required data-clear-btn="true" id="JobTitle" value=""/>
+      <input name="JobTitle" type="text"  data-clear-btn="true" id="JobTitle"  value="" required/>
       </div>
       
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
+      <input name="IssueDate"  id="IssueDate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}' required/>
       </div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">
           <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-          <input name="PhoneNo" type="tel" required data-clear-btn="true" id="PhoneNo" value=""/>
+          <input name="PhoneNo" type="tel"  data-clear-btn="true" id="PhoneNo"  value="" required/>
       </div>
       
       <!--Email-->
       <div data-role="fieldcontain">
       <label for="EmpEmail" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
-      <input name="EmpEmail" type="email" required data-clear-btn="true" id="EmpEmail" value=""/>
+      <input name="EmpEmail"  data-clear-btn="true" id="EmpEmail"   value=""/>
       </div>
       
       <!--PO Box-->
       <div data-role="fieldcontain">
       <label for="EmpPOBox" dir="rtl"><strong>صندوق البريد</strong></label>
-      <input name="EmpPOBox" type="text" required data-clear-btn="true" id="EmpPOBox" value=""/>
+      <input name="EmpPOBox" type="text"  data-clear-btn="true" id="EmpPOBox"  value="" required/>
       </div>
       
       <!--Emirates-->
       <div data-role="fieldcontain">
       <label for="select-choice-a" class="select" dir="rtl"><strong>الإمارة</strong></label>
-      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false" required>
       <option value="AD">أبوظبي</option>
       <option value="UMQ">أم القيوين</option>
       <option value="DXB">دبي</option>
@@ -482,25 +572,26 @@ function hideSplash() {
       <!--Upload UAE ID-->      
       <div data-role="fieldcontain">
           <label for="UAEID" dir="rtl"><strong>صورة بطاقة الإمارات للهوية</strong></label>
-          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true">
+          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true" required/>
       </div>
       
       <!--Date-->      
       <div data-role="fieldcontain">
           <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
-          <input name="mydate" required id="mydate" type="date" data-role="datebox"
-data-options='{"mode": "flipbox"}'>
+          <input name="mydate"  id="mydate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}' required/>
       </div>
       
       
       <!--Upload Proof -->      
       <div data-role="fieldcontain">
           <label for="Proof" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
-          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true">
+          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true" required/>
       </div>
       
       <!-- Submit-->
-<input type="button" value="تسجيل" onClick="SaveME()" ></input>   </form>
+<input type="button" value="تسجيل" onClick="SaveME()" > 
+</form>
 <!-- End of Form-->
         </div>
 <!-- End of Contents-->
@@ -514,10 +605,10 @@ data-options='{"mode": "flipbox"}'>
             <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
             </li>
                         <li>
-            <a href="#"><img src="css/images/profile1.png" width="30" height="30"></a>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
             </li>
             <li>
-            <a href="#"><img src="css/images/tag1.png" width="30" height="30"></a>
+            <a href="#offers"><img src="css/images/tag1.png" width="30" height="30"></a>
             </li>
             <li>
             <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
@@ -900,7 +991,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#aboutabsher" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -924,7 +1015,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#aboutabsher" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
@@ -1014,7 +1105,7 @@ data-options='{"mode": "flipbox"}'>
 <div data-role="content">        
     
     <!-- Start of Form -->        
-        <form action="#" method="get" >     
+        <form action="#" method="get" name="ComReg" >     
    
       <!--Company Status-->
       <div data-role="fieldcontain">
@@ -1083,7 +1174,6 @@ data-options='{"mode": "flipbox"}'>
       
     <!-- Next Button -->     
 
-
   <p><a href="#CompanyReg2" data-role="button"> التالي</a></p>        
 
    </form>
@@ -1092,7 +1182,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#CompanyReg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -1116,7 +1206,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#CompanyReg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
@@ -1207,7 +1297,7 @@ data-options='{"mode": "flipbox"}'>
     </label>
     
     <!-- Start of Form -->        
-        <form action="#" method="get" >     
+        <form action="#" method="get" name="ComReg2">     
    
       <!--Name-->
       <div data-role="fieldcontain">
@@ -1254,7 +1344,7 @@ data-options='{"mode": "flipbox"}'>
       <!--Emirates-->
       <div data-role="fieldcontain">
       <label for="select-choice-a" class="select"></label>
-      <select name="select-choice-a" id="select-choice-c" data-native-menu="false">
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
       <option value="AD">أبوظبي</option>
       <option value="UMQ">أم القيوين</option>
       <option value="DXB">دبي</option>
@@ -1278,8 +1368,8 @@ data-options='{"mode": "flipbox"}'>
 <div data-role="fieldcontain" class="arabic">
     <fieldset data-role="controlgroup"  data-iconpos="right">
            
-           <input type="checkbox" name="checkbox-agree" id="checkbox-agree" class="arabic" />
-           <label for="checkbox-agree">
+           <input type="checkbox" name="checkbox" id="checkbox" class="arabic" />
+           <label for="checkbox">
              <div align="right">اقر بصحة البيانات والمستندات الثبوتية المرفقة وأكون مسؤولا مسؤولية تامة عن اي خطأ وارد فيها</div>
            </label>
     </fieldset>
@@ -1291,7 +1381,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#CompanyReg2" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -1315,7 +1405,7 @@ data-options='{"mode": "flipbox"}'>
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#home" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#CompanyReg2" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
@@ -1476,12 +1566,11 @@ data-options='{"mode": "flipbox"}'>
 
 <div data-role="content">
 
-<form data-ajax="false"  method="post">
+<form>
 <div style="padding: 10px 20px;">
 <h3><strong>الدخول</strong></h3>
-<p id="errM"></p>
-<label class="ui-hidden-accessible" for="un">رقم البطاقة :</label>
-<input dir="rtl" id="un" name="user" value="" type="text"  placeholder="رقم البطاقة">
+<label class="ui-hidden-accessible" for="un">رقم بطاقة العمل:</label>
+<input dir="rtl" id="un" name="user" value="" type="text"  placeholder="رقم بطاقة العمل">
 <label class="ui-hidden-accessible" for="pw">كلمة السر: </label>
 <input dir="rtl" id="pw" name="pass" value="" type="password" placeholder="كلمة السر">
 <input type="button" value="دخول" onClick="FormSubmit()" ></input>
@@ -1559,7 +1648,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
   <table width="200" border="0" cellpadding="10">
     <tr>
       <td><a href="https://www.facebook.com/absheruae"><img src="css/images/facebook.png" width="70" height="70"></a></td>
-      <td><a href="contactus@absher.ae"><img src="css/images/email.png" width="70" height="70"></a></td>
+      <td><a href="mailto:contactus@absher.ae"><img src="css/images/email.png" width="70" height="70"></a></td>
     </tr>
     <tr>
       <td><a href="tel:971-4-7023333"><img src="css/images/contact.png" width="70" height="70"></a></td>
@@ -1682,7 +1771,6 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 </div>
 <!-- End of Header -->
  
-
  
  
 <!-- Start of Content -->
@@ -1713,7 +1801,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
    <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#addfeedback" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -1737,7 +1825,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#addfeedback" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
@@ -1833,7 +1921,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#offers" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -1857,7 +1945,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#offers" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
@@ -1945,7 +2033,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <a href="#profile2">
 
 <div id="AbsherCard">
-<canvas id="myCanvas" width="340" height="542" >
+<canvas id="myCanvas" width="325" height="518" >
 Your browser does not support the canvas element.
    </canvas>
 
@@ -1962,7 +2050,7 @@ ctx.translate(100,300);
 ctx.rotate(0.5*Math.PI);
 
 var rText = '890150355';
-ctx.fillText(rText , 55, -30);
+ctx.fillText(rText , 40, -25);
 ctx.restore();
 
 ctx.fillStyle="#fff";
@@ -1971,7 +2059,7 @@ ctx.translate(100,300);
 ctx.rotate(0.5*Math.PI);
 
 var rText = '4/12/2013';
-ctx.fillText(rText , 55, 5);
+ctx.fillText(rText , 40, 7);
 ctx.restore();
 
 ctx.fillStyle="#fff";
@@ -1980,7 +2068,7 @@ ctx.translate(100,300);
 ctx.rotate(0.5*Math.PI);
 
 var rText = '3/12/2017';
-ctx.fillText(rText , 55, 35);
+ctx.fillText(rText , 40, 41);
 ctx.restore();
 </script>
     <script>
@@ -2012,59 +2100,14 @@ ctx.restore();
       loadImages(sources, function(images) {
 ctx.translate(100,300);
 ctx.rotate(0.5*Math.PI);
-        context.drawImage(images.defaultpic, -280, - 215, 145, 145)
+        context.drawImage(images.defaultpic, -275, - 202, 140, 140)
       });
 </script></div></a>
 
 
 </div> 
 
-<!--Start of Inquiry 1 Div-->
-<div  id="Inquiry1" data-role="popup">
-<div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
 
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 1 Div-->
-
-<!--Start of Inquiry 2 Div-->
-<div id="Inquiry2" data-role="popup">
-<div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 2 Div-->
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -2092,7 +2135,7 @@ ctx.rotate(0.5*Math.PI);
 
 
 <!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -2111,7 +2154,6 @@ ctx.rotate(0.5*Math.PI);
 </div> <!-- End second collapsible -->
 </div> <!-- End collapsible-->
 </div> 
-<!-- End of Panel-->
 
 </div>
 <!-- End of Profile Page -->
@@ -2131,57 +2173,12 @@ ctx.rotate(0.5*Math.PI);
 <!-- Start of Content -->
 <div data-role="content">
 <a href="#profile">
-<div id="backCard"> 
+<div id="backCard">
 </div>
 </a>
 </div> 
 
-<!--Start of Inquiry 1 Div-->
-<div  id="Inquiry1" data-role="popup">
-<div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
 
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 1 Div-->
-
-<!--Start of Inquiry 2 Div-->
-<div id="Inquiry2" data-role="popup">
-<div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
-<br />
-</div>
-<!-- Start of Content -->
-        <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
-      <!--Work ID-->
-      <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
-<!-- End of Form -->
-    </div>
-<!-- End of Content -->
-</div>
-<!--End of Inquiry 2 Div-->
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -2209,7 +2206,7 @@ ctx.rotate(0.5*Math.PI);
 
 
 <!-- OFFERS PAGE Panel -->
-<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
 <ul data-role="listview" data-theme="a" data-icon="false">
 <li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
 <li><a href="#login">دخول</a></li>
@@ -2250,6 +2247,7 @@ ctx.rotate(0.5*Math.PI);
 <!-- Start of Content -->
 <div data-role="content">
 <div id="oneoffermap">
+
 </div>
 
 <br/>
@@ -2266,7 +2264,7 @@ ctx.rotate(0.5*Math.PI);
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
@@ -2290,7 +2288,7 @@ ctx.rotate(0.5*Math.PI);
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#contactus" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#offerdetails" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
