@@ -93,8 +93,42 @@ function hideSplash() {
                     }
                 }
             });
-
+//////////////////////////////////////////////////////////////////////////////////////////
+//								EMPLOYEES LOGIN											//
+//////////////////////////////////////////////////////////////////////////////////////////
+			function loginEmp(){
+				if (
+				  ($("#user").val()== '')||
+				  ($("#pass").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+			}
+			else{
+                employees.fetch(
+                    // Success Callback
+                    function () {
+						NotEqual=true;
+						while(employees.hasNextEntity()) {
+							var employee = employees.getNextEntity();
+							if ((employee.get("workID") == $("#user").val()) && ((employee.get("Password")==$("#pass").val())))
+							{
+								NotEqual=false;
+								$.mobile.changePage("#profile");
+							}
+						}
+						if (NotEqual==true)
+						alert('رقم بطاقة العمل أو كلمة المرور التي أدخلتها غير صحيحة');
+						document.Login.user.focus();
+                     }
+				)
+			  }
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
+//								EMPLOYEES REG											//
+//////////////////////////////////////////////////////////////////////////////////////////
 			function SaveME(){
+				alert($("#orkID").val());
 				var readyR=true;
 				//VALIDATION
 			if (
@@ -278,6 +312,39 @@ function hideSplash() {
                    } 
                 });
    			}
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
+//								ADD YOUR SUGGESTION										//
+//////////////////////////////////////////////////////////////////////////////////////////
+		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
+			Usergrid.ApiClient.init('absher', 'suggestions');
+            // Make a new "book" collection and read data
+            var options = {
+                type:'suggestions',
+                qs:{ql:'order by title DESC'}
+            }
+            var suggestions;
+            client.createCollection(options, function (err, suggestions) {
+                if (err) {
+                    alert("Couldn't get the list of books.");
+                } else {
+                    while(suggestions.hasNextEntity()) {
+                        var suggestion = suggestions.getNextEntity();
+                    }
+                }
+            });
+			function SaveSugg(){
+                new_sugg = { 
+				"title": $("#Subject").val(),
+				"details": $("#feedbackmessage").val()				
+				};
+                suggestions.addEntity(new_sugg, function (error, response) {
+                   if (error) { alert("لم تتم إدخال البيانات الصحيحة");
+                   } else {  
+				   	  $.mobile.changePage("#home");
+                      alert("شكراً لمشاركتنا الرأي");
+                   } 
+                });
 			}
         </script>
 <!-- End of Registration-->
@@ -1791,9 +1858,7 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
         </div>
        
         <!-- Submit Feedback -->
-        <div data-role="button" align="right">
-   <label for="submitfeedback"><strong>إرسال</strong></label>
-        </div>
+   <input type="button" value="إرسال" onClick="SaveSugg()" ></input>
    </form>
    <!-- End of Form-->
    
