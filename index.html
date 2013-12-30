@@ -128,7 +128,6 @@ function hideSplash() {
 //								EMPLOYEES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
 			function SaveME(){
-				alert($("#orkID").val());
 				var readyR=true;
 				//VALIDATION
 			if (
@@ -167,7 +166,7 @@ function hideSplash() {
 			var dotpos=x.lastIndexOf(".");
 			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
 			  {
-			  alert("عنوان البريد الذي أدخلته غير صحيح");
+			  alert("عنوان البريد الإلكتروني الذي أدخلته غير صحيح");
 			  readyR=false;
 			  document.LocReg.EmpEmail.focus() ;
 			  }
