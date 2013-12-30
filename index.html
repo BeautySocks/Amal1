@@ -94,23 +94,63 @@ function hideSplash() {
                 }
             });
 
-            // Uncomment the next 4 lines if you want to write data
-//var employees;
-//
-//             employee = { "workID": "123486" };
-//             employees.addEntity(employee, function (error, response) {
-//              if (error) {
-//				   alert("Couldn't add the book.");
-//              } 
-//			  else { 
-//			  alert("The book was added."); 
-//			  } 
-//			  });
-
 			function SaveME(){
-//$('#LocBtn').bind('click', function createBook () {
-                new_Loc_emp = { 
-				"workID": $("#workID").val(),
+				var readyR=true;
+				//VALIDATION
+			if (
+				  ($("#orkID").val()== '')||
+				  ($("#Password").val()=='')||
+				  ($("#RetPassword").val()=='')||
+				  ($("#EmpName").val()=='')||
+				  ($("#ComName").val()=='')||
+				  ($("#JobTitle").val()=='')||
+				  ($("#IssueDate").val()=='')||
+				  ($("#PhoneNo").val()=='')||
+				  ($("#EmpEmail").val()=='')||
+				  ($("#EmpPOBox").val()=='')||
+				  ($("#select-choice-a").val()=='')||
+				  ($("#UAEID").val()=='')||
+				  ($("#mydate").val()=='')||
+				  ($("#Proof").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+				readyR=false;
+				document.LocReg.orkID.focus();
+			}
+			else{
+			//Validate Password and Password Confirm
+			if (($("#Password").val())!=($("#RetPassword").val()))
+			{
+				alert('كلمة المرور التي أدخلتها غير متطابقة');
+				readyR=false;
+				document.LocReg.Password.focus() ;
+			}
+			
+			//Validate email correct or not
+			var x=$("#EmpEmail").val();
+			var atpos=x.indexOf("@");
+			var dotpos=x.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  {
+			  alert("عنوان البريد الذي أدخلته غير صحيح");
+			  readyR=false;
+			  document.LocReg.EmpEmail.focus() ;
+			  }
+			  
+			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#PhoneNo").val()))) 
+			 {
+			  alert('رقم الهاتف المتحرك غير صحيح');
+			  document.LocReg.PhoneNo.focus() ;
+			 }
+			}
+			if(readyR==true){		  
+			LocalReg();
+			}
+			function LocalReg(){
+			 new_Loc_emp = { 
+				"workID": $("#orkID").val(),
 				"Password": $("#Password").val(),
 				"EmpName": $("#EmpName").val(),
 				"ComName": $("#ComName").val(),
@@ -131,11 +171,8 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
-                 
-
-//              });
 			}
-//////////////////////////////////////////////////////////////////////////////////////////
+			}
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -160,6 +197,63 @@ function hideSplash() {
                 }
             });
 			function SaveME2(){
+				var readyRC=true;
+				//VALIDATION
+			if (
+				  ($("#CompanyNo").val()== '')||
+				  ($("#ArabicName").val()=='')||
+				  ($("#EnglishName").val()=='')||
+				  ($("#EconomicActivity").val()=='')||
+				  ($("#Address").val()=='')||
+				  ($("#select-choice-a").val()=='')||
+				  ($("#select-choice-b").val()=='')||
+				  ($("#Name").val()=='')||
+				  ($("#MobileNo").val()=='')||
+				  ($("#OfficeNo").val()=='')||
+				  ($("#Email").val()=='')||
+				  ($("#POBox").val()=='')||
+				  ($("#select-choice-c").val()=='')||
+				  ($("#OfferDetail").val()=='')
+			   )
+			{
+				alert('الرجاء تعبئة كافة البيانات');
+				readyRC=false;
+				document.ComReg.CompanyNo.focus();
+			}
+			else{
+			//Validate email correct or not
+			var x=$("#Email").val();
+			var atpos=x.indexOf("@");
+			var dotpos=x.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  {
+			  alert("عنوان البريد الذي أدخلته غير صحيح");
+			  readyRC=false;
+			  document.ComReg2.Email.focus() ;
+			  }
+			
+			//Check if checkbox is checked or not
+			if(!document.ComReg2.checkbox.checked)
+				{
+				alert('لم تتم الموافقة على الشروط');
+				}
+			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#MobileNo").val()))) 
+			 {
+			  alert('رقم الهاتف المتحرك غير صحيح');
+			  document.ComReg2.MobileNo.focus() ;
+			 }
+			 			//Validate if entered numbers only for phoneNo
+			 if (isNaN(($("#OfficeNo").val()))) 
+			 {
+			  alert('رقم هاتف المكتب غير صحيح');
+			  document.ComReg2.OfficeNo.focus() ;
+			 }
+			}	
+			if(readyRC==true){		  
+			CompanyReg();
+			}
+			function CompanyReg(){
                 new_com_emp = { 
 				"registered": $("#select-choice-b").val(),
 				"CompanyNo": $("#CompanyNo").val(),
@@ -170,6 +264,7 @@ function hideSplash() {
 				"Emirates": $("#select-choice-a").val(),
 				"CoorName": $("#Name").val(),
 				"CoorMobileNo": $("#MobileNo").val(),
+				"OfficeNo": $("#OfficeNo").val(),
 				"CoorEmail": $("#Email").val(),
 				"CoorPOBox": $("#POBox").val(),
 				"CoorEmirates": $("#select-choice-c").val(),
@@ -182,9 +277,7 @@ function hideSplash() {
                       alert("لقد تم التسجيل بنجاح.");
                    } 
                 });
-                 
-
-//              });
+   			}
 			}
         </script>
 <!-- End of Registration-->
@@ -399,71 +492,72 @@ function hideSplash() {
 
 <div data-role="content">        
 <!-- Start of Form -->        
-        <form action="#home" method="post" >
+        <form action="#home" method="post" id="LocReg" name="LocReg">
       <!--Work ID-->
       <div data-role="fieldcontain">
       <label for="workID" dir="rtl"><strong>رقم بطاقة العمل</strong></label>
-      <input name="workID" type="search" required data-clear-btn="true" id="workID" value=""/>
+      <input name="workID" type="text"  data-clear-btn="true" id="orkID"  class="required" minlength="4" value="" required/>
       </div>        
       
        <!--Password-->
       <div data-role="fieldcontain">
       <label for="Password" dir="rtl"><strong>كلمة المرور</strong></label>
-      <input name="Password" type="text" required data-clear-btn="true" class="required" id="Password" value=""/>
+      <input name="Password" type="password"  data-clear-btn="true"  id="Password" value="" class="required" required/>
       </div> 
         
       <!--RetPassword-->
       <div data-role="fieldcontain">
       <label for="RetPassword" dir="rtl"><strong>إعادة كلمة المرور</strong></label>
-      <input name="RetPassword" type="text" required data-clear-btn="true" class="required" id="RetPassword" value=""/>
+      <input name="RetPassword" type="password"  data-clear-btn="true"  id="RetPassword" value="" required/>
       </div>         
       
        <!--Employee Name-->
       <div data-role="fieldcontain">
       <label for="EmpName" dir="rtl"><strong>اسم العامل المواطن</strong></label>
-      <input name="EmpName" type="text" required data-clear-btn="true" id="EmpName" value=""/>
+      <input name="EmpName" type="text"  data-clear-btn="true" id="EmpName"  value="" required/>
       </div>        
       
       <!-- Company Name-->
       <div data-role="fieldcontain">
       <label for="ComName" dir="rtl"><strong>اسم المنشأة</strong></label>
-      <input name="ComName" type="text" required data-clear-btn="true" id="ComName" value=""/>
+      <input name="ComName" type="text"  data-clear-btn="true" id="ComName"  value="" required/>
       </div>
       
        <!-- Job Title -->
       <div data-role="fieldcontain">
       <label for="JobTitle" dir="rtl"><strong>المسمى الوظيفي</strong></label>
-      <input name="JobTitle" type="text" required data-clear-btn="true" id="JobTitle" value=""/>
+      <input name="JobTitle" type="text"  data-clear-btn="true" id="JobTitle"  value="" required/>
       </div>
       
       <!-- Issue Date -->
       <div data-role="fieldcontain">
       <label for="IssueDate" dir="rtl"><strong>تاريخ الإ صدار</strong></label>
-      <input name="IssueDate" type="text" required data-clear-btn="true" id="IssueDate" value=""/>
+      <input name="IssueDate"  id="IssueDate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}' required/>
       </div>
       
       <!-- PhoneNo -->
       <div data-role="fieldcontain">
           <label for="PhoneNo" dir="rtl"><strong>رقم الهاتف المتحرك</strong></label>
-          <input name="PhoneNo" type="tel" required data-clear-btn="true" id="PhoneNo" value=""/>
+          <input name="PhoneNo" type="tel"  data-clear-btn="true" id="PhoneNo"  value="" required/>
       </div>
       
       <!--Email-->
       <div data-role="fieldcontain">
       <label for="EmpEmail" dir="rtl"><strong>عنوان البريد الإلكتروني </strong></label>
-      <input name="EmpEmail" type="email" required data-clear-btn="true" id="EmpEmail" value=""/>
+      <input name="EmpEmail"  data-clear-btn="true" id="EmpEmail"   value=""/>
       </div>
       
       <!--PO Box-->
       <div data-role="fieldcontain">
       <label for="EmpPOBox" dir="rtl"><strong>صندوق البريد</strong></label>
-      <input name="EmpPOBox" type="text" required data-clear-btn="true" id="EmpPOBox" value=""/>
+      <input name="EmpPOBox" type="text"  data-clear-btn="true" id="EmpPOBox"  value="" required/>
       </div>
       
       <!--Emirates-->
       <div data-role="fieldcontain">
       <label for="select-choice-a" class="select" dir="rtl"><strong>الإمارة</strong></label>
-      <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+      <select name="select-choice-a" id="select-choice-a" data-native-menu="false" required>
       <option value="AD">أبوظبي</option>
       <option value="UMQ">أم القيوين</option>
       <option value="DXB">دبي</option>
@@ -477,26 +571,26 @@ function hideSplash() {
       <!--Upload UAE ID-->      
       <div data-role="fieldcontain">
           <label for="UAEID" dir="rtl"><strong>صورة بطاقة الإمارات للهوية</strong></label>
-          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true">
+          <input id="UAEID" name="UAEID" value="" type="file" data-clear-btn="true" required/>
       </div>
       
       <!--Date-->      
       <div data-role="fieldcontain">
           <label for="mydate" dir="rtl"><strong>تاريخ التسجيل في المعاشات</strong></label>
-          <input name="mydate" required id="mydate" type="date" data-role="datebox"
-data-options='{"mode": "flipbox"}'>
+          <input name="mydate"  id="mydate" type="date" data-role="datebox"
+data-options='{"mode": "flipbox"}' required/>
       </div>
       
       
       <!--Upload Proof -->      
       <div data-role="fieldcontain">
           <label for="Proof" dir="rtl"><strong>إثبات التسجيل في المعاشات</strong></label>
-          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true">
+          <input id="Proof" name="Proof" value="" type="file" data-clear-btn="true" required/>
       </div>
       
       <!-- Submit-->
-<input type="button" value="تسجيل" onClick="SaveME()" ></input>   </form>
-   </form>
+<input type="button" value="تسجيل" onClick="SaveME()" > 
+</form>
 <!-- End of Form-->
         </div>
 <!-- End of Contents-->
@@ -1010,7 +1104,7 @@ data-options='{"mode": "flipbox"}'>
 <div data-role="content">        
     
     <!-- Start of Form -->        
-        <form action="#" method="get" >     
+        <form action="#" method="get" name="ComReg" >     
    
       <!--Company Status-->
       <div data-role="fieldcontain">
@@ -1202,7 +1296,7 @@ data-options='{"mode": "flipbox"}'>
     </label>
     
     <!-- Start of Form -->        
-        <form action="#" method="get" >     
+        <form action="#" method="get" name="ComReg2">     
    
       <!--Name-->
       <div data-role="fieldcontain">
@@ -1273,8 +1367,8 @@ data-options='{"mode": "flipbox"}'>
 <div data-role="fieldcontain" class="arabic">
     <fieldset data-role="controlgroup"  data-iconpos="right">
            
-           <input type="checkbox" name="checkbox-agree" id="checkbox-agree" class="arabic" />
-           <label for="checkbox-agree">
+           <input type="checkbox" name="checkbox" id="checkbox" class="arabic" />
+           <label for="checkbox">
              <div align="right">اقر بصحة البيانات والمستندات الثبوتية المرفقة وأكون مسؤولا مسؤولية تامة عن اي خطأ وارد فيها</div>
            </label>
     </fieldset>
@@ -2152,6 +2246,7 @@ ctx.rotate(0.5*Math.PI);
 <!-- Start of Content -->
 <div data-role="content">
 <div id="oneoffermap">
+
 </div>
 
 <br/>
@@ -2262,6 +2357,6 @@ ctx.rotate(0.5*Math.PI);
 
 </div>
 <!-- End of Offer Details Page -->
-<script type="text/javascript" src="AbsherApp.js"></script>
+<script type="text/javascript" src="jsontry.js"></script>
 </body>
 </html>
