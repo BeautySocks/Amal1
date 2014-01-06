@@ -333,10 +333,14 @@ function hideSplash() {
 								NotEqual=false;
 				  			 	$.mobile.changePage("#inqResults");
 								// Output the book on the page
-                           		$('#inquiry_Res').empty().append('<p><h3>'+company.get('CompanyNo')+'</h3><br/>'
-								+'<h3>اسم المنشأة: </h3>'+company.get('ArabicName')
-								+'</p>');
-                        
+                           		$('#inquiry_Res').empty().append('<p><h3 dir="rtl">'+company.get('CompanyNo')+'</h3></p><br/>'
+								+'<p dir="rtl"><b>اسم المنشأة:  </b>'+company.get('ArabicName')+'</p>'
+								+'<p dir="rtl"><b>العنوان:  </b>'+company.get('Address')+'</p>'
+								+'<p dir="rtl"><b>الإمارة: </b>'+company.get('Emirates')+'</p>'
+								+'<p dir="rtl"><b>اسم المنسق: </b>'+company.get('CoorName')+'</p>'
+								+'<p dir="rtl"><b>رقم الهاتف المتحرك: </b>'+company.get('CoorMobileNo')+'</p>'
+								+'<p dir="rtl"><b>رقم المكتب: </b>'+company.get('OfficeNo')+'</p>'
+							);
 							}
 						}
 						// Re-apply jQuery Mobile styles

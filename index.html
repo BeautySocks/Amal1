@@ -333,8 +333,9 @@ function hideSplash() {
 								NotEqual=false;
 				  			 	$.mobile.changePage("#inqResults");
 								// Output the book on the page
-                           		$('#inquiry_Res').empty().append('<p><h3>'+company.get('CompanyNo')+'</h3><br/>'
+                           		$('#inquiry_Res').empty().append('<p dir="rtl"><h3>'+company.get('CompanyNo')+'</h3><br/>'
 								+'<h3>اسم المنشأة: </h3>'+company.get('ArabicName')
+								+'<h3>العنوان: </h3>'+company.get('Address')
 								+'</p>');
                         
 							}
