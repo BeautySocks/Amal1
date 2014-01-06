@@ -313,6 +313,44 @@ function hideSplash() {
    			}
 			}
 //////////////////////////////////////////////////////////////////////////////////////////
+//									INQUIRY 2											//
+//////////////////////////////////////////////////////////////////////////////////////////
+			function inquiry2(){
+				if (
+				  ($("#InqCompID").val()== ''))
+			{
+				alert('الرجاء إدخال رقم الطلب');
+			}
+			else{
+                companies.fetch(
+                    // Success Callback
+                    function () {
+						NotEqual=true;
+						while(companies.hasNextEntity()) {
+							var company = companies.getNextEntity();
+							if ((company.get("CompanyNo") == $("#InqCompID").val()))
+							{
+								NotEqual=false;
+				  			 	$.mobile.changePage("#inqResults");
+								// Output the book on the page
+                           		$('#inquiry_Res').empty().append('<p><h3>'+company.get('CompanyNo')+'</h3><br/>'
+								+'<h3>اسم المنشأة: </h3>'+company.get('ArabicName')
+								+'</p>');
+                        
+							}
+						}
+						// Re-apply jQuery Mobile styles
+                        $('#inquiry_Res').listview('refresh');
+						if (NotEqual==true)
+						{
+						alert('رقم الطلب التي أدخلتها غير صحيحة');
+						document.Login.user.focus();
+						}
+                     }
+				)
+			  }
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
 //								ADD YOUR SUGGESTION										//
 //////////////////////////////////////////////////////////////////////////////////////////
 		    var suggestions = new Usergrid.Collection( { "client":client, "type":"suggestions" } );
@@ -520,13 +558,13 @@ function hideSplash() {
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#" method="post" id="Inquiry1" name="Inquiry1">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
+      <label for="InqworkID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqworkID" type="text" id="InqworkID" value="" align="right"/> 
+      </div>              
+      <input type="button" value="بحث" onClick="inquiry1()">
     </form>
 <!-- End of Form -->
     </div>
@@ -542,14 +580,15 @@ function hideSplash() {
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form name="Inquiry1" method="post" id="Inquiry1">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
-      </div>        
-    </form>
+      <label for="InqCompID" dir="rtl"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" data-clear-btn="true" id="InqCompID" value="" align="right"/> 
+      </div>     
+      <input type="button" value="بحث" onClick="inquiry2()">   
+    </form>      
+
 <!-- End of Form -->
     </div>
 <!-- End of Content -->
@@ -2294,8 +2333,6 @@ ctx.rotate(0.5*Math.PI);
 </div>
 <!-- End of Profile2 Page -->
 
-
-
 <!-- Start of Offer Details Page -->
 <div data-role="page" id="offerdetails" data-icon="true">
 <!-- Start of Header -->
@@ -2422,6 +2459,119 @@ ctx.rotate(0.5*Math.PI);
 
 </div>
 <!-- End of Offer Details Page -->
+
+<!-- Start of inquiry results Page -->
+<div data-role="page" id="inqResults" data-icon="true">
+<!-- Start of Header -->
+<div data-role="header">
+<h1>ناتج البحث</h1>
+<!-- Start of Panel -->
+<a href ="#nav-panel"data-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</a>
+<a href="#" data-icon="forward" data-rel="back" data-iconpos="notext">الرجوع</a>
+<!-- End of Panel -->
+</div>
+<!-- End of Header -->
+
+<!-- Start of Content -->
+<div data-role="content" id="inquiry_Res">
+
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#inqResults" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+        <form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#inqResults" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+        <form action="#" method="get" >
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="workID" type="text" id="workID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+</div>
+<!-- End of Contents-->
+    
+<!-- footer -->
+<div data-role="footer" data-position="fixed">
+<!-- Navbar -->
+<div data-role="navbar" data-iconpos="left">
+<ul id="options">
+                                                <li>
+            <a href="#home"><img src="css/images/home1.png" width="30" height="30"></a>
+            </li>
+                                                <li>
+            <a href="#profile"><img src="css/images/profile1.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#offers"><img src="css/images/tag2.png" width="30" height="30"></a>
+            </li>
+            <li>
+            <a href="#contactus"><img src="css/images/contact1.png" width="30" height="30"></a>
+            </li>
+                                </ul>
+                </div>
+<!-- /navbar -->
+</div>
+<!-- End of footer -->
+
+
+<!-- OFFERS PAGE Panel -->
+<div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
+<ul data-role="listview" data-theme="a" data-icon="false">
+<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li><a href="#login">دخول</a></li>
+<li><a href="#aboutabsher">عن المبادرة</a></li>
+</ul>
+
+<div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
+
+<div data-role="collapsible" data-theme="a">
+<h3>استفسار</h3>
+<ul data-role="listview" id="panelcategories" data-theme="a">
+<li><a href="#Inquiry1" data-rel="popup" data-inline="true">استفسار عن حالة تسجيل المواطن</a></li>
+<li><a href="#Inquiry2" data-rel="popup" data-inline="true">استفسار عن حالة طلب المنشأة</a>
+</li>
+</ul>
+</div> <!-- End second collapsible -->
+</div> <!-- End collapsible-->
+</div> 
+<!-- End of Panel-->
+
+</div>
+<!-- End of inquiry results Page -->
 <script type="text/javascript" src="jsontry.js"></script>
 </body>
 </html>
