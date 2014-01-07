@@ -116,9 +116,9 @@ function hideSplash() {
 								$.mobile.changePage("#profile");
 							}
 						}
-						if (NotEqual==true)
+						if (NotEqual==true){
 						alert('رقم بطاقة العمل أو كلمة المرور التي أدخلتها غير صحيحة');
-						document.Login.user.focus();
+						document.Login.user.focus();}
                      }
 				)
 			  }
@@ -205,6 +205,39 @@ function hideSplash() {
                    } 
                 });
 			}
+			}
+//////////////////////////////////////////////////////////////////////////////////////////
+//									INQUIRY 1											//
+//////////////////////////////////////////////////////////////////////////////////////////
+			function inquiry1(){
+                employees.fetch(
+                    // Success Callback
+                    function () {
+						NotEqual=true;
+						while(employees.hasNextEntity()) {
+							var employee = employees.getNextEntity();
+							if ((employee.get("workID") == $("#InqID").val()))
+							{
+								NotEqual=false;
+				  			 	$.mobile.changePage("#inqResults");
+								// Output the book on the page
+                           		$('#inquiry_Res').empty().append('<p dir="rtl">'+employee.get('workID')+'</p><br/>'
+								+'<p dir="rtl"><b>اسم الموظف: </b>'+employee.get('EmpName')+'</p>'
+								+'<p dir="rtl"><b>اسم الشركة:  </b>'+employee.get('ComName')+'</p>'
+								+'<p dir="rtl"><b>المسمى الوظيفي:  </b>'+employee.get('JobTitle')+'</p>'
+								+'<p dir="rtl"><b>الإمارة: </b>'+employee.get('EmpEmirates')+'</p>'
+								+'<p dir="rtl"><b>رقم الهاتف المتحرك: </b>'+employee.get('PhoneNo')+'</p>'
+							);
+							}
+						}
+						if (NotEqual==true)
+						{
+						alert('الرجاء إدخال رقم الطلب الصحيح');
+						}
+						// Re-apply jQuery Mobile styles
+                        $('#inquiry_Res').listview('refresh');
+                     }
+				)
 			}
 //////////////////////////////////////////////////////////////////////////////////////////
 //								COMPANIES REG											//
@@ -316,12 +349,6 @@ function hideSplash() {
 //									INQUIRY 2											//
 //////////////////////////////////////////////////////////////////////////////////////////
 			function inquiry2(){
-				if (
-				  ($("#InqCompID").val()== ''))
-			{
-				alert('الرجاء إدخال رقم الطلب');
-			}
-			else{
                 companies.fetch(
                     // Success Callback
                     function () {
@@ -343,17 +370,17 @@ function hideSplash() {
 							);
 							}
 						}
-						// Re-apply jQuery Mobile styles
-                        $('#inquiry_Res').listview('refresh');
 						if (NotEqual==true)
 						{
-						alert('رقم الطلب التي أدخلتها غير صحيحة');
-						document.Login.user.focus();
+						alert('الرجاء إدخال رقم الطلب الصحيح');
 						}
+						// Re-apply jQuery Mobile styles
+                        $('#inquiry_Res').listview('refresh');
+						 
+						
                      }
 				)
 			  }
-			}
 //////////////////////////////////////////////////////////////////////////////////////////
 //								ADD YOUR SUGGESTION										//
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -446,13 +473,12 @@ function hideSplash() {
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->        <form action="#" method="post" id="Inquiry1">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -470,12 +496,12 @@ function hideSplash() {
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#" method="get" id="Inquiry2">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -512,10 +538,10 @@ function hideSplash() {
 
 <!-- Start of Home Page Panel-->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -555,49 +581,50 @@ function hideSplash() {
 <!--Start of Inquiry 1 Div-->
 <div  id="Inquiry1" data-role="popup">
 <div data-role="header">
-<a href="#localreg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#LocReg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="post" id="Inquiry1" name="Inquiry1">
+	  <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="InqworkID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="InqworkID" type="text" id="InqworkID" value="" align="right"/> 
-      </div>              
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
       <input type="button" value="بحث" onClick="inquiry1()">
+      </div>        
     </form>
 <!-- End of Form -->
     </div>
 <!-- End of Content -->
 </div>
 <!--End of Inquiry 1 Div-->
+
 <!--Start of Inquiry 2 Div-->
 <div id="Inquiry2" data-role="popup">
 <div data-role="header">
-<a href="#localreg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<a href="#LocReg" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
 <br />
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form name="Inquiry1" method="post" id="Inquiry1">
+            <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="InqCompID" dir="rtl"><strong>رقم الطلب*</strong></label>
-      <input name="InqCompID" type="text" data-clear-btn="true" id="InqCompID" value="" align="right"/> 
-      </div>     
-      <input type="button" value="بحث" onClick="inquiry2()">   
-    </form>      
-
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry2()">
+      </div>        
+    </form>
 <!-- End of Form -->
     </div>
 <!-- End of Content -->
 </div>
 <!--End of Inquiry 2 Div-->
+
 
 <div data-role="content">        
 <!-- Start of Form -->        
@@ -730,10 +757,10 @@ data-options='{"mode": "flipbox"}' required/>
 
 <!-- Local Reg Panel --> 
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -1106,12 +1133,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1129,12 +1156,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+            <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1147,10 +1174,10 @@ data-options='{"mode": "flipbox"}' required/>
 
 <!-- About Absher Panel --> 
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -1297,12 +1324,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+	  <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1320,12 +1347,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1361,12 +1388,11 @@ data-options='{"mode": "flipbox"}' required/>
 
 <!-- Company Reg Panel --> 
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
-
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
 
 <div data-role="collapsible" data-theme="a">
@@ -1496,12 +1522,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+		<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1518,13 +1544,13 @@ data-options='{"mode": "flipbox"}' required/>
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1560,10 +1586,10 @@ data-options='{"mode": "flipbox"}' required/>
 
 <!-- Company Reg 2 Panel --> 
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -1608,12 +1634,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" id="">
+        <form action="#" >
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1631,12 +1657,12 @@ data-options='{"mode": "flipbox"}' required/>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1715,10 +1741,10 @@ data-options='{"mode": "flipbox"}' required/>
 
 <!-- LOGIN PAGE Panel --> 
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -1781,12 +1807,12 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+	<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1803,13 +1829,13 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1844,10 +1870,10 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
  
 <!-- Contact PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -1915,12 +1941,12 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+	<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1937,13 +1963,13 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -1978,10 +2004,10 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!-- End of footer -->
 <!-- FEEDBACK PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -2035,12 +2061,12 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2057,13 +2083,13 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2100,10 +2126,10 @@ a-role="button" data-iconpos="notext" data-icon="bars" data-inline="true">Menu</
 
 <!-- OFFERS PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -2212,9 +2238,55 @@ ctx.rotate(0.5*Math.PI);
 </script></div></a>
 
 
+<!--Start of Inquiry 1 Div-->
+<div  id="Inquiry1" data-role="popup">
+<div data-role="header">
+<a href="#profile" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+<form action="#">
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 1 Div-->
+
+<!--Start of Inquiry 2 Div-->
+<div id="Inquiry2" data-role="popup">
+<div data-role="header">
+<a href="#profile" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a>
+<br />
+</div>
+
+<!-- Start of Content -->
+        <div data-role="content" class="popupBG">        
+<!-- Start of Form -->        
+        <form action="#">
+      <!--Work ID-->
+      <div data-role="fieldcontain" class="popupBG">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
+      </div>        
+    </form>
+<!-- End of Form -->
+    </div>
+<!-- End of Content -->
+</div>
+<!--End of Inquiry 2 Div-->
+
 </div> 
-
-
 <!-- End of Contents-->
     
 <!-- footer -->
@@ -2241,12 +2313,12 @@ ctx.rotate(0.5*Math.PI);
 <!-- End of footer -->
 
 
-<!-- OFFERS PAGE Panel -->
+<!-- Profile PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -2314,10 +2386,10 @@ ctx.rotate(0.5*Math.PI);
 
 <!-- OFFERS PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="b">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -2376,12 +2448,12 @@ ctx.rotate(0.5*Math.PI);
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2398,13 +2470,13 @@ ctx.rotate(0.5*Math.PI);
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2441,10 +2513,10 @@ ctx.rotate(0.5*Math.PI);
 
 <!-- OFFERS PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
@@ -2489,12 +2561,12 @@ ctx.rotate(0.5*Math.PI);
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
 <!-- Start of Form -->        
-        <form action="#" method="get" >
+<form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqID" type="text" id="InqID" value="" align="right"/> 
+      <input type="button" value="بحث" onClick="inquiry1()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2511,13 +2583,13 @@ ctx.rotate(0.5*Math.PI);
 </div>
 <!-- Start of Content -->
         <div data-role="content" class="popupBG">        
-<!-- Start of Form -->        
-        <form action="#" method="get" >
+<!-- Start of Form -->
+        <form action="#">
       <!--Work ID-->
       <div data-role="fieldcontain" class="popupBG">
-      <label for="workID" class="divRight"><strong>رقم الطلب*</strong></label>
-      <input name="workID" type="text" id="workID" value="" align="right"/> 
-      <input name="search" type="button" value="بحث">
+      <label for="InqCompID" class="divRight"><strong>رقم الطلب*</strong></label>
+      <input name="InqCompID" type="text" id="InqCompID" value="" align="right"/> 
+      <input name="search" type="button" value="بحث" onClick="inquiry2()">
       </div>        
     </form>
 <!-- End of Form -->
@@ -2554,10 +2626,10 @@ ctx.rotate(0.5*Math.PI);
 
 <!-- OFFERS PAGE Panel -->
 <div data-role="panel" id="nav-panel" data-position="left" data-theme="a">
-<ul data-role="listview" data-theme="a" data-icon="false">
-<li data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
-<li><a href="#login">دخول</a></li>
-<li><a href="#aboutabsher">عن المبادرة</a></li>
+<ul data-role="listview" data-theme="a" data-icon="false" id="ul-panel">
+<li id="Pdelete" data-icon="delete"><a data-rel="close">إغلاق القائمة</a></li>
+<li id="login"><a href="#login">دخول</a></li>
+<li id="Pabout"><a href="#aboutabsher">عن المبادرة</a></li>
 </ul>
 
 <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-content-theme="d">
